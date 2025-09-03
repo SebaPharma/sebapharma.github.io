@@ -1,3 +1,8 @@
+Algunos templates:
+
+https://websitedemos.net/diagnostics-lab-02/?customize=template
+
+
 Mi CV en Inglés/Japo/Español
 
 Jefe de Validaciones de Knop Laboratorios, con enfoque principal en Validación de Sistemas Computarizados y supervisión de Calificación de equipos, Sistemas de Apoyo Crítico y Validación de Procesos y Limpieza de productos Sólidos, Semisólidos y Líquidos. 
