@@ -453,7 +453,7 @@ https://templatemo.com/tm-594-nexus-flow
         }
 
         .mobile-menu-logo {
-            font-size: 1.5rem;
+            font-size: 1.0rem;
             font-weight: 700;
             color: var(--primary-cyan);
             text-shadow: 0 0 15px var(--primary-cyan);
@@ -661,8 +661,8 @@ https://templatemo.com/tm-594-nexus-flow
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 500;
             color: var(--primary-cyan);
             text-shadow: 0 0 20px var(--primary-cyan);
             position: relative;
@@ -1645,3 +1645,4 @@ https://templatemo.com/tm-594-nexus-flow
             background: linear-gradient(var(--primary-pink), var(--primary-cyan));
 
         }
+
