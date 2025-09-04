@@ -1233,6 +1233,14 @@ https://templatemo.com/tm-594-nexus-flow
         }
 
         /* Contact Section */
+
+               .contact-buttons {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin-top: 2rem;
+                            width: 100%;
+            }
         .contact {
             padding: 120px 2rem;
             background: rgba(0, 255, 255, 0.02);
@@ -1635,4 +1643,5 @@ https://templatemo.com/tm-594-nexus-flow
 
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(var(--primary-pink), var(--primary-cyan));
+
         }
