@@ -521,7 +521,7 @@ https://templatemo.com/tm-594-nexus-flow
 
         .mobile-menu-nav a {
             display: block;
-            padding: 1.5rem 2rem;
+            padding: 1.0rem 1.0rem;
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 600;
@@ -1645,5 +1645,6 @@ https://templatemo.com/tm-594-nexus-flow
             background: linear-gradient(var(--primary-pink), var(--primary-cyan));
 
         }
+
 
 
