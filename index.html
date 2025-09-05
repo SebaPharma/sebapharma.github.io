@@ -91,32 +91,28 @@ https://templatemo.com/tm-594-nexus-flow
     </footer>
 
     <script src="templatemo-nexus-scripts.js"></script>
-</body>
 
 
-<!-- Musica -->
 
-    <section class="music-player-section">
-  <h2>🎧 Mi Playlist Personal</h2>
-  <p>Selecciona una canción para escuchar:</p>
+    <!-- ========== Reproductor de Música Fijo (Modo Oscuro) ========== -->
+<div id="music-player" class="music-player-fixed">
+  <div class="player-content">
+    <span class="player-title">🎧 Mi Playlist</span>
 
-  <!-- Selector de canciones -->
-  <select id="playlist" onchange="changeSong()">
-    <option value="">Selecciona una canción...</option>
-    <option value="audio/cancion1.mp3">Canción 1 - Título</option>
-    <option value="audio/cancion2.mp3">Canción 2 - Título</option>
-    <option value="audio/instrumental.mp3">Instrumental - Relajación</option>
-  </select>
+    <!-- Selector de canciones -->
+    <select id="playlist" onchange="changeSong()" class="playlist-select">
+      <option value="">Selecciona una canción...</option>
+      <option value="audio/cancion1.mp3">Canción 1 - Título</option>
+      <option value="audio/cancion2.mp3">Canción 2 - Título</option>
+      <option value="audio/instrumental.mp3">Instrumental - Relajación</option>
+    </select>
 
-  <!-- Reproductor de audio -->
-  <audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;">
-    Tu navegador no soporta el elemento de audio.
-  </audio>
+    <!-- Reproductor de audio -->
+    <audio id="audioPlayer" controls class="audio-controls"></audio>
+  </div>
+</div>
 
-  <p><small>Reproduce tus canciones favoritas. Sin autoplay, solo cuando tú lo decidas.</small></p>
-</section>
-
-<!-- Script para cambiar de canción -->
+<!-- ========== Script para el reproductor ========== -->
 <script>
   function changeSong() {
     const player = document.getElementById('audioPlayer');
@@ -126,45 +122,82 @@ https://templatemo.com/tm-594-nexus-flow
     if (selectedSrc) {
       player.src = selectedSrc;
       player.load(); // Carga la nueva canción
-      player.play(); // Opcional: reproduce al seleccionar
+      // No se reproduce automáticamente. El usuario debe hacer clic en "play".
     }
   }
 </script>
 
-<!-- Estilo opcional para que se vea bonito -->
+<!-- ========== Estilos CSS (modo oscuro, fijo en la parte inferior) ========== -->
 <style>
-  .music-player-section {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #f8f9fa;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    text-align: center;
+  /* Reproductor fijo en la parte inferior */
+  .music-player-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #121212;
+    border-top: 1px solid #333;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    padding: 10px 20px;
     font-family: 'Arial', sans-serif;
   }
-  .music-player-section h2 {
-    color: #333;
+
+  .player-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 500px;
+    margin: 0 auto;
   }
-  .music-player-section select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
+
+  .player-title {
+    color: #bb86fc;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .playlist-select {
+    padding: 8px;
+    background: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #444;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 14px;
   }
-  .music-player-section audio {
-    background: #000;
-    border-radius: 8px;
+
+  .playlist-select option {
+    background: #121212;
+    color: #e0e0e0;
   }
-  .music-player-section small {
-    color: #666;
+
+  .audio-controls {
+    width: 100%;
+  }
+
+  .audio-controls::-webkit-media-controls {
+    background: #1e1e1e;
+  }
+
+  /* Ajuste para móviles */
+  @media (max-width: 600px) {
+    .music-player-fixed {
+      padding: 10px;
+    }
+    .player-title {
+      font-size: 13px;
+    }
   }
 </style>
 
     
+</body>
+
+
+    
 </html>
+
 
 
 
