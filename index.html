@@ -93,7 +93,79 @@ https://templatemo.com/tm-594-nexus-flow
     <script src="templatemo-nexus-scripts.js"></script>
 </body>
 
+
+<!-- Musica -->
+
+    <section class="music-player-section">
+  <h2>🎧 Mi Playlist Personal</h2>
+  <p>Selecciona una canción para escuchar:</p>
+
+  <!-- Selector de canciones -->
+  <select id="playlist" onchange="changeSong()">
+    <option value="">Selecciona una canción...</option>
+    <option value="audio/cancion1.mp3">Canción 1 - Título</option>
+    <option value="audio/cancion2.mp3">Canción 2 - Título</option>
+    <option value="audio/instrumental.mp3">Instrumental - Relajación</option>
+  </select>
+
+  <!-- Reproductor de audio -->
+  <audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
+  <p><small>Reproduce tus canciones favoritas. Sin autoplay, solo cuando tú lo decidas.</small></p>
+</section>
+
+<!-- Script para cambiar de canción -->
+<script>
+  function changeSong() {
+    const player = document.getElementById('audioPlayer');
+    const playlist = document.getElementById('playlist');
+    const selectedSrc = playlist.value;
+
+    if (selectedSrc) {
+      player.src = selectedSrc;
+      player.load(); // Carga la nueva canción
+      player.play(); // Opcional: reproduce al seleccionar
+    }
+  }
+</script>
+
+<!-- Estilo opcional para que se vea bonito -->
+<style>
+  .music-player-section {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  .music-player-section h2 {
+    color: #333;
+  }
+  .music-player-section select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  .music-player-section audio {
+    background: #000;
+    border-radius: 8px;
+  }
+  .music-player-section small {
+    color: #666;
+  }
+</style>
+
+    
 </html>
+
 
 
 
