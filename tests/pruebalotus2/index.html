@@ -3,133 +3,164 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Knop - Calidad</title>
+  <title>Knop Dashboard</title>
   <style>
     :root {
-      --primary: #2e7d32;
-      --bg: #fafafa;
+      --green: #2e7d32;
+      --sidebar-bg: #263238;
+      --sidebar-text: #e0e0e0;
+      --main-bg: #f9fbf9;
       --card-bg: white;
-      --text: #212121;
     }
     body {
-      background: var(--bg);
-      font-family: 'Inter', sans-serif;
-      padding: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      min-height: 100vh;
     }
-    header {
+    .sidebar {
+      width: 240px;
+      background: var(--sidebar-bg);
+      color: var(--sidebar-text);
+      padding: 20px 0;
+    }
+    .sidebar h1 {
+      padding: 0 20px 20px;
+      font-size: 16px;
+      font-weight: 400;
+      color: #a7c080;
+    }
+    .group {
+      margin-bottom: 25px;
+    }
+    .group h2 {
+      padding: 10px 20px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a9a8b;
+    }
+    .group a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--sidebar-text);
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    .group a:hover {
+      background: rgba(255,255,255,0.08);
+    }
+    .main {
+      flex: 1;
+      background: var(--main-bg);
+      padding: 30px;
+    }
+    .header {
       display: flex;
       justify-content: space-between;
       margin-bottom: 30px;
-      align-items: flex-end;
     }
-    h1 {
-      font-weight: 600;
-      font-size: 24px;
-      color: var(--primary);
+    .header h2 {
+      color: var(--green);
+      font-weight: 500;
     }
-    .version {
-      font-size: 13px;
-      color: #666;
-    }
-    .grid {
+    .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
     .card {
       background: var(--card-bg);
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      transition: transform 0.2s, box-shadow 0.2s;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    .card h3 {
+      margin-bottom: 12px;
+      color: var(--green);
+      font-size: 15px;
     }
-    .card h2 {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 18px;
-      color: var(--primary);
-      padding-bottom: 8px;
-      border-bottom: 1px solid #eee;
-    }
-    .link {
-      display: block;
-      padding: 9px 0;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 14px;
-      border-radius: 6px;
-      transition: background 0.2s;
-    }
-    .link:hover {
-      background: #f5f9f5;
-      color: var(--primary);
-    }
-    footer {
-      margin-top: 40px;
-      text-align: center;
+    .card p {
       font-size: 13px;
+      color: #555;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
       color: #666;
     }
     .btn-exit {
-      background: #d32f2f;
+      background: #c62828;
       color: white;
       border: none;
-      padding: 10px 24px;
-      border-radius: 8px;
-      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 4px;
       cursor: pointer;
-      margin-bottom: 15px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Sistema de Gestión de Calidad — Knop Laboratorios</h1>
-    <div class="version">v2.0.0 · <a href="#" style="color:#2e7d32;text-decoration:underline;">Historial</a></div>
-  </header>
-
-  <div class="grid">
-    <div class="card">
-      <h2>📘 Manual de Calidad</h2>
-      <a href="#" class="link">Manual de Calidad</a>
-      <a href="#" class="link">Site Master File</a>
-      <a href="#" class="link">Política de Calidad</a>
-      <a href="#" class="link">Organigramas</a>
-      <a href="#" class="link">Revisión de Gerencia</a>
-      <a href="#" class="link">Biblioteca</a>
-      <a href="#" class="link">Auditorías</a>
-      <a href="#" class="link">Certificaciones</a>
+  <div class="sidebar">
+    <h1>Knop Laboratorios · Sistema de Calidad</h1>
+    
+    <div class="group">
+      <h2>Manual de Calidad</h2>
+      <a href="#">📘 Manual</a>
+      <a href="#">🏢 Site Master File</a>
+      <a href="#">📜 Política</a>
+      <a href="#">🧩 Organigramas</a>
+      <a href="#">🔁 Revisión</a>
+      <a href="#">📚 Biblioteca</a>
+      <a href="#">🕵️ Auditorías</a>
+      <a href="#">🏆 Certificaciones</a>
     </div>
 
-    <div class="card">
-      <h2>👔 Gerencia General</h2>
-      <a href="#" class="link">Gerencia General</a>
-      <a href="#" class="link">Administración y Finanzas</a>
-      <a href="#" class="link">I+D e Innovación</a>
-      <a href="#" class="link">Aseguramiento de Calidad</a>
+    <div class="group">
+      <h2>Gerencia General</h2>
+      <a href="#">👔 Gerencia</a>
+      <a href="#">💰 Administración</a>
+      <a href="#">🧪 I+D</a>
+      <a href="#">✅ Aseguramiento</a>
     </div>
 
-    <div class="card">
-      <h2>⚙️ Dirección Técnica</h2>
-      <a href="#" class="link">Producción</a>
-      <a href="#" class="link">Ingeniería y Mantención</a>
-      <a href="#" class="link">Control de Calidad</a>
-      <a href="#" class="link">Comercial</a>
-      <a href="#" class="link">IPAK</a>
+    <div class="group">
+      <h2>Dirección Técnica</h2>
+      <a href="#">⚙️ Producción</a>
+      <a href="#">🛠️ Ingeniería</a>
+      <a href="#">📊 Control Calidad</a>
+      <a href="#">📈 Comercial</a>
+      <a href="#">📦 IPAK</a>
     </div>
   </div>
 
-  <footer>
-    <button class="btn-exit">SALIR</button><br>
-    v2.0.0 · <a href="#" style="color:#2e7d32;">Historial de Versiones</a>
-  </footer>
+  <div class="main">
+    <div class="header">
+      <h2>Bienvenido al Sistema de Gestión de Calidad</h2>
+      <div>v2.0.0 · <a href="#" style="color:#2e7d32;">Historial</a></div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>🔍 Búsqueda Global</h3>
+        <p>Busca en todos los documentos del sistema.</p>
+      </div>
+      <div class="card">
+        <h3>🔔 Últimos Cambios</h3>
+        <p>Documentos actualizados en las últimas 48h.</p>
+      </div>
+      <div class="card">
+        <h3>✅ Próximas Auditorías</h3>
+        <p>Próxima auditoría interna: 15/06/2024.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <button class="btn-exit">SALIR</button><br><br>
+      v2.0.0 · <a href="#" style="color:#2e7d32;">Historial de Versiones</a>
+    </div>
+  </div>
 
 </body>
 </html>
