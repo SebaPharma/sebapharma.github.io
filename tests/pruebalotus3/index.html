@@ -1,135 +1,98 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Knop - Sistema de Calidad</title>
-  <style>
-    :root {
-      --green: #2e7d32;
-      --light-green: #f1f8e9;
-      --dark-gray: #333;
-      --light-gray: #f8f9fa;
-      --border: #e0e0e0;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-      background: var(--light-gray);
-      color: var(--dark-gray);
-      line-height: 1.6;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: white;
-      border-bottom: 1px solid var(--border);
-    }
-    .logo h1 {
-      font-weight: 300;
-      font-size: 22px;
-      color: var(--green);
-    }
-    .version {
-      font-size: 12px;
-      color: #666;
-    }
-    .menu {
-      max-width: 1000px;
-      margin: 30px auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 0 20px;
-    }
-    .section {
-      background: white;
-      padding: 25px;
-      border-radius: 6px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
-    .section h2 {
-      font-weight: 500;
-      margin-bottom: 18px;
-      color: var(--green);
-      font-size: 16px;
-      letter-spacing: 0.5px;
-    }
-    .item {
-      display: block;
-      padding: 10px 0;
-      text-decoration: none;
-      color: var(--dark-gray);
-      font-size: 14px;
-      border-bottom: 1px solid #f0f0f0;
-      transition: color 0.2s;
-    }
-    .item:hover {
-      color: var(--green);
-    }
-    .item:last-child {
-      border-bottom: none;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #777;
-      font-size: 12px;
-      border-top: 1px solid var(--border);
-      margin-top: 40px;
-    }
-    footer a {
-      color: var(--green);
-      text-decoration: none;
-    }
-  </style>
+  <title>Sistema de Gestión de Calidad - Knop Laboratorios</title>
 </head>
-<body>
+<body style="font-family: Arial, Helvetica, sans-serif; background-color: #f5f9f5; padding: 20px;">
 
-  <header>
-    <div class="logo">
-      <h1>Knop Laboratorios · Sistema de Gestión de Calidad</h1>
-    </div>
-    <div class="version">v2.0.0 | <a href="#">Historial</a></div>
-  </header>
+<!-- CABECERA -->
+<table width="100%" border="0" cellpadding="10" cellspacing="0" style="background-color: white; border-bottom: 2px solid #2e7d32;">
+  <tr>
+    <td width="20%">
+      <img src="https://via.placeholder.com/120x60?text=KNOP+LOGO" alt="Logo Knop" style="height: 50px;" />
+    </td>
+    <td width="60%" align="center">
+      <strong style="font-size: 18px; color: #2e7d32;">SISTEMA DE GESTIÓN DE CALIDAD</strong>
+    </td>
+    <td width="20%" align="right">
+      <span style="font-size: 12px; color: #444;">Ver. 2.0.0 | <a href="#" style="color: #2e7d32; text-decoration: underline;">Historial</a></span>
+    </td>
+  </tr>
+</table>
 
-  <div class="menu">
-    <div class="section">
-      <h2>MANUAL DE CALIDAD</h2>
-      <a href="#" class="item">Manual de Calidad</a>
-      <a href="#" class="item">Site Master File</a>
-      <a href="#" class="item">Política de Calidad</a>
-      <a href="#" class="item">Organigramas</a>
-      <a href="#" class="item">Revisión de Gerencia</a>
-      <a href="#" class="item">Biblioteca</a>
-      <a href="#" class="item">Auditorías</a>
-      <a href="#" class="item">Certificaciones</a>
-    </div>
+<!-- BARRA SUPERIOR -->
+<table width="100%" border="0" cellpadding="10" cellspacing="0" style="margin: 15px 0; background-color: white; border-radius: 5px; border: 1px solid #ddd;">
+  <tr>
+    <td width="40%">
+      <button style="background-color: #2e7d32; color: white; border: none; padding: 6px 12px; font-size: 12px; cursor: pointer; border-radius: 4px;">
+        Ingreso General / Preparación de Documentos
+      </button>
+    </td>
+    <td width="40%" align="center">
+      <input type="text" placeholder="Buscar en todos los documentos" style="width: 90%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px;" />
+    </td>
+    <td width="20%" align="right">
+      <button style="background-color: #ffeb3b; color: #c62828; border: none; padding: 6px 12px; font-size: 12px; cursor: pointer; border-radius: 4px;">
+        🔔 Últimos Docs Actualizados
+      </button>
+    </td>
+  </tr>
+</table>
 
-    <div class="section">
-      <h2>GERENCIA GENERAL</h2>
-      <a href="#" class="item">Gerencia General</a>
-      <a href="#" class="item">Administración y Finanzas</a>
-      <a href="#" class="item">I+D e Innovación</a>
-      <a href="#" class="item">Aseguramiento de Calidad</a>
-    </div>
+<!-- MENÚ PRINCIPAL EN TABLAS -->
+<table width="100%" border="0" cellpadding="15" cellspacing="10" style="background-color: #f5f9f5;">
+  <tr>
+    <!-- COLUMNA 1: MANUAL DE CALIDAD -->
+    <td width="33%" valign="top">
+      <table width="100%" border="0" cellpadding="8" cellspacing="0" style="background-color: white; border: 1px solid #ddd; border-radius: 5px;">
+        <tr><td style="background-color: #2e7d32; color: white; font-weight: bold; text-align: center; padding: 8px;">MANUAL DE CALIDAD</td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">📘 Manual de Calidad</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">🏢 Site Master File</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">📜 Política de Calidad</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">🧩 Organigramas</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">🔁 Revisión de Gerencia</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">📚 Biblioteca</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">🕵️ Auditorías</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">🏆 Certificaciones</a></td></tr>
+      </table>
+    </td>
 
-    <div class="section">
-      <h2>DIRECCIÓN TÉCNICA</h2>
-      <a href="#" class="item">Producción</a>
-      <a href="#" class="item">Ingeniería y Mantención</a>
-      <a href="#" class="item">Control de Calidad</a>
-      <a href="#" class="item">Comercial</a>
-      <a href="#" class="item">IPAK</a>
-    </div>
-  </div>
+    <!-- COLUMNA 2: GERENCIA GENERAL -->
+    <td width="33%" valign="top">
+      <table width="100%" border="0" cellpadding="8" cellspacing="0" style="background-color: white; border: 1px solid #ddd; border-radius: 5px;">
+        <tr><td style="background-color: #81c784; color: #2e7d32; font-weight: bold; text-align: center; padding: 8px;">GERENCIA GENERAL</td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">👔 Gerencia General</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">💰 Administración y Finanzas</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">🧪 Investigación, Desarrollo e Innovación</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">✅ Aseguramiento de Calidad</a></td></tr>
+      </table>
+    </td>
 
-  <footer>
-    <button style="background:#2e7d32;color:white;border:none;padding:8px 16px;border-radius:4px;margin-bottom:10px;">SALIR</button><br>
-    v2.0.0 | <a href="#">Historial de Versiones</a>
-  </footer>
+    <!-- COLUMNA 3: DIRECCIÓN TÉCNICA -->
+    <td width="33%" valign="top">
+      <table width="100%" border="0" cellpadding="8" cellspacing="0" style="background-color: white; border: 1px solid #ddd; border-radius: 5px;">
+        <tr><td style="background-color: #a5d6a7; color: #2e7d32; font-weight: bold; text-align: center; padding: 8px;">DIRECCIÓN TÉCNICA</td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">⚙️ Producción</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">🛠️ Ingeniería y Mantención</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">📊 Control de Calidad</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">📈 Comercial</a></td></tr>
+        <tr><td><a href="#" style="display: block; padding: 6px 10px; color: #222; text-decoration: none; border-bottom: 1px solid #eee;">📦 IPAK</a></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- PIE DE PÁGINA -->
+<table width="100%" border="0" cellpadding="15" cellspacing="0" style="margin-top: 20px; background-color: white; border-top: 2px solid #2e7d32; text-align: center;">
+  <tr>
+    <td>
+      <button style="background-color: #c62828; color: white; border: none; padding: 8px 20px; font-size: 14px; cursor: pointer; border-radius: 4px; margin-right: 20px;">
+        SALIR
+      </button>
+      <span style="font-size: 12px; color: #666;">Ver. 2.0.0 | <a href="#" style="color: #2e7d32; text-decoration: underline;">Historial de Versiones</a></span>
+    </td>
+  </tr>
+</table>
 
 </body>
 </html>
