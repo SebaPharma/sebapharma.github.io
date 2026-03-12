@@ -88,23 +88,34 @@ https://templatemo.com/tm-594-nexus-flow
         </div>
     </section>
 
- <!-- Botón LinkedIn -->
-<a href="https://www.linkedin.com/in/sebastián-tapia-maturana-50503b144" 
-   class="btn-linkedin" 
-   target="_blank" 
-   rel="noopener noreferrer">
-  <svg class="linkedin-icon" viewBox="0 0 24 24" aria-hidden="true">
-    <path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-  </svg>
-  Ver mi perfil de LinkedIn
-</a>
+<!-- Contenedor para centrar y controlar posición vertical -->
+<div class="btn-wrapper">
+  <a href="https://www.linkedin.com/in/sebastián-tapia-maturana-50503b144" 
+     class="btn-linkedin" 
+     target="_blank" 
+     rel="noopener noreferrer">
+    <svg class="linkedin-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75 1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+    </svg>
+    Ver mi perfil de LinkedIn
+  </a>
+</div>
 
 <style>
+  /* Contenedor: centra y controla posición vertical */
+  .btn-wrapper {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    width: 100%;
+    margin-top: -10px; /* 🔼 Ajusta este valor: negativo = sube, positivo = baja */
+    margin-bottom: 20px; /* Espacio inferior opcional */
+  }
+
   .btn-linkedin {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(135deg, #c97b5e 0%, #a35a4a 100%); /* Terracota */
+    background: linear-gradient(135deg, #c97b5e 0%, #a35a4a 100%);
     color: #fff;
     text-decoration: none;
     padding: 12px 24px;
@@ -129,7 +140,7 @@ https://templatemo.com/tm-594-nexus-flow
 
   .btn-linkedin:focus {
     outline: none;
-    border-color: #e8c4a8; /* Arena suave */
+    border-color: #e8c4a8;
     box-shadow: 0 0 0 3px rgba(232, 196, 168, 0.4);
   }
 
@@ -138,7 +149,7 @@ https://templatemo.com/tm-594-nexus-flow
     height: 20px;
     flex-shrink: 0;
   }
-
+</style>
     <!-- Footer -->
     <footer class="footer">
                 <div class="footer-bottom">
