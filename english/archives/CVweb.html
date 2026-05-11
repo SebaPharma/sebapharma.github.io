@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sebastián Tapia – CV 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a3260;
+    --accent: #c8873a;
+    --accent-light: #e8a85a;
+    --text: #1a1a2e;
+    --text-soft: #4a4a6a;
+    --text-muted: #7a7a9a;
+    --bg: #f7f6f2;
+    --bg-card: #ffffff;
+    --border: #e2e0d8;
+    --tag-bg: #eef1f8;
+    --tag-text: #1a3260;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    box-shadow: 0 4px 40px rgba(15,31,61,0.12);
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--navy);
+    padding: 44px 52px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(200,135,58,0.08);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(200,135,58,0.05);
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  .header-name h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+  .header-name .title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent-light);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .header-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .header-contact a,
+  .header-contact span {
+    color: rgba(255,255,255,0.75);
+    font-size: 12.5px;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    transition: color 0.2s;
+  }
+  .header-contact a:hover { color: var(--accent-light); }
+
+  .header-summary {
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.82);
+    font-size: 13.5px;
+    line-height: 1.75;
+    max-width: 740px;
+    font-weight: 300;
+  }
+  .header-summary strong {
+    color: var(--accent-light);
+    font-weight: 500;
+  }
+
+  /* BODY LAYOUT */
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 0;
+  }
+
+  /* MAIN COLUMN */
+  .main {
+    padding: 40px 44px 40px 52px;
+    border-right: 1px solid var(--border);
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    padding: 40px 36px 40px 32px;
+    background: #faf9f6;
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 36px; }
+  .section:last-child { margin-bottom: 0; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* EXPERIENCE */
+  .exp-item { margin-bottom: 24px; }
+  .exp-item:last-child { margin-bottom: 0; }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 2px;
+  }
+  .exp-company {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+  }
+  .exp-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .exp-role {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+  .exp-desc {
+    color: var(--text-soft);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .exp-desc ul {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 0;
+  }
+  .exp-desc ul li {
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+  .exp-desc ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* PROJECTS */
+  .project-item {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .project-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .project-name {
+    font-weight: 600;
+    font-size: 13.5px;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .project-desc {
+    font-size: 12.5px;
+    color: var(--text-soft);
+    line-height: 1.65;
+  }
+
+  /* SIDEBAR SECTIONS */
+  .sidebar .section-title { font-size: 10px; }
+
+  /* SKILLS */
+  .skill-group { margin-bottom: 14px; }
+  .skill-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 5px;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 3px;
+    font-weight: 500;
+    border: 1px solid rgba(26,50,96,0.1);
+  }
+  .tag.accent {
+    background: rgba(200,135,58,0.1);
+    color: #8a5a1a;
+    border-color: rgba(200,135,58,0.2);
+  }
+
+  /* EDUCATION */
+  .edu-item { margin-bottom: 14px; }
+  .edu-degree {
+    font-weight: 600;
+    font-size: 12.5px;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+  .edu-school {
+    font-size: 12px;
+    color: var(--text-soft);
+    margin-top: 1px;
+  }
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+
+  /* COURSES */
+  .course-item {
+    font-size: 12px;
+    color: var(--text-soft);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.4;
+  }
+  .course-item:last-child { border-bottom: none; }
+  .course-item strong {
+    display: block;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 12.5px;
+  }
+
+  /* PERSONAL SKILLS */
+  .personal-skill {
+    font-size: 12.5px;
+    color: var(--text-soft);
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .personal-skill::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* LANGUAGE */
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+  }
+  .lang-item:last-child { border-bottom: none; }
+  .lang-name { font-weight: 500; color: var(--navy); }
+  .lang-level {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* DIVIDER */
+  .exp-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 20px 0;
+  }
+
+  @media print {
+    body { background: white; font-size: 12px; }
+    .page { box-shadow: none; max-width: 100%; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="header-name">
+        <h1>Sebastián Tapia</h1>
+        <div class="title">Pharmaceutical Chemist &amp; AI Systems Builder</div>
+      </div>
+      <div class="header-contact">
+        <span>+56 9 7703 4352</span>
+        <a href="mailto:sebastiantm.qf@gmail.com">sebastiantm.qf@gmail.com</a>
+        <a href="https://github.com/SebaPharma">github.com/SebaPharma</a>
+        <span>Viña del Mar, Chile</span>
+      </div>
+    </div>
+    <div class="header-summary">
+      Pharmaceutical Chemist with <strong>6+ years in Quality Assurance and Computerized System Validation (CSV)</strong> under GxP regulatory frameworks. Alongside my industry career, I actively build AI-powered systems: I run <strong>local LLM inference with Ollama</strong> on self-hosted infrastructure, design multi-agent workflows, automate processes with n8n, and develop full-stack applications integrating LLM APIs (OpenAI, Gemini, Claude). I bring a rare combination of <strong>deep pharmaceutical domain knowledge and hands-on AI engineering experience</strong> — including applying AI to GxP documentation, risk analysis, and manufacturing data dashboards.
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <!-- EXPERIENCE -->
+      <div class="section">
+        <div class="section-title">Professional Experience</div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-company">Knop Laboratories S.A.</div>
+            <div class="exp-date">Apr 2022 – Present</div>
+          </div>
+          <div class="exp-role">Validation Manager</div>
+          <div class="exp-desc">
+            <ul>
+              <li>Lead Computerized System Validation (CSV) as primary focus, alongside equipment qualification, Critical Support Systems, and process/cleaning validation for solid, semi-solid, and liquid products.</li>
+              <li>Managed full implementation and validation lifecycle for WMS (Warehouse Management System), LIMS (Laboratory Information Management System), electronic signature systems, and Lotus Notes applications.</li>
+              <li>Applied AI tools (Claude, Gemini, ChatGPT) to accelerate GxP documentation workflows — including protocol drafting, risk analysis tables, deviation assessments, and SOP generation — significantly reducing turnaround time.</li>
+              <li>Built internal dashboards connected to Google Drive manufacturing data, enabling real-time visibility of fabrication KPIs and process traceability.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-divider"></div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-company">Knop Laboratories S.A.</div>
+            <div class="exp-date">Apr 2022 – Present</div>
+          </div>
+          <div class="exp-role">Quality Assurance Manager (Supplement)</div>
+          <div class="exp-desc">
+            <ul>
+              <li>Led Quality Management System (QMS) operations including KPI tracking, CAPA management, complaints, supplier audits, non-conforming products, risk management, change control, and document control.</li>
+              <li>Participated actively in internal and external audits under GMP, GLP, GDP, and GxP frameworks — including regulatory inspections by ISP (Chile), INVIMA (Colombia), and ANVISA (Brazil).</li>
+              <li>Key contributor to the successful obtainment of ISO 9001 (Quality Management), ISO 13485 (Medical Devices), and ISO 14001 (Environmental Management) certifications in 2023.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-divider"></div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-company">Laboratory of Neurobiology of Social and Addictive Behaviors – UV</div>
+            <div class="exp-date">2015 – 2017</div>
+          </div>
+          <div class="exp-role">Lab Assistant</div>
+          <div class="exp-desc">
+            Research support in neurobiology laboratory at Universidad de Valparaíso.
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="section">
+        <div class="section-title">Personal Projects &amp; AI Development</div>
+
+        <div class="project-item">
+          <div class="project-name">Manufacturing Dashboard — GxP Data Visualization</div>
+          <div class="project-desc">Built web-based dashboards connected to Google Drive manufacturing data sheets, enabling real-time visibility into fabrication records and process KPIs. Integrated AI-assisted frontend development (Claude, Antigravity).</div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-name">Self-Hosted LLM Inference Server</div>
+          <div class="project-desc">Deployed and managed local LLM inference using Ollama on a personal server, enabling private, cost-free AI model usage without cloud dependency. Runs models including LLaMA and Mistral variants.</div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-name">Multi-Agent AI Workflow Infrastructure</div>
+          <div class="project-desc">Built multi-agent automation pipelines using PocketFlow/OpenFlow on Oracle Cloud Free Tier and local Raspberry Pi network. Integrated n8n for workflow orchestration and REST API connections.</div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-name">Full-Stack AI-Assisted Web Development</div>
+          <div class="project-desc">Developed full-stack web applications using AI-assisted tools (Claude, Gemini, Antigravity) with backend and frontend components. Projects maintained on GitHub with version control.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- TECHNICAL SKILLS -->
+      <div class="section">
+        <div class="section-title">Technical Skills</div>
+
+        <div class="skill-group">
+          <div class="skill-label">AI &amp; LLM</div>
+          <div class="skill-tags">
+            <span class="tag accent">Ollama</span>
+            <span class="tag accent">LangChain (learning)</span>
+            <span class="tag accent">RAG (learning)</span>
+            <span class="tag">OpenAI API</span>
+            <span class="tag">Gemini API</span>
+            <span class="tag">Claude API</span>
+            <span class="tag">Prompt Engineering</span>
+            <span class="tag">PocketFlow</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">Infrastructure</div>
+          <div class="skill-tags">
+            <span class="tag">Oracle Cloud</span>
+            <span class="tag">Raspberry Pi</span>
+            <span class="tag">n8n</span>
+            <span class="tag">Self-hosted servers</span>
+            <span class="tag">Docker (basic)</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">Development</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Git / GitHub</span>
+            <span class="tag">Jupyter</span>
+            <span class="tag">Anaconda</span>
+            <span class="tag">SQL (learning)</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">AI Dev Tools</div>
+          <div class="skill-tags">
+            <span class="tag accent">Claude</span>
+            <span class="tag accent">Antigravity</span>
+            <span class="tag accent">Gemini</span>
+            <span class="tag">GitHub Copilot</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">Pharmaceutical / GxP</div>
+          <div class="skill-tags">
+            <span class="tag">CSV / GxP</span>
+            <span class="tag">GMP · GLP · GDP</span>
+            <span class="tag">ISO 9001</span>
+            <span class="tag">ISO 13485</span>
+            <span class="tag">ISO 14001</span>
+            <span class="tag">ISP · INVIMA · ANVISA</span>
+            <span class="tag">LIMS</span>
+            <span class="tag">WMS</span>
+            <span class="tag">CAPA</span>
+            <span class="tag">Risk Management</span>
+            <span class="tag">Change Control</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-label">Data &amp; Analysis</div>
+          <div class="skill-tags">
+            <span class="tag">Minitab</span>
+            <span class="tag">Excel (advanced)</span>
+            <span class="tag">Data Analytics</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="section">
+        <div class="section-title">Education</div>
+        <div class="edu-item">
+          <div class="edu-degree">Pharmaceutical Chemistry (Químico Farmacéutico)</div>
+          <div class="edu-school">Universidad de Valparaíso</div>
+          <div class="edu-year">2012 – 2019</div>
+        </div>
+      </div>
+
+      <!-- COURSES -->
+      <div class="section">
+        <div class="section-title">Certifications &amp; Courses</div>
+        <div class="course-item">
+          <strong>Claude 101 &amp; Claude Code Certifications</strong>
+          Anthropic · 2026
+        </div>
+        <div class="course-item">
+          <strong>Computerized System Validation with GxP Impact</strong>
+          Formar Chile · 16h presential
+        </div>
+        <div class="course-item">
+          <strong>Cleaning Validation in Pharmaceutical Industry</strong>
+          Wackerling S.A. · 8h e-learning
+        </div>
+        <div class="course-item">
+          <strong>Data Analytics &amp; Python Introduction</strong>
+          Additional coursework
+        </div>
+        <div class="course-item">
+          <strong>Statistical Analysis – Minitab</strong>
+          Applied to annual product review
+        </div>
+        <div class="course-item">
+          <strong>GMP Auditor &amp; Risk Management</strong>
+          Pharmaceutical industry
+        </div>
+      </div>
+
+      <!-- LANGUAGES -->
+      <div class="section">
+        <div class="section-title">Languages</div>
+        <div class="lang-item">
+          <span class="lang-name">Spanish</span>
+          <span class="lang-level">Native</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">English</span>
+          <span class="lang-level">Professional working proficiency</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Japanese</span>
+          <span class="lang-level">Beginner (JLPT N4 target)</span>
+        </div>
+      </div>
+
+      <!-- PERSONAL SKILLS -->
+      <div class="section">
+        <div class="section-title">Personal Skills</div>
+        <div class="personal-skill">Continuous self-directed learning</div>
+        <div class="personal-skill">Teaching &amp; knowledge transfer</div>
+        <div class="personal-skill">Quick adaptation to new tools</div>
+        <div class="personal-skill">Kaizen / continuous improvement mindset</div>
+        <div class="personal-skill">Effective under complex, regulated environments</div>
+        <div class="personal-skill">Teamwork &amp; cross-functional collaboration</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
