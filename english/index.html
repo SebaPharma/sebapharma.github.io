@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Nunito',sans-serif;background:linear-gradient(135deg,#a8edea 0%,#d4f5c9 25%,#b8deff 50%,#c5f0e8 75%,#a0e9d0 100%);min-height:100vh;color:#1a3a2a;overflow-x:hidden;}
+        body{font-family:'Nunito',sans-serif;background:linear-gradient(135deg,#a8edea 0%,#d4f5c9 25%,#b8deff 50%,#c5f0e8 75%,#a0e9d0 100%);min-height:100vh;color:#1a3a2a;overflow-x:hidden;cursor:none;}
 
         .aero-bg{position:fixed;inset:0;z-index:0;background:linear-gradient(160deg,#7dd8f5 0%,#b5f0d8 30%,#c8ebff 55%,#aaf0c8 80%,#88d8f8 100%);overflow:hidden;pointer-events:none;}
         .aero-orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;animation:orb-drift 20s ease-in-out infinite alternate;}
@@ -62,6 +62,25 @@
         .pill-bottle-label{position:absolute;top:8px;left:3px;right:3px;height:18px;background:rgba(255,255,255,.75);border-radius:2px;border:1px solid rgba(180,80,80,.15);}
         @keyframes pharma-bob{0%{transform:translateY(0) rotate(var(--rot,0deg));}25%{transform:translateY(-14px) rotate(calc(var(--rot,0deg) + 4deg));}50%{transform:translateY(-5px) rotate(calc(var(--rot,0deg) - 3deg));}75%{transform:translateY(-18px) rotate(calc(var(--rot,0deg) + 2deg));}100%{transform:translateY(-10px) rotate(calc(var(--rot,0deg) + 5deg));}}
 
+        .cursor-dot{position:fixed;width:8px;height:8px;border-radius:50%;pointer-events:none;z-index:10001;background:#fff;box-shadow:0 0 0 1.5px rgba(0,100,90,.5),0 0 8px rgba(0,204,170,.6),0 0 20px rgba(0,180,200,.25);transform:translate(-50%,-50%);will-change:transform;transition:width .15s,height .15s,box-shadow .15s,background .15s;}
+        .cursor-dot.hovering{width:12px;height:12px;background:rgba(0,204,170,.9);box-shadow:0 0 0 2px rgba(0,100,90,.6),0 0 14px rgba(0,204,170,.8),0 0 30px rgba(0,180,200,.35);}
+        .cursor-glow{position:fixed;width:90px;height:90px;border-radius:50%;pointer-events:none;z-index:9998;background:radial-gradient(circle,rgba(0,204,170,.2) 0%,rgba(0,153,221,.08) 40%,transparent 70%);transform:translate(-50%,-50%);will-change:transform;filter:blur(4px);}
+        .cursor-capsule{position:fixed;width:40px;height:18px;border-radius:9px;pointer-events:none;z-index:9999;background:linear-gradient(90deg,#00ccaa 48%,#e8fffa 48%,#e8fffa 52%,#f0f8ff 52%);box-shadow:0 0 10px rgba(0,204,170,.5),0 0 24px rgba(0,180,200,.3),0 0 44px rgba(0,153,221,.12),inset 0 2px 3px rgba(255,255,255,.7),inset 0 -1px 2px rgba(0,100,80,.08);transform:translate(-50%,-50%);will-change:transform;opacity:.7;}
+        .cursor-capsule .cap-line{position:absolute;top:50%;left:47%;width:6%;height:55%;background:rgba(0,160,140,.12);border-radius:1px;transform:translateY(-50%);}
+        .cursor-trail{position:fixed;inset:0;pointer-events:none;z-index:9997;overflow:hidden;}
+        .trail-p{position:absolute;pointer-events:none;will-change:transform,opacity;}
+        .trail-cross{width:10px;height:10px;animation:trail-out .7s ease-out forwards;}
+        .trail-cross::before{content:'';position:absolute;top:50%;left:0;right:0;height:2.5px;background:currentColor;border-radius:1px;transform:translateY(-50%);}
+        .trail-cross::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:2.5px;background:currentColor;border-radius:1px;transform:translateX(-50%);}
+        .trail-dot{width:6px;height:6px;border-radius:50%;animation:trail-out .6s ease-out forwards;}
+        .trail-mini-cap{width:16px;height:7px;border-radius:3.5px;animation:trail-out .7s ease-out forwards;}
+        .trail-plus{width:8px;height:8px;animation:trail-out .55s ease-out forwards;}
+        .trail-plus::before{content:'';position:absolute;top:50%;left:15%;right:15%;height:1.5px;background:currentColor;border-radius:1px;transform:translateY(-50%);}
+        .trail-plus::after{content:'';position:absolute;left:50%;top:15%;bottom:15%;width:1.5px;background:currentColor;border-radius:1px;transform:translateX(-50%);}
+        @keyframes trail-out{0%{opacity:.7;transform:translate(0,0) scale(1) rotate(var(--r,0deg));}100%{opacity:0;transform:translate(var(--tx,0px),var(--ty,0px)) scale(.2) rotate(calc(var(--r,0deg) + 90deg));}}
+        @media(hover:none)and (pointer:coarse){body{cursor:auto;}.cursor-glow,.cursor-capsule,.cursor-trail,.cursor-dot{display:none!important;}}
+        @media(hover:hover){a,button,.jump-btn,.btn-aero,.top-bar-links a,.music-toggle,.music-ctrl-btn,.music-vol,.music-playlist li,.progress-bar{cursor:none;}}
+
         .glass{background:rgba(255,255,255,.38);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1.5px solid rgba(255,255,255,.6);border-radius:20px;box-shadow:0 8px 32px rgba(80,200,180,.15),inset 0 1px 0 rgba(255,255,255,.7);}
         .glass-dark{background:rgba(255,255,255,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.45);border-radius:16px;box-shadow:0 4px 20px rgba(60,160,160,.12);}
 
@@ -76,24 +95,23 @@
         .top-bar-links a svg{width:13px;height:13px;}
 
         .jump-nav{padding:10px 20px;margin-bottom:18px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;}
-        .jump-btn{font-size:12.5px;font-weight:700;padding:7px 18px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#085050;border:1.5px solid rgba(0,180,200,.35);box-shadow:0 2px 10px rgba(0,160,180,.12);}
+        .jump-btn{font-size:12.5px;font-weight:700;padding:7px 18px;border-radius:50px;text-decoration:none;border:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#085050;border:1.5px solid rgba(0,180,200,.35);box-shadow:0 2px 10px rgba(0,160,180,.12);}
         .jump-btn:hover{background:linear-gradient(135deg,#00ccaa,#0099dd);color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(0,180,200,.4);transform:translateY(-2px);}
         .jump-btn:hover svg{stroke:#fff;}
         .jump-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
 
-        /* ── Hero with inline logos ── */
-        .hero{padding:44px 36px 40px;margin-bottom:22px;text-align:center;}
+        .hero{padding:44px 36px 36px;margin-bottom:22px;text-align:center;}
         .hero-tag{display:inline-block;font-size:11.5px;font-weight:700;color:#007799;background:rgba(0,200,220,.18);border:1px solid rgba(0,200,220,.35);border-radius:50px;padding:5px 16px;margin-bottom:16px;letter-spacing:.5px;text-transform:uppercase;}
-        .hero-logos{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:14px;}
+        .hero-logos{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:14px;flex-wrap:wrap;}
         .hero-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:2px;}
         .hero-logo-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#5a9080;}
         .hero-x{font-size:20px;font-weight:300;color:#a0c8c0;line-height:1;}
         .hero h1{font-size:32px;font-weight:800;color:#0a4a3a;line-height:1.15;margin-bottom:10px;}
         .hero h1 em{font-style:normal;color:#0088bb;}
-        .hero-subtitle{font-size:14.5px;color:#2a5a4a;line-height:1.7;max-width:680px;margin:0 auto 26px;font-weight:400;}
+        .hero-subtitle{font-size:14.5px;color:#2a5a4a;line-height:1.7;max-width:680px;margin:0 auto 24px;font-weight:400;}
         .hero-btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
 
-        .btn-aero{font-size:13px;font-weight:700;padding:10px 20px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;transition:all .2s;display:inline-block;}
+        .btn-aero{font-size:13px;font-weight:700;padding:10px 20px;border-radius:50px;text-decoration:none;border:none;transition:all .2s;display:inline-block;}
         .btn-primary-aero{background:linear-gradient(135deg,#00ccaa 0%,#0099dd 100%);color:#fff;box-shadow:0 3px 12px rgba(0,180,200,.4);}
         .btn-primary-aero:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,180,200,.5);}
         .btn-secondary-aero{background:rgba(255,255,255,.55);color:#006688;border:1.5px solid rgba(0,180,200,.4);}
@@ -140,7 +158,6 @@
         .pill.new{background:rgba(0,220,190,.2);border-color:rgba(0,200,180,.5);color:#005a50;}
         .pill-note{font-size:11px;color:#3a8070;margin-top:12px;}
 
-        /* ── Certifications ── */
         .certs-section{margin-bottom:22px;}
         .certs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
         .cert-card{padding:0;position:relative;overflow:hidden;background:rgba(255,255,255,.45);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1.5px solid rgba(255,255,255,.65);border-radius:18px;box-shadow:0 6px 24px rgba(60,160,160,.15),inset 0 1px 0 rgba(255,255,255,.8);transition:transform .25s ease,box-shadow .25s ease;}
@@ -169,7 +186,6 @@
         .cert-tag.finance{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);}
         .cert-tag.data{background:rgba(0,153,221,.12);border:1px solid rgba(0,153,221,.25);}
 
-        /* ── Education ── */
         .edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:22px;}
         .edu-card{padding:18px 20px;position:relative;overflow:hidden;display:flex;gap:14px;align-items:flex-start;}
         .edu-card::after{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#00ccaa,#0099dd);border-radius:16px 0 0 16px;}
@@ -197,8 +213,7 @@
         .fade-section{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
         .fade-section.visible{opacity:1;transform:translateY(0);}
 
-        /* ── Music ── */
-        .music-toggle{position:fixed;bottom:24px;right:24px;z-index:200;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#00ccaa,#0099dd);border:none;cursor:pointer;box-shadow:0 4px 16px rgba(0,180,200,.45);display:flex;align-items:center;justify-content:center;transition:all .3s ease;color:#fff;font-size:20px;}
+        .music-toggle{position:fixed;bottom:24px;right:24px;z-index:200;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#00ccaa,#0099dd);border:none;box-shadow:0 4px 16px rgba(0,180,200,.45);display:flex;align-items:center;justify-content:center;transition:all .3s ease;color:#fff;font-size:20px;}
         .music-toggle:hover{transform:scale(1.08);box-shadow:0 6px 22px rgba(0,180,200,.55);}
         .music-toggle.playing{animation:pulse-glow 2s ease-in-out infinite;}
         @keyframes pulse-glow{0%,100%{box-shadow:0 4px 16px rgba(0,180,200,.45);}50%{box-shadow:0 4px 28px rgba(0,200,180,.7),0 0 40px rgba(0,180,200,.2);}}
@@ -233,36 +248,33 @@
         .music-playlist::-webkit-scrollbar-thumb{background:rgba(0,180,180,.2);border-radius:2px;}
 
         @media(max-width:768px){
-            .hero{padding:28px 20px;}
-            .hero h1{font-size:24px;}
-            .hero-logos svg{width:44px!important;height:44px!important;}
+            .hero{padding:28px 20px;}.hero h1{font-size:24px;}.hero-logos svg{width:44px!important;height:44px!important;}
             .stats-row{grid-template-columns:repeat(2,1fr);}
             .projects-grid,.edu-grid,.certs-grid{grid-template-columns:1fr;}
             .skills-cats{grid-template-columns:repeat(2,1fr);}
             .top-bar{flex-direction:column;gap:8px;align-items:flex-start;}
-            .jump-nav{gap:5px;}
-            .jump-btn{font-size:11.5px;padding:6px 14px;}
+            .jump-nav{gap:5px;}.jump-btn{font-size:11.5px;padding:6px 14px;}
             .contact-block{padding:24px 20px;}
             .music-panel{right:12px;bottom:76px;width:260px;}
             .music-toggle{bottom:16px;right:16px;width:44px;height:44px;font-size:18px;}
-            .syringe,.dropper,.pill-bottle{display:none;}
-            .pharma-float{opacity:.35;}
+            .syringe,.dropper,.pill-bottle{display:none;}.pharma-float{opacity:.35;}
         }
         @media(max-width:480px){
-            .stats-row{grid-template-columns:1fr 1fr;}
-            .skills-cats{grid-template-columns:1fr;}
+            .stats-row{grid-template-columns:1fr 1fr;}.skills-cats{grid-template-columns:1fr;}
             .jump-btn{font-size:11px;padding:5px 11px;}
-            .capsule-1,.capsule-3,.vial,.blister,.capsule-4,.tablet-3{display:none;}
-            .pharma-float{opacity:.32;}
+            .capsule-1,.capsule-3,.vial,.blister,.capsule-4,.tablet-3{display:none;}.pharma-float{opacity:.32;}
             .hero-logos svg{width:38px!important;height:38px!important;}
         }
     </style>
 </head>
 <body>
 
-<div class="aero-bg">
-    <div class="aero-orb orb1"></div><div class="aero-orb orb2"></div><div class="aero-orb orb3"></div><div class="aero-orb orb4"></div><div class="aero-orb orb5"></div>
-</div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="cursor-capsule" id="cursorCapsule"><div class="cap-line"></div></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<div class="aero-bg"><div class="aero-orb orb1"></div><div class="aero-orb orb2"></div><div class="aero-orb orb3"></div><div class="aero-orb orb4"></div><div class="aero-orb orb5"></div></div>
 
 <div class="pharma-layer">
     <div class="pharma-float capsule-1"></div><div class="pharma-float capsule-2"></div><div class="pharma-float capsule-3"></div><div class="pharma-float capsule-4"></div>
@@ -277,93 +289,61 @@
 
 <div class="page">
 
-    <!-- ══════ TOP BAR ══════ -->
     <div class="top-bar">
         <div class="logo-text">Sebastián Tapia <span>薬</span></div>
         <div class="top-bar-links">
-            <a href="https://sebapharma.github.io/" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                Portfolio
-            </a>
-            <a href="https://www.linkedin.com/in/sebasti%C3%A1n-tapia-maturana-50503b144/" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                LinkedIn
-            </a>
+            <a href="https://sebapharma.github.io/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Portfolio</a>
+            <a href="https://www.linkedin.com/in/sebasti%C3%A1n-tapia-maturana-50503b144/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
         </div>
     </div>
 
-    <!-- ══════ JUMP NAV ══════ -->
     <nav class="jump-nav glass">
-        <a href="#experience" class="jump-btn">
-            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-            Experience
-        </a>
-        <a href="#projects" class="jump-btn">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8 6 8 12 8 16h8c0-4 0-10-4-14z"/><circle cx="12" cy="11" r="1.5"/><path d="M8 16l-2 2"/><path d="M16 16l2 2"/></svg>
-            Projects
-        </a>
-        <a href="#skills" class="jump-btn">
-            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            Skills
-        </a>
-        <a href="#certifications" class="jump-btn">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-            Certifications
-        </a>
-        <a href="#education" class="jump-btn">
-            <svg viewBox="0 0 24 24"><path d="M12 3L2 9l10 6 10-6-10-6z"/><path d="M6 11v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg>
-            Education
-        </a>
-        <a href="#contact" class="jump-btn">
-            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
-            Contact
-        </a>
+        <a href="#experience" class="jump-btn"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Experience</a>
+        <a href="#projects" class="jump-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><circle cx="12" cy="11" r="1.5"/><path d="M8 16l-2 2"/><path d="M16 16l2 2"/></svg>Projects</a>
+        <a href="#skills" class="jump-btn"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Skills</a>
+        <a href="#certifications" class="jump-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>Certifications</a>
+        <a href="#education" class="jump-btn"><svg viewBox="0 0 24 24"><path d="M12 3L2 9l10 6 10-6-10-6z"/><path d="M6 11v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg>Education</a>
+        <a href="#contact" class="jump-btn"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>Contact</a>
     </nav>
 
-    <!-- ══════ HERO ══════ -->
     <section class="hero glass fade-section">
-        <div class="hero-tag">Pharmaceutical Chemist · AI Systems Builder · QF</div>
-
+        <div class="hero-tag">Pharmaceutical Chemist · AI Systems Builder · Investor</div>
         <div class="hero-logos">
-            <!-- Pharma: International Pharmacy Cross -->
             <div class="hero-logo-wrap">
-                <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                    <rect x="2" y="2" width="48" height="48" rx="12" fill="#00b894" opacity=".15"/>
-                    <rect x="6" y="6" width="40" height="40" rx="10" fill="#00b894"/>
-                    <rect x="20" y="12" width="12" height="28" rx="2.5" fill="#fff"/>
-                    <rect x="12" y="20" width="28" height="12" rx="2.5" fill="#fff"/>
-                </svg>
+                <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="2" y="2" width="48" height="48" rx="12" fill="#00b894" opacity=".15"/><rect x="6" y="6" width="40" height="40" rx="10" fill="#00b894"/><rect x="20" y="12" width="12" height="28" rx="2.5" fill="#fff"/><rect x="12" y="20" width="28" height="12" rx="2.5" fill="#fff"/></svg>
                 <span class="hero-logo-label">Pharma</span>
             </div>
-
             <span class="hero-x">×</span>
-
-            <!-- AI: Processor Chip -->
             <div class="hero-logo-wrap">
-                <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                    <rect x="2" y="2" width="48" height="48" rx="12" fill="#7c5ce0" opacity=".12"/>
-                    <line x1="18" y1="12" x2="18" y2="4" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/>
-                    <line x1="34" y1="12" x2="34" y2="4" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/>
-                    <line x1="18" y1="40" x2="18" y2="48" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/>
-                    <line x1="34" y1="40" x2="34" y2="48" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/>
-                    <line x1="12" y1="18" x2="4" y2="18" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/>
-                    <line x1="12" y1="34" x2="4" y2="34" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/>
-                    <line x1="40" y1="18" x2="48" y2="18" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/>
-                    <line x1="40" y1="34" x2="48" y2="34" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/>
-                    <rect x="10" y="10" width="32" height="32" rx="5" fill="#7c5ce0"/>
-                    <circle cx="26" cy="26" r="6" fill="#a78bfa"/>
-                    <circle cx="26" cy="26" r="2.5" fill="#7c5ce0"/>
-                    <circle cx="16" cy="16" r="2" fill="#a78bfa" opacity=".6"/>
-                    <circle cx="36" cy="16" r="2" fill="#a78bfa" opacity=".6"/>
-                    <circle cx="16" cy="36" r="2" fill="#a78bfa" opacity=".6"/>
-                    <circle cx="36" cy="36" r="2" fill="#a78bfa" opacity=".6"/>
-                </svg>
+                <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="2" y="2" width="48" height="48" rx="12" fill="#7c5ce0" opacity=".12"/><line x1="18" y1="12" x2="18" y2="4" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="34" y1="12" x2="34" y2="4" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="18" y1="40" x2="18" y2="48" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="34" y1="40" x2="34" y2="48" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="12" y1="18" x2="4" y2="18" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="12" y1="34" x2="4" y2="34" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="40" y1="18" x2="48" y2="18" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="40" y1="34" x2="48" y2="34" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><rect x="10" y="10" width="32" height="32" rx="5" fill="#7c5ce0"/><circle cx="26" cy="26" r="6" fill="#a78bfa"/><circle cx="26" cy="26" r="2.5" fill="#7c5ce0"/><circle cx="16" cy="16" r="2" fill="#a78bfa" opacity=".6"/><circle cx="36" cy="16" r="2" fill="#a78bfa" opacity=".6"/><circle cx="16" cy="36" r="2" fill="#a78bfa" opacity=".6"/><circle cx="36" cy="36" r="2" fill="#a78bfa" opacity=".6"/></svg>
                 <span class="hero-logo-label">AI</span>
             </div>
+            <span class="hero-x">×</span>
+            <div class="hero-logo-wrap">
+                <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                    <rect x="2" y="2" width="48" height="48" rx="12" fill="#0d9488" opacity=".1"/>
+                    <rect x="6" y="6" width="40" height="40" rx="10" fill="url(#investGrad)"/>
+                    <rect x="11" y="32" width="6" height="10" rx="2" fill="rgba(255,255,255,.55)"/>
+                    <rect x="19" y="24" width="6" height="18" rx="2" fill="rgba(255,255,255,.55)"/>
+                    <rect x="27" y="16" width="6" height="26" rx="2" fill="rgba(255,255,255,.55)"/>
+                    <rect x="35" y="12" width="6" height="30" rx="2" fill="rgba(255,255,255,.55)"/>
+                    <polyline points="10 38 17 30 24 24 40 10 40" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="38" cy="10" r="3" fill="#ffe082" opacity=".8"/>
+                    <path d="M6 8l4-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".5"/>
+                    <path d="M8 14l3-3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".4"/>
+                    <defs><linearGradient id="investGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0d9488"/><stop offset="40%" stop-color="#10b981"/><stop offset="70%" stop-color="#34d399"/><stop offset="100%" stop-color="#a3e635"/></linearGradient></defs>
+                </svg>
+                <span class="hero-logo-label">Invest</span>
+            </div>
         </div>
-
         <h1>Sebastián Tapia</h1>
-        <p class="hero-subtitle">Pharmaceutical Chemist with over six years of experience in Quality Assurance and Computerized System Validation (CSV) within GxP-regulated environments. In parallel, I design and deploy AI-powered systems — from local LLM inference on self-hosted infrastructure to multi-agent workflow automation and full-stack applications integrating OpenAI, Gemini, and Claude APIs. I offer a distinct intersection of deep pharmaceutical domain expertise and applied AI engineering. Consistently generated an average annual return of > 13% on investment (ROI) through strategic stock selection."</p>
+        <p class="hero-subtitle">Pharmaceutical Chemist with over six years of experience in Quality Assurance and Computerized System Validation (CSV) within GxP-regulated environments. 
+            In parallel, I design and deploy AI-powered systems — from local LLM inference on self-hosted infrastructure to multi-agent workflow automation and full-stack applications integrating OpenAI, Gemini, and Claude APIs.
+           
+             <div class="hero-invest-text">
+                <strong> I also consistently generated an average annual return of > 13% on investment (ROI) through strategic stock selection, combining analytical rigor with hands-on AI engineering to offer a distinct intersection of pharmaceutical domain expertise, applied technology, and financial acumen.</p>.</strong>
+                <span>Technical analysis · Risk management · Portfolio optimization</span>
+        
         <div class="hero-btn-row">
             <a href="#experience" class="btn-aero btn-primary-aero">View my experience</a>
             <a href="https://sebapharma.github.io/english/archives/CVweb.html" class="btn-aero btn-secondary-aero">Web CV</a>
@@ -371,114 +351,33 @@
         </div>
     </section>
 
-    <!-- ══════ STATS ══════ -->
     <div class="stats-row fade-section">
-        <div class="stat-bubble glass-dark">
-            <div class="stat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-            <span class="stat-num">6+</span>
-            <span class="stat-lbl">Years in pharma industry</span>
-        </div>
-        <div class="stat-bubble glass-dark">
-            <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg></div>
-            <span class="stat-num">14</span>
-            <span class="stat-lbl">Regulatory audit participations</span>
-        </div>
-        <div class="stat-bubble glass-dark">
-            <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/></svg></div>
-            <span class="stat-num">3×</span>
-            <span class="stat-lbl">ISO certifications obtained</span>
-        </div>
-        <div class="stat-bubble glass-dark">
-            <div class="stat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="2" width="18" height="6" rx="2"/><rect x="3" y="11" width="18" height="6" rx="2"/><rect x="3" y="20" width="18" height="2" rx="1"/><circle cx="7" cy="5" r="1" fill="currentColor"/><circle cx="7" cy="14" r="1" fill="currentColor"/></svg></div>
-            <span class="stat-num">12+</span>
-            <span class="stat-lbl">System implementations</span>
-        </div>
+        <div class="stat-bubble glass-dark"><div class="stat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><span class="stat-num">6+</span><span class="stat-lbl">Years in pharma industry</span></div>
+        <div class="stat-bubble glass-dark"><div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg></div><span class="stat-num">14</span><span class="stat-lbl">Regulatory audit participations</span></div>
+        <div class="stat-bubble glass-dark"><div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/></svg></div><span class="stat-num">3×</span><span class="stat-lbl">ISO certifications obtained</span></div>
+        <div class="stat-bubble glass-dark"><div class="stat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="2" width="18" height="6" rx="2"/><rect x="3" y="11" width="18" height="6" rx="2"/><rect x="3" y="20" width="18" height="2" rx="1"/><circle cx="7" cy="5" r="1" fill="currentColor"/><circle cx="7" cy="14" r="1" fill="currentColor"/></svg></div><span class="stat-num">12+</span><span class="stat-lbl">System implementations</span></div>
     </div>
 
-    <!-- ══════ EXPERIENCE ══════ -->
     <div class="section-wrap fade-section" id="experience">
         <p class="section-title">Professional Experience</p>
         <p class="section-sub">Pharmaceutical quality systems leadership paired with hands-on AI integration</p>
-
-        <div class="exp-block glass">
-            <div class="exp-header"><div><div class="exp-title">Validation Manager</div><div class="exp-company">Knop Laboratories S.A.</div></div><span class="exp-date">Apr 2022 – Present</span></div>
-            <ul class="exp-bullets">
-                <li>Lead Computerized System Validation (CSV) as the primary area of responsibility, with concurrent oversight of equipment qualification, critical support systems (purified water, HVAC, compressed air), and process and cleaning validation across solid, semi-solid, and liquid dosage forms.</li>
-                <li>Drove the full implementation and validation lifecycle for a WMS, a LIMS, electronic signature systems, and custom Lotus Notes applications integrated into the Quality Management System.</li>
-                <li>Leveraged AI tools (Claude, Gemini, ChatGPT) to accelerate GxP documentation — automating protocol drafting, risk analysis matrices, deviation assessments, and SOP generation, achieving measurable reductions in turnaround time.</li>
-                <li>Architected and deployed internal dashboards linked to Google Drive manufacturing data, providing real-time visibility into fabrication KPIs and end-to-end process traceability.</li>
-            </ul>
-        </div>
-
-        <div class="exp-block glass">
-            <div class="exp-header"><div><div class="exp-title">Quality Assurance Manager (Alternate)</div><div class="exp-company">Knop Laboratories S.A.</div></div><span class="exp-date">Apr 2022 – Present</span></div>
-            <ul class="exp-bullets">
-                <li>Manage core QMS operations: KPI monitoring, CAPA lifecycle, quality complaints, supplier audits, non-conforming product disposition, risk management, change control, and document control.</li>
-                <li>Represent the QA function in regulatory inspections under GMP, GLP, GDP, and broader GxP frameworks, including audits by ISP (Chile), INVIMA (Colombia), and ANVISA (Brazil).</li>
-                <li>Served as a key contributor to the successful attainment of ISO 9001, ISO 13485, and ISO 14001 certifications in 2023.</li>
-            </ul>
-        </div>
-
-        <div class="exp-block glass">
-            <div class="exp-header"><div><div class="exp-title">Pharmacist / Technical Director</div><div class="exp-company">Independent Pharmacy</div></div><span class="exp-date">2019 – 2022</span></div>
-            <ul class="exp-bullets">
-                <li>Directed all pharmaceutical operations including staff supervision, regulatory compliance under Ministry of Health standards, controlled substance inventory (psychotropics and narcotics), prescription verification, and inventory management.</li>
-            </ul>
-        </div>
-
-        <div class="exp-block glass">
-            <div class="exp-header"><div><div class="exp-title">Research Laboratory Assistant</div><div class="exp-company">Laboratory of Neurobiology — Universidad de Valparaíso</div></div><span class="exp-date">2015 – 2017</span></div>
-            <ul class="exp-bullets">
-                <li>Provided research support in a university neurobiology laboratory focused on the mechanisms of social and addictive behaviors.</li>
-            </ul>
-        </div>
+        <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Validation Manager</div><div class="exp-company">Knop Laboratories S.A.</div></div><span class="exp-date">Apr 2022 – Present</span></div><ul class="exp-bullets"><li>Lead Computerized System Validation (CSV) as the primary area of responsibility, with concurrent oversight of equipment qualification, critical support systems (purified water, HVAC, compressed air), and process and cleaning validation across solid, semi-solid, and liquid dosage forms.</li><li>Drove the full implementation and validation lifecycle for a WMS, a LIMS, electronic signature systems, and custom Lotus Notes applications integrated into the Quality Management System.</li>Leveraged AI tools (Claude, Gemini, ChatGPT) to accelerate GxP documentation — automating protocol drafting, risk analysis matrices, deviation assessments, and SOP generation, achieving measurable reductions in turnaround time.</li>Architected and deployed internal dashboards linked to Google Drive manufacturing data, providing real-time visibility into fabrication KPIs and end-to-end process traceability.</li></ul></div>
+        <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Quality Assurance Manager (Alternate)</div><div class="exp-company">Knop Laboratories S.A.</div></div><span class="exp-date">Apr 2022 – Present</span></div><ul class="exp-bullets"><li>Manage core QMS operations: KPI monitoring, CAPA lifecycle, quality complaints, supplier audits, non-conforming product disposition, risk management, change control, and document control.</li>Represent the QA function in regulatory inspections under GMP, GLP, GDP, and broader GxP frameworks, including audits by ISP (Chile), INVIMA (Colombia), and ANVISA (Brazil).</li>Served as a key contributor to the successful attainment of ISO 9001, ISO 13485, and ISO 14001 certifications in 2023.</li></ul></div>
+        <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Pharmacist / Technical Director</div><div class="exp-company">Independent Pharmacy</div></div><span class="exp-date">2019 – 2022</span></div><ul class="exp-bullets"><li>Directed all pharmaceutical operations including staff supervision, regulatory compliance under Ministry of Health standards, controlled substance inventory (psychotropics and narcotics), prescription verification, and inventory management.</li></ul></div>
+        <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Research Laboratory Assistant</div><div class="exp-company">Laboratory of Neurobiology — Universidad de Valparaíso</div></div><span class="exp-date">2015 – 2017</span></div><ul class="exp-bullets"><li>Provided research support in a university neurobiology laboratory focused on the mechanisms of social and addictive behaviors.</li></ul></div>
     </div>
 
-    <!-- ══════ PROJECTS ══════ -->
     <div class="section-wrap fade-section" id="projects">
         <p class="section-title">Personal Projects & AI Development</p>
         <p class="section-sub">Self-hosted infrastructure, multi-agent workflows, and AI-assisted application development</p>
         <div class="projects-grid">
-            <div class="proj-card glass-dark">
-                <div class="proj-icon-wrap teal">
-                    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="7 12 10 9 13 11 17 7"/></svg>
-                </div>
-                <div class="proj-text">
-                    <h4>GxP Manufacturing Dashboard</h4>
-                    <p>Web-based dashboards connected to Google Drive manufacturing data sheets, delivering real-time visibility into fabrication records and process KPIs. Frontend developed with AI-assisted tools.</p>
-                </div>
-            </div>
-            <div class="proj-card glass-dark">
-                <div class="proj-icon-wrap purple">
-                    <svg viewBox="0 0 24 24"><rect x="3" y="2" width="18" height="8" rx="2"/><rect x="3" y="12" width="18" height="8" rx="2"/><circle cx="7" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="16" r="1" fill="currentColor" stroke="none"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-                </div>
-                <div class="proj-text">
-                    <h4>Self-Hosted LLM Inference Server</h4>
-                    <p>Deployed local LLM inference via Ollama on Oracle Cloud Free Tier, enabling private, zero-cost AI model execution without cloud API dependency. Running LLaMA and Mistral variants.</p>
-                </div>
-            </div>
-            <div class="proj-card glass-dark">
-                <div class="proj-icon-wrap blue">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><line x1="12" y1="7.5" x2="5" y2="16.5"/><line x1="12" y1="7.5" x2="19" y2="16.5"/><line x1="5" y1="19" x2="19" y2="19"/></svg>
-                </div>
-                <div class="proj-text">
-                    <h4>Multi-Agent Workflow Infrastructure</h4>
-                    <p>Multi-agent automation pipelines using PocketFlow/OpenFlow, orchestrated through n8n with REST API integrations. Deployed across Oracle Cloud and a Raspberry Pi cluster.</p>
-                </div>
-            </div>
-            <div class="proj-card glass-dark">
-                <div class="proj-icon-wrap green">
-                    <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
-                </div>
-                <div class="proj-text">
-                    <h4>Full-Stack AI-Assisted Applications</h4>
-                    <p>End-to-end web applications built with AI-assisted development tools (Claude, Gemini, Antigravity), covering both backend and frontend. All projects maintained on GitHub.</p>
-                </div>
-            </div>
+            <div class="proj-card glass-dark"><div class="proj-icon-wrap teal"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="7 12 10 9 13 11 17 7"/></svg></div><div class="proj-text"><h4>GxP Manufacturing Dashboard</h4><p>Web-based dashboards connected to Google Drive manufacturing data sheets, delivering real-time visibility into fabrication records and process KPIs. Frontend developed with AI-assisted tools.</p></div></div>
+            <div class="proj-card glass-dark"><div class="proj-icon-wrap purple"><svg viewBox="0 0 24 24"><rect x="3" y="2" width="18" height="8" rx="2"/><rect x="3" y="12" width="18" height="8" rx="2"/><circle cx="7" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="16" r="1" fill="currentColor" stroke="none"/></svg></div><div class="proj-text"><h4>Self-Hosted LLM Inference Server</h4><p>Deployed local LLM inference via Ollama on Oracle Cloud Free Tier, enabling private, zero-cost AI model execution. Running LLaMA and Mistral variants.</p></div></div>
+            <div class="proj-card glass-dark"><div class="proj-icon-wrap blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><line x1="12" y1="7.5" x2="5" y2="16.5"/><line x1="12" y1="7.5" x2="19" y2="16.5"/><line x1="5" y1="19" x2="19" y2="19"/></svg></div><div class="proj-text"><h4>Multi-Agent Workflow Infrastructure</h4><p>Multi-agent automation pipelines using PocketFlow/OpenFlow, orchestrated through n8n with REST API integrations. Deployed across Oracle Cloud and Raspberry Pi.</p></div></div>
+            <div class="proj-card glass-dark"><div class="proj-icon-wrap green"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg></div><div class="proj-text"><h4>Full-Stack AI-Assisted Applications</h4><p>End-to-end web applications built with AI-assisted development tools (Claude, Gemini, Antigravity), covering both backend and frontend. All on GitHub.</p></div></div>
         </div>
     </div>
 
-    <!-- ══════ SKILLS ══════ -->
     <div class="skills-section glass fade-section" id="skills">
         <p class="section-title" style="margin-bottom:16px;">Technical Skills</p>
         <div class="skills-cats">
@@ -492,180 +391,30 @@
         <p class="pill-note">★ = actively learning — building toward production-level proficiency</p>
     </div>
 
-    <!-- ══════ CERTIFICATIONS ══════ -->
     <div class="certs-section fade-section" id="certifications">
         <p class="section-title">Certifications</p>
         <p class="section-sub">Professional credentials across AI, pharmaceutical quality, and financial analysis</p>
         <div class="certs-grid">
-
-            <div class="cert-card">
-                <div class="cert-accent ai"></div>
-                <div class="cert-body">
-                    <div class="cert-top">
-                        <div class="cert-badge ai">
-                            <svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2.5"/><circle cx="12" cy="12" r="2.5"/><line x1="8" y1="5" x2="8" y2="2"/><line x1="16" y1="5" x2="16" y2="2"/><line x1="8" y1="19" x2="8" y2="22"/><line x1="16" y1="19" x2="16" y2="22"/><line x1="5" y1="9" x2="2" y2="9"/><line x1="5" y1="15" x2="2" y2="15"/><line x1="19" y1="9" x2="22" y2="9"/><line x1="19" y1="15" x2="22" y2="15"/></svg>
-                        </div>
-                        <div class="cert-info">
-                            <div class="cert-name">Claude Code in Action</div>
-                            <div class="cert-issuer">Anthropic</div>
-                            <div class="cert-date">Issued Mar 2026</div>
-                        </div>
-                    </div>
-                    <div class="cert-tags"><span class="cert-tag ai">AI Engineering</span><span class="cert-tag ai">Code Generation</span></div>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-accent ai"></div>
-                <div class="cert-body">
-                    <div class="cert-top">
-                        <div class="cert-badge ai">
-                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
-                        </div>
-                        <div class="cert-info">
-                            <div class="cert-name">Certificate of Completion: Claude 101</div>
-                            <div class="cert-issuer">Anthropic</div>
-                            <div class="cert-date">Issued Mar 2026</div>
-                        </div>
-                    </div>
-                    <div class="cert-tags"><span class="cert-tag ai">AI Fundamentals</span><span class="cert-tag ai">Prompting</span></div>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-accent finance"></div>
-                <div class="cert-body">
-                    <div class="cert-top">
-                        <div class="cert-badge finance">
-                            <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-                        </div>
-                        <div class="cert-info">
-                            <div class="cert-name">Technical Analysis & Trading</div>
-                            <div class="cert-issuer">Online Professional Development</div>
-                            <div class="cert-date">Issued Feb 2024</div>
-                        </div>
-                    </div>
-                    <div class="cert-tags"><span class="cert-tag finance">Securities</span><span class="cert-tag finance">Investment Analysis</span><span class="cert-tag finance">Technical Indicators</span></div>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-accent pharma"></div>
-                <div class="cert-body">
-                    <div class="cert-top">
-                        <div class="cert-badge pharma">
-                            <svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/><polyline points="9 12 11 14 15 10"/></svg>
-                        </div>
-                        <div class="cert-info">
-                            <div class="cert-name">Computerized System Validation with GxP Impact</div>
-                            <div class="cert-issuer">Formar Chile</div>
-                            <div class="cert-date">16 hours — in-person</div>
-                        </div>
-                    </div>
-                    <div class="cert-tags"><span class="cert-tag pharma">CSV</span><span class="cert-tag pharma">GxP Compliance</span></div>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-accent pharma"></div>
-                <div class="cert-body">
-                    <div class="cert-top">
-                        <div class="cert-badge pharma">
-                            <svg viewBox="0 0 24 24"><path d="M9 3h6"/><path d="M10 3v4l-5 11a2 2 0 0 0 1.8 2.8h10.4a2 2 0 0 0 1.8-2.8L14 7V3"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
-                        </div>
-                        <div class="cert-info">
-                            <div class="cert-name">Cleaning Validation in Pharmaceutical Manufacturing</div>
-                            <div class="cert-issuer">Wackerling S.A.</div>
-                            <div class="cert-date">8 hours — e-learning</div>
-                        </div>
-                    </div>
-                    <div class="cert-tags"><span class="cert-tag pharma">Cleaning Validation</span><span class="cert-tag pharma">GMP</span></div>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-accent pharma"></div>
-                <div class="cert-body">
-                    <div class="cert-top">
-                        <div class="cert-badge pharma">
-                            <svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
-                        </div>
-                        <div class="cert-info">
-                            <div class="cert-name">GMP Auditing & Risk Management</div>
-                            <div class="cert-issuer">Pharmaceutical Industry Program</div>
-                            <div class="cert-date">Professional development</div>
-                        </div>
-                    </div>
-                    <div class="cert-tags"><span class="cert-tag pharma">GMP Auditing</span><span class="cert-tag pharma">Risk Management</span></div>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-accent data"></div>
-                <div class="cert-body">
-                    <div class="cert-top">
-                        <div class="cert-badge data">
-                            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
-                        </div>
-                        <div class="cert-info">
-                            <div class="cert-name">Data Analytics & Python Introduction</div>
-                            <div class="cert-issuer">Additional Coursework</div>
-                            <div class="cert-date">Ongoing</div>
-                        </div>
-                    </div>
-                    <div class="cert-tags"><span class="cert-tag data">Python</span><span class="cert-tag data">Data Analytics</span></div>
-                </div>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-accent data"></div>
-                <div class="cert-body">
-                    <div class="cert-top">
-                        <div class="cert-badge data">
-                            <svg viewBox="0 0 24 24"><path d="M4 20L14 12L4 4"/><line x1="14" y1="20" x2="22" y2="20"/></svg>
-                        </div>
-                        <div class="cert-info">
-                            <div class="cert-name">Statistical Analysis — Minitab</div>
-                            <div class="cert-issuer">Applied to Annual Product Review</div>
-                            <div class="cert-date">Professional development</div>
-                        </div>
-                    </div>
-                    <div class="cert-tags"><span class="cert-tag data">Minitab</span><span class="cert-tag data">Statistical Analysis</span></div>
-                </div>
-            </div>
-
+            <div class="cert-card"><div class="cert-accent ai"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge ai"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2.5"/><circle cx="12" cy="12" r="2.5"/><line x1="8" y1="5" x2="8" y2="2"/><line x1="16" y1="5" x2="16" y2="2"/><line x1="8" y1="19" x2="8" y2="22"/><line x1="16" y1="19" x2="16" y2="22"/><line x1="5" y1="9" x2="2" y2="9"/><line x1="5" y1="15" x2="2" y2="15"/><line x1="19" y1="9" x2="22" y2="9"/><line x1="19" y1="15" x2="22" y2="15"/></svg></div><div class="cert-info"><div class="cert-name">Claude Code in Action</div><div class="cert-issuer">Anthropic</div><div class="cert-date">Issued Mar 2026</div></div></div><div class="cert-tags"><span class="cert-tag ai">AI Engineering</span><span class="cert-tag ai">Code Generation</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent ai"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge ai"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg></div><div class="cert-info"><div class="cert-name">Certificate of Completion: Claude 101</div><div class="cert-issuer">Anthropic</div><div class="cert-date">Issued Mar 2026</div></div></div><div class="cert-tags"><span class="cert-tag ai">AI Fundamentals</span><span class="cert-tag ai">Prompting</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent finance"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge finance"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><div class="cert-info"><div class="cert-name">Technical Analysis & Trading</div><div class="cert-issuer">Online Professional Development</div><div class="cert-date">Issued Feb 2024</div></div></div><div class="cert-tags"><span class="cert-tag finance">Securities</span><span class="cert-tag finance">Investment Analysis</span><span class="cert-tag finance">Technical Indicators</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent pharma"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge pharma"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/><polyline points="9 12 11 14 15 10"/></svg></div><div class="cert-info"><div class="cert-name">Computerized System Validation with GxP Impact</div><div class="cert-issuer">Formar Chile</div><div class="cert-date">16 hours — in-person</div></div></div><div class="cert-tags"><span class="cert-tag pharma">CSV</span><span class="cert-tag pharma">GxP Compliance</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent pharma"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge pharma"><svg viewBox="0 0 24 24"><path d="M9 3h6"/><path d="M10 3v4l-5 11a2 2 0 0 0 1.8 2.8h10.4a2 2 0 0 0 1.8-2.8L14 7V3"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div><div class="cert-info"><div class="cert-name">Cleaning Validation in Pharmaceutical Manufacturing</div><div class="cert-issuer">Wackerling S.A.</div><div class="cert-date">8 hours — e-learning</div></div></div><div class="cert-tags"><span class="cert-tag pharma">Cleaning Validation</span><span class="cert-tag pharma">GMP</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent pharma"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge pharma"><svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg></div><div class="cert-info"><div class="cert-name">GMP Auditing & Risk Management</div><div class="cert-issuer">Pharmaceutical Industry Program</div><div class="cert-date">Professional development</div></div></div><div class="cert-tags"><span class="cert-tag pharma">GMP Auditing</span><span class="cert-tag pharma">Risk Management</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent data"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge data"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg></div><div class="cert-info"><div class="cert-name">Data Analytics & Python Introduction</div><div class="cert-issuer">Additional Coursework</div><div class="cert-date">Ongoing</div></div></div><div class="cert-tags"><span class="cert-tag data">Python</span><span class="cert-tag data">Data Analytics</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent data"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge data"><svg viewBox="0 0 24 24"><path d="M4 20L14 12L4 4"/><line x1="14" y1="20" x2="22" y2="20"/></svg></div><div class="cert-info"><div class="cert-name">Statistical Analysis — Minitab</div><div class="cert-issuer">Applied to Annual Product Review</div><div class="cert-date">Professional development</div></div></div><div class="cert-tags"><span class="cert-tag data">Minitab</span><span class="cert-tag data">Statistical Analysis</span></div></div></div>
         </div>
     </div>
 
-    <!-- ══════ EDUCATION ══════ -->
     <div class="section-wrap fade-section" id="education">
         <p class="section-title">Education</p>
         <p class="section-sub">Academic foundation in pharmaceutical sciences</p>
         <div class="edu-grid">
-            <div class="edu-card glass-dark">
-                <div class="edu-icon-wrap">
-                    <svg viewBox="0 0 24 24"><path d="M12 3L2 9l10 6 10-6-10-6z"/><path d="M6 11v5c0 2 3 3 6 3s6-1 6-3v-5"/><line x1="22" y1="9" x2="22" y2="17"/></svg>
-                </div>
-                <div class="edu-text">
-                    <h4>Pharmaceutical Chemistry (Químico Farmacéutico)</h4>
-                    <p class="edu-inst">Universidad de Valparaíso</p>
-                    <p class="edu-year">2012 – 2019</p>
-                </div>
-            </div>
-            <div class="edu-card glass-dark">
-                <div class="edu-icon-wrap" style="background:linear-gradient(135deg,#7c5ce0,#a78bfa);">
-                    <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3.36-7"/><polyline points="21 3 21 9 15 9"/></svg>
-                </div>
-                <div class="edu-text">
-                    <h4>Continuous Professional Development</h4>
-                    <p class="edu-inst">Multiple institutions — see Certifications</p>
-                    <p class="edu-year">2019 – Present</p>
-                </div>
-            </div>
+            <div class="edu-card glass-dark"><div class="edu-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 3L2 9l10 6 10-6-10-6z"/><path d="M6 11v5c0 2 3 3 6 3s6-1 6-3v-5"/><line x1="22" y1="9" x2="22" y2="17"/></svg></div><div class="edu-text"><h4>Pharmaceutical Chemistry (Químico Farmacéutico)</h4><p class="edu-inst">Universidad de Valparaíso</p><p class="edu-year">2012 – 2019</p></div></div>
+            <div class="edu-card glass-dark"><div class="edu-icon-wrap" style="background:linear-gradient(135deg,#7c5ce0,#a78bfa);"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3.36-7"/><polyline points="21 3 21 9 15 9"/></svg></div><div class="edu-text"><h4>Continuous Professional Development</h4><p class="edu-inst">Multiple institutions — see Certifications</p><p class="edu-year">2019 – Present</p></div></div>
         </div>
     </div>
 
-    <!-- ══════ CONTACT ══════ -->
     <div class="contact-block glass fade-section" id="contact">
         <p class="section-title">Contact</p>
         <p>Open to opportunities in AI engineering, pharma quality systems, and roles bridging both domains.</p>
@@ -687,12 +436,9 @@
         </div>
     </div>
 
-    <div class="footer">
-        <p>&copy; 2025 Sebastián Tapia · Pharmaceutical Chemist & AI Systems Builder · <a href="https://sebapharma.github.io/">sebapharma.github.io</a></p>
-    </div>
+    <div class="footer"><p>&copy; 2025 Sebastián Tapia · Pharmaceutical Chemist & AI Systems Builder · <a href="https://sebapharma.github.io/">sebapharma.github.io</a></p></div>
 </div>
 
-<!-- Music -->
 <button class="music-toggle" id="musicToggle" title="Music">🎵</button>
 <div class="music-panel" id="musicPanel">
     <div class="music-now">Now Playing</div>
@@ -700,31 +446,38 @@
     <div class="music-artist" id="trackArtist">—</div>
     <div class="music-progress" id="progressBar"><div class="music-progress-fill" id="progressFill"></div></div>
     <div class="music-time"><span id="timeCurrent">0:00</span><span id="timeTotal">0:00</span></div>
-    <div class="music-controls">
-        <button class="music-ctrl-btn" id="btnPrev" title="Previous">⏮</button>
-        <button class="music-ctrl-btn play-pause" id="btnPlayPause" title="Play / Pause">▶</button>
-        <button class="music-ctrl-btn" id="btnNext" title="Next">⏭</button>
-    </div>
+    <div class="music-controls"><button class="music-ctrl-btn" id="btnPrev" title="Previous">⏮</button><button class="music-ctrl-btn play-pause" id="btnPlayPause" title="Play / Pause">▶</button><button class="music-ctrl-btn" id="btnNext" title="Next">⏭</button></div>
     <div class="music-playlist-label">Playlist</div>
     <ul class="music-playlist" id="playlist"></ul>
-    <div class="music-vol-row"><span class="music-vol-icon">🔈</span><input type="range" class="music-vol" id="volSlider" min="0" max="100" value="60"><span class="music-vol-icon">🔊</span></div>
+    <div class="music-vol-row><span class="music-vol-icon">🔈</span><input type="range" class="music-vol" id="volSlider" min="0" max="100" value="60"><span class="music-vol-icon">🔊</span></div>
 </div>
 
 <script>
+/* Cursor */
+const dot=document.getElementById('cursorDot'),capsule=document.getElementById('cursorCapsule'),glow=document.getElementById('cursorGlow'),trail=document.getElementById('cursorTrail');
+let mx=-100,my=-100,cx=-100,cy=-100,gx=-100,gy=-100,px=-100,py=-100,angle=0,speed=0,lastTrailTime=0;
+const isTouchDevice='ontouchstart' in window||navigator.maxTouchPoints>0;
+if(!isTouchDevice){
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';const now=performance.now();if(now-lastTrailTime>35){spawnTrail(mx,my);lastTrailTime=now;}});
+    document.addEventListener('mouseover',e=>{if(e.target.closest('a,button,.jump-btn,.cert-card,.proj-card,.exp-block,input')){dot.classList.add('hovering');capsule.style.opacity='0.4';}});
+    document.addEventListener('mouseout',e=>{if(e.target.closest('a,button,.jump-btn,.cert-card,.proj-card,.exp-block,input')){dot.classList.remove('hovering');capsule.style.opacity='0.7';}});
+    const trailColors=['#00ccaa','#0099dd','#00b894','#7c5ce0','#a78bfa','#55efc4','#74b9ff'];
+    function spawnTrail(x,y){const t=Math.random();let cls,bg;if(t<.3){cls='trail-cross';bg=trailColors[Math.floor(Math.random()*3)];}else if(t<.6){cls='trail-dot';bg=trailColors[Math.floor(Math.random()*4)];}else if(t<.8){cls='trail-mini-cap';bg=`linear-gradient(90deg,${trailColors[Math.floor(Math.random()*3)]} 48%,rgba(255,255,255,.7) 48%)`;}else{cls='trail-plus';bg=trailColors[Math.floor(Math.random()*5)];}
+    const el=document.createElement('div');el.className='trail-p '+ cls;el.style.left=x+'px';el.style.top=y+'px';el.style.color=bg;if(cls==='trail-mini-cap')el.style.background=bg;else el.style.background='none';
+    el.style.setProperty('--tx',(Math.random()-.5)*30+'px');el.style.setProperty('--ty',(Math.random()-.5)*30-10+'px');el.style.setProperty('--r',(Math.random()-.5)*60+'deg');trail.appendChild(el);el.addEventListener('animationend',()=>el.remove());}
+    function animateCursor(){cx+=(mx-cx)*.1;cy+=(my-cy)*.1;gx+=(mx-gx)*.05;gy+=(my-gy)*.05;const dx=cx-px,dy=cy-py;speed=Math.sqrt(dx*dx+dy*dy);if(speed>.5){let a=Math.atan2(dy,dx)*180/Math.PI,diff=a-angle;if(diff>180)diff-=360;if(diff<-180)diff+=360;angle+=diff*.1;}px=cx;py=cy;capsule.style.left=cx+'px';capsule.style.top=cy+'px';capsule.style.transform=`translate(-50%,-50%) rotate(${angle}deg)`;glow.style.left=gx+'px';glow.style.top=gy+'px';glow.style.opacity=Math.min(.25+speed*.006,.45);requestAnimationFrame(animateCursor);}
+    animateCursor();
+}
+/* Scroll & Fade */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)window.scrollTo({top:t.offsetTop-60,behavior:'smooth'});});});
 const fo=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible');});},{threshold:.08});
 document.querySelectorAll('.fade-section').forEach(el=>fo.observe(el));
-
-const tracks=[
-    {name:"Song Title 1",artist:"Artist Name",/*src:"https://raw.githubusercontent.com/SebaPharma/YOUR-REPO/main/music/song1.mp3",*/duration:"3:45"},
-    {name:"Song Title 2",artist:"Artist Name",/*src:"https://raw.githubusercontent.com/SebaPharma/YOUR-REPO/main/music/song2.mp3",*/duration:"4:12"},
-    {name:"Song Title 3",artist:"Artist Name",/*src:"https://raw.githubusercontent.com/SebaPharma/YOUR-REPO/main/music/song3.mp3",*/duration:"3:28"},
-    {name:"Song Title 4",artist:"Artist Name",/*src:"https://raw.githubusercontent.com/SebaPharma/YOUR-REPO/main/music/song4.mp3",*/duration:"5:01"}
-];
+/* Music */
+const tracks=[{name:"Song Title 1",artist:"Artist Name",duration:"3:45"},{name:"Song Title 2",artist:"Artist Name",duration:"4:12"},{name:"Song Title 3",artist:"Artist Name",duration:"3:28"},{name:"Song Title 4",artist:"Artist Name",duration:"5:01"}];
 const tog=document.getElementById('musicToggle'),pan=document.getElementById('musicPanel'),tn=document.getElementById('trackName'),ta=document.getElementById('trackArtist'),pb=document.getElementById('progressBar'),pf=document.getElementById('progressFill'),tc=document.getElementById('timeCurrent'),tt=document.getElementById('timeTotal'),bp=document.getElementById('btnPlayPause'),bpr=document.getElementById('btnPrev'),bn=document.getElementById('btnNext'),pl=document.getElementById('playlist'),vs=document.getElementById('volSlider');
 let ct=0,ip=false,po=false;const au=new Audio();au.volume=.6;
 tracks.forEach((t,i)=>{const li=document.createElement('li');li.innerHTML=`<span class="pl-num">${i+1}</span><span class="pl-name">${t.name}</span><span class="pl-dur">${t.duration}</span>`;li.addEventListener('click',()=>{lt(i);pl_();});pl.appendChild(li);});
-function lt(i){ct=i;const t=tracks[i];tn.textContent=t.name;ta.textContent=t.artist;tt.textContent=t.duration;pf.style.width='0%';tc.textContent='0:00';if(t.src)au.src=t.src;upl();}
+function lt(i){ct=i;const t=tracks[i];tn.textContent=t.name;ta.textContent=t.artist;tt.textContent=t.duration;pf.style.width='0%';tc.textContent='0:00';upl();}
 function upl(){pl.querySelectorAll('li').forEach((l,i)=>l.classList.toggle('active',i===ct));}
 function pl_(){if(!tracks[ct].src){tn.textContent='Upload MP3s to your repo first';ta.textContent='See JS comments for instructions';return;}au.play().then(()=>{ip=true;bp.textContent='⏸';tog.classList.add('playing');}).catch(()=>{});}
 function pa(){au.pause();ip=false;bp.textContent='▶';tog.classList.remove('playing');}
