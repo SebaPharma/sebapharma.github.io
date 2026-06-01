@@ -62,11 +62,41 @@
         .pill-bottle-label{position:absolute;top:8px;left:3px;right:3px;height:18px;background:rgba(255,255,255,.75);border-radius:2px;border:1px solid rgba(180,80,80,.15);}
         @keyframes pharma-bob{0%{transform:translateY(0) rotate(var(--rot,0deg));}25%{transform:translateY(-14px) rotate(calc(var(--rot,0deg) + 4deg));}50%{transform:translateY(-5px) rotate(calc(var(--rot,0deg) - 3deg));}75%{transform:translateY(-18px) rotate(calc(var(--rot,0deg) + 2deg));}100%{transform:translateY(-10px) rotate(calc(var(--rot,0deg) + 5deg));}}
 
-        .cursor-dot{position:fixed;width:8px;height:8px;border-radius:50%;pointer-events:none;z-index:10001;background:#fff;box-shadow:0 0 0 1.5px rgba(0,100,90,.5),0 0 8px rgba(0,204,170,.6),0 0 20px rgba(0,180,200,.25);transform:translate(-50%,-50%);will-change:transform;transition:width .15s,height .15s,box-shadow .15s,background .15s;}
-        .cursor-dot.hovering{width:12px;height:12px;background:rgba(0,204,170,.9);box-shadow:0 0 0 2px rgba(0,100,90,.6),0 0 14px rgba(0,204,170,.8),0 0 30px rgba(0,180,200,.35);}
-        .cursor-glow{position:fixed;width:90px;height:90px;border-radius:50%;pointer-events:none;z-index:9998;background:radial-gradient(circle,rgba(0,204,170,.2) 0%,rgba(0,153,221,.08) 40%,transparent 70%);transform:translate(-50%,-50%);will-change:transform;filter:blur(4px);}
-        .cursor-capsule{position:fixed;width:40px;height:18px;border-radius:9px;pointer-events:none;z-index:9999;background:linear-gradient(90deg,#00ccaa 48%,#e8fffa 48%,#e8fffa 52%,#f0f8ff 52%);box-shadow:0 0 10px rgba(0,204,170,.5),0 0 24px rgba(0,180,200,.3),0 0 44px rgba(0,153,221,.12),inset 0 2px 3px rgba(255,255,255,.7),inset 0 -1px 2px rgba(0,100,80,.08);transform:translate(-50%,-50%);will-change:transform;opacity:.7;}
-        .cursor-capsule .cap-line{position:absolute;top:50%;left:47%;width:6%;height:55%;background:rgba(0,160,140,.12);border-radius:1px;transform:translateY(-50%);}
+        /* ══════════════════════════════════════
+           CURSOR: precise dot + capsule trail
+           ══════════════════════════════════════ */
+        .cursor-dot{
+            position:fixed;width:8px;height:8px;border-radius:50%;pointer-events:none;z-index:10001;
+            background:#fff;
+            box-shadow:0 0 0 1.5px rgba(0,100,90,.5),0 0 8px rgba(0,204,170,.6),0 0 20px rgba(0,180,200,.25);
+            transform:translate(-50%,-50%);will-change:transform;
+            transition:width .15s,height .15s,box-shadow .15s,background .15s;
+        }
+        .cursor-dot.hovering{
+            width:12px;height:12px;
+            background:rgba(0,204,170,.9);
+            box-shadow:0 0 0 2px rgba(0,100,90,.6),0 0 14px rgba(0,204,170,.8),0 0 30px rgba(0,180,200,.35);
+        }
+
+        .cursor-glow{
+            position:fixed;width:90px;height:90px;border-radius:50%;pointer-events:none;z-index:9998;
+            background:radial-gradient(circle,rgba(0,204,170,.2) 0%,rgba(0,153,221,.08) 40%,transparent 70%);
+            transform:translate(-50%,-50%);will-change:transform;filter:blur(4px);
+        }
+
+        .cursor-capsule{
+            position:fixed;width:40px;height:18px;border-radius:9px;pointer-events:none;z-index:9999;
+            background:linear-gradient(90deg,#00ccaa 48%,#e8fffa 48%,#e8fffa 52%,#f0f8ff 52%);
+            box-shadow:0 0 10px rgba(0,204,170,.5),0 0 24px rgba(0,180,200,.3),0 0 44px rgba(0,153,221,.12),
+                inset 0 2px 3px rgba(255,255,255,.7),inset 0 -1px 2px rgba(0,100,80,.08);
+            transform:translate(-50%,-50%);will-change:transform;
+            opacity:.7;
+        }
+        .cursor-capsule .cap-line{
+            position:absolute;top:50%;left:47%;width:6%;height:55%;
+            background:rgba(0,160,140,.12);border-radius:1px;transform:translateY(-50%);
+        }
+
         .cursor-trail{position:fixed;inset:0;pointer-events:none;z-index:9997;overflow:hidden;}
         .trail-p{position:absolute;pointer-events:none;will-change:transform,opacity;}
         .trail-cross{width:10px;height:10px;animation:trail-out .7s ease-out forwards;}
@@ -78,8 +108,16 @@
         .trail-plus::before{content:'';position:absolute;top:50%;left:15%;right:15%;height:1.5px;background:currentColor;border-radius:1px;transform:translateY(-50%);}
         .trail-plus::after{content:'';position:absolute;left:50%;top:15%;bottom:15%;width:1.5px;background:currentColor;border-radius:1px;transform:translateX(-50%);}
         @keyframes trail-out{0%{opacity:.7;transform:translate(0,0) scale(1) rotate(var(--r,0deg));}100%{opacity:0;transform:translate(var(--tx,0px),var(--ty,0px)) scale(.2) rotate(calc(var(--r,0deg) + 90deg));}}
-        @media(hover:none)and (pointer:coarse){body{cursor:auto;}.cursor-glow,.cursor-capsule,.cursor-trail,.cursor-dot{display:none!important;}}
-        @media(hover:hover){a,button,.jump-btn,.btn-aero,.top-bar-links a,.music-toggle,.music-ctrl-btn,.music-vol,.music-playlist li,.progress-bar{cursor:none;}}
+
+        @media(hover:none)and (pointer:coarse){
+            body{cursor:auto;}
+            .cursor-glow,.cursor-capsule,.cursor-trail,.cursor-dot{display:none!important;}
+        }
+        @media(hover:hover){
+            a,button,.jump-btn,.btn-aero,.top-bar-links a,.music-toggle,.music-ctrl-btn,.music-vol,.music-playlist li,.progress-bar{
+                cursor:none;
+            }
+        }
 
         .glass{background:rgba(255,255,255,.38);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1.5px solid rgba(255,255,255,.6);border-radius:20px;box-shadow:0 8px 32px rgba(80,200,180,.15),inset 0 1px 0 rgba(255,255,255,.7);}
         .glass-dark{background:rgba(255,255,255,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.45);border-radius:16px;box-shadow:0 4px 20px rgba(60,160,160,.12);}
@@ -100,6 +138,7 @@
         .jump-btn:hover svg{stroke:#fff;}
         .jump-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
 
+        /* ── Hero ── */
         .hero{padding:44px 36px 36px;margin-bottom:22px;text-align:center;}
         .hero-tag{display:inline-block;font-size:11.5px;font-weight:700;color:#007799;background:rgba(0,200,220,.18);border:1px solid rgba(0,200,220,.35);border-radius:50px;padding:5px 16px;margin-bottom:16px;letter-spacing:.5px;text-transform:uppercase;}
         .hero-logos{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:14px;flex-wrap:wrap;}
@@ -108,7 +147,26 @@
         .hero-x{font-size:20px;font-weight:300;color:#a0c8c0;line-height:1;}
         .hero h1{font-size:32px;font-weight:800;color:#0a4a3a;line-height:1.15;margin-bottom:10px;}
         .hero h1 em{font-style:normal;color:#0088bb;}
-        .hero-subtitle{font-size:14.5px;color:#2a5a4a;line-height:1.7;max-width:680px;margin:0 auto 24px;font-weight:400;}
+        .hero-subtitle{font-size:14.5px;color:#2a5a4a;line-height:1.7;max-width:680px;margin:0 auto 18px;font-weight:400;}
+
+        /* Investment callout in hero */
+        .hero-invest{
+            display:inline-flex;align-items:center;gap:10px;
+            background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(239,68,68,.08));
+            border:1.5px solid rgba(245,158,11,.3);border-radius:14px;
+            padding:10px 20px;margin-bottom:24px;
+        }
+        .hero-invest-icon{
+            width:36px;height:36px;border-radius:10px;flex-shrink:0;
+            background:linear-gradient(135deg,#f59e0b,#ef4444);
+            display:flex;align-items:center;justify-content:center;
+            box-shadow:0 2px 8px rgba(245,158,11,.3);
+        }
+        .hero-invest-icon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+        .hero-invest-text{text-align:left;}
+        .hero-invest-text strong{font-size:13.5px;color:#92400e;display:block;line-height:1.35;}
+        .hero-invest-text span{font-size:11.5px;color:#b45309;font-weight:600;}
+
         .hero-btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
 
         .btn-aero{font-size:13px;font-weight:700;padding:10px 20px;border-radius:50px;text-decoration:none;border:none;transition:all .2s;display:inline-block;}
@@ -258,12 +316,14 @@
             .music-panel{right:12px;bottom:76px;width:260px;}
             .music-toggle{bottom:16px;right:16px;width:44px;height:44px;font-size:18px;}
             .syringe,.dropper,.pill-bottle{display:none;}.pharma-float{opacity:.35;}
+            .hero-invest{padding:8px 16px;}
         }
         @media(max-width:480px){
             .stats-row{grid-template-columns:1fr 1fr;}.skills-cats{grid-template-columns:1fr;}
             .jump-btn{font-size:11px;padding:5px 11px;}
             .capsule-1,.capsule-3,.vial,.blister,.capsule-4,.tablet-3{display:none;}.pharma-float{opacity:.32;}
             .hero-logos svg{width:38px!important;height:38px!important;}
+            .hero-invest{flex-direction:column;text-align:center;}
         }
     </style>
 </head>
@@ -274,7 +334,9 @@
 <div class="cursor-capsule" id="cursorCapsule"><div class="cap-line"></div></div>
 <div class="cursor-trail" id="cursorTrail"></div>
 
-<div class="aero-bg"><div class="aero-orb orb1"></div><div class="aero-orb orb2"></div><div class="aero-orb orb3"></div><div class="aero-orb orb4"></div><div class="aero-orb orb5"></div></div>
+<div class="aero-bg">
+    <div class="aero-orb orb1"></div><div class="aero-orb orb2"></div><div class="aero-orb orb3"></div><div class="aero-orb orb4"></div><div class="aero-orb orb5"></div>
+</div>
 
 <div class="pharma-layer">
     <div class="pharma-float capsule-1"></div><div class="pharma-float capsule-2"></div><div class="pharma-float capsule-3"></div><div class="pharma-float capsule-4"></div>
@@ -307,7 +369,7 @@
     </nav>
 
     <section class="hero glass fade-section">
-        <div class="hero-tag">Pharmaceutical Chemist · AI Systems Builder · Investor</div>
+        <div class="hero-tag">Pharmaceutical Chemist · AI Systems Builder · Investor · QF</div>
         <div class="hero-logos">
             <div class="hero-logo-wrap">
                 <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="2" y="2" width="48" height="48" rx="12" fill="#00b894" opacity=".15"/><rect x="6" y="6" width="40" height="40" rx="10" fill="#00b894"/><rect x="20" y="12" width="12" height="28" rx="2.5" fill="#fff"/><rect x="12" y="20" width="28" height="12" rx="2.5" fill="#fff"/></svg>
@@ -320,27 +382,14 @@
             </div>
             <span class="hero-x">×</span>
             <div class="hero-logo-wrap">
-                <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                    <rect x="2" y="2" width="48" height="48" rx="12" fill="#0d9488" opacity=".1"/>
-                    <rect x="6" y="6" width="40" height="40" rx="10" fill="url(#investGrad)"/>
-                    <rect x="11" y="32" width="6" height="10" rx="2" fill="rgba(255,255,255,.55)"/>
-                    <rect x="19" y="24" width="6" height="18" rx="2" fill="rgba(255,255,255,.55)"/>
-                    <rect x="27" y="16" width="6" height="26" rx="2" fill="rgba(255,255,255,.55)"/>
-                    <rect x="35" y="12" width="6" height="30" rx="2" fill="rgba(255,255,255,.55)"/>
-                    <polyline points="10 38 17 30 24 24 40 10 40" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="38" cy="10" r="3" fill="#ffe082" opacity=".8"/>
-                    <path d="M6 8l4-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".5"/>
-                    <path d="M8 14l3-3" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".4"/>
-                    <defs><linearGradient id="investGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0d9488"/><stop offset="40%" stop-color="#10b981"/><stop offset="70%" stop-color="#34d399"/><stop offset="100%" stop-color="#a3e635"/></linearGradient></defs>
-                </svg>
+                <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="2" y="2" width="48" height="48" rx="12" fill="#f59e0b" opacity=".12"/><rect x="6" y="6" width="40" height="40" rx="10" fill="linear-gradient(135deg,#f59e0b,#ef4444)"/><polyline points="14 36 22 26 30 20 38 14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="30 16 38 16 38 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/></svg>
                 <span class="hero-logo-label">Invest</span>
             </div>
         </div>
         <h1>Sebastián Tapia</h1>
-        <p class="hero-subtitle">Pharmaceutical Chemist with over six years of experience in Quality Assurance and Computerized System Validation (CSV) within GxP-regulated environments. 
-            In parallel, I design and deploy AI-powered systems — from local LLM inference on self-hosted infrastructure to multi-agent workflow automation and full-stack applications integrating OpenAI, Gemini, and Claude APIs.</p>
-           
-          <div class="hero-invest">
+        <p class="hero-subtitle">Pharmaceutical Chemist with over six years of experience in Quality Assurance and Computerized System Validation (CSV) within GxP-regulated environments. In parallel, I design and deploy AI-powered systems — from local LLM inference on self-hosted infrastructure to multi-agent workflow automation and full-stack applications integrating OpenAI, Gemini, and Claude APIs. I offer a distinct intersection of deep pharmaceutical domain expertise and applied AI engineering.</p>
+
+        <div class="hero-invest">
             <div class="hero-invest-icon">
                 <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
             </div>
@@ -350,16 +399,6 @@
             </div>
         </div>
 
-           <div class="hero-invest">
-            <div class="hero-invest-icon">
-                <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-            </div>
-            <div class="hero-invest-text">
-                <strong>Consistently generated an average annual return of &gt; 13% on investment (ROI) through strategic stock selection.</strong>
-                <span>Technical analysis · Risk management · Portfolio optimization</span>
-            </div>
-        </div>
-        
         <div class="hero-btn-row">
             <a href="#experience" class="btn-aero btn-primary-aero">View my experience</a>
             <a href="https://sebapharma.github.io/english/archives/CVweb.html" class="btn-aero btn-secondary-aero">Web CV</a>
@@ -377,8 +416,8 @@
     <div class="section-wrap fade-section" id="experience">
         <p class="section-title">Professional Experience</p>
         <p class="section-sub">Pharmaceutical quality systems leadership paired with hands-on AI integration</p>
-        <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Validation Manager</div><div class="exp-company">Knop Laboratories S.A.</div></div><span class="exp-date">Apr 2022 – Present</span></div><ul class="exp-bullets"><li>Lead Computerized System Validation (CSV) as the primary area of responsibility, with concurrent oversight of equipment qualification, critical support systems (purified water, HVAC, compressed air), and process and cleaning validation across solid, semi-solid, and liquid dosage forms.</li><li>Drove the full implementation and validation lifecycle for a WMS, a LIMS, electronic signature systems, and custom Lotus Notes applications integrated into the Quality Management System.</li>Leveraged AI tools (Claude, Gemini, ChatGPT) to accelerate GxP documentation — automating protocol drafting, risk analysis matrices, deviation assessments, and SOP generation, achieving measurable reductions in turnaround time.</li>Architected and deployed internal dashboards linked to Google Drive manufacturing data, providing real-time visibility into fabrication KPIs and end-to-end process traceability.</li></ul></div>
-        <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Quality Assurance Manager (Alternate)</div><div class="exp-company">Knop Laboratories S.A.</div></div><span class="exp-date">Apr 2022 – Present</span></div><ul class="exp-bullets"><li>Manage core QMS operations: KPI monitoring, CAPA lifecycle, quality complaints, supplier audits, non-conforming product disposition, risk management, change control, and document control.</li>Represent the QA function in regulatory inspections under GMP, GLP, GDP, and broader GxP frameworks, including audits by ISP (Chile), INVIMA (Colombia), and ANVISA (Brazil).</li>Served as a key contributor to the successful attainment of ISO 9001, ISO 13485, and ISO 14001 certifications in 2023.</li></ul></div>
+        <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Validation Manager</div><div class="exp-company">Knop Laboratories S.A.</div></div><span class="exp-date">Apr 2022 – Present</span></div><ul class="exp-bullets"><li>Lead Computerized System Validation (CSV) as the primary area of responsibility, with concurrent oversight of equipment qualification, critical support systems (purified water, HVAC, compressed air), and process and cleaning validation across solid, semi-solid, and liquid dosage forms.</li><li>Drove the full implementation and validation lifecycle for a WMS, a LIMS, electronic signature systems, and custom Lotus Notes applications integrated into the Quality Management System.</li><li>Leveraged AI tools (Claude, Gemini, ChatGPT) to accelerate GxP documentation — automating protocol drafting, risk analysis matrices, deviation assessments, and SOP generation, achieving measurable reductions in turnaround time.</li><li>Architected and deployed internal dashboards linked to Google Drive manufacturing data, providing real-time visibility into fabrication KPIs and end-to-end process traceability.</li></ul></div>
+        <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Quality Assurance Manager (Alternate)</div><div class="exp-company">Knop Laboratories S.A.</div></div><span class="exp-date">Apr 2022 – Present</span></div><ul class="exp-bullets"><li>Manage core QMS operations: KPI monitoring, CAPA lifecycle, quality complaints, supplier audits, non-conforming product disposition, risk management, change control, and document control.</li><li>Represent the QA function in regulatory inspections under GMP, GLP, GDP, and broader GxP frameworks, including audits by ISP (Chile), INVIMA (Colombia), and ANVISA (Brazil).</li><li>Served as a key contributor to the successful attainment of ISO 9001, ISO 13485, and ISO 14001 certifications in 2023.</li></ul></div>
         <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Pharmacist / Technical Director</div><div class="exp-company">Independent Pharmacy</div></div><span class="exp-date">2019 – 2022</span></div><ul class="exp-bullets"><li>Directed all pharmaceutical operations including staff supervision, regulatory compliance under Ministry of Health standards, controlled substance inventory (psychotropics and narcotics), prescription verification, and inventory management.</li></ul></div>
         <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Research Laboratory Assistant</div><div class="exp-company">Laboratory of Neurobiology — Universidad de Valparaíso</div></div><span class="exp-date">2015 – 2017</span></div><ul class="exp-bullets"><li>Provided research support in a university neurobiology laboratory focused on the mechanisms of social and addictive behaviors.</li></ul></div>
     </div>
@@ -387,7 +426,7 @@
         <p class="section-title">Personal Projects & AI Development</p>
         <p class="section-sub">Self-hosted infrastructure, multi-agent workflows, and AI-assisted application development</p>
         <div class="projects-grid">
-            <div class="proj-card glass-dark"><div class="proj-icon-wrap teal"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="7 12 10 9 13 11 17 7"/></svg></div><div class="proj-text"><h4>GxP Manufacturing Dashboard</h4><p>Web-based dashboards connected to Google Drive manufacturing data sheets, delivering real-time visibility into fabrication records and process KPIs. Frontend developed with AI-assisted tools.</p></div></div>
+            <div class="proj-card glass-dark"><div class="proj-icon-wrap teal"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="7 12 10 9 13 11 17 7"/></svg></div><div class="proj-text"><h4>GxP Manufacturing Dashboard</h4><p>Web-based dashboards connected to Google Drive manufacturing data sheets, delivering real-time visibility into fabrication records and process KPIs.</p></div></div>
             <div class="proj-card glass-dark"><div class="proj-icon-wrap purple"><svg viewBox="0 0 24 24"><rect x="3" y="2" width="18" height="8" rx="2"/><rect x="3" y="12" width="18" height="8" rx="2"/><circle cx="7" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="16" r="1" fill="currentColor" stroke="none"/></svg></div><div class="proj-text"><h4>Self-Hosted LLM Inference Server</h4><p>Deployed local LLM inference via Ollama on Oracle Cloud Free Tier, enabling private, zero-cost AI model execution. Running LLaMA and Mistral variants.</p></div></div>
             <div class="proj-card glass-dark"><div class="proj-icon-wrap blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><line x1="12" y1="7.5" x2="5" y2="16.5"/><line x1="12" y1="7.5" x2="19" y2="16.5"/><line x1="5" y1="19" x2="19" y2="19"/></svg></div><div class="proj-text"><h4>Multi-Agent Workflow Infrastructure</h4><p>Multi-agent automation pipelines using PocketFlow/OpenFlow, orchestrated through n8n with REST API integrations. Deployed across Oracle Cloud and Raspberry Pi.</p></div></div>
             <div class="proj-card glass-dark"><div class="proj-icon-wrap green"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg></div><div class="proj-text"><h4>Full-Stack AI-Assisted Applications</h4><p>End-to-end web applications built with AI-assisted development tools (Claude, Gemini, Antigravity), covering both backend and frontend. All on GitHub.</p></div></div>
@@ -452,7 +491,7 @@
         </div>
     </div>
 
-    <div class="footer"><p>&copy; 2025 Sebastián Tapia · Pharmaceutical Chemist & AI Systems Builder · <a href="https://sebapharma.github.io/">sebapharma.github.io</a></p></div>
+    <div class="footer"><p>&copy; 2026 Sebastián Tapia · Pharmaceutical Chemist & AI Systems Builder · <a href="https://sebapharma.github.io/">sebapharma.github.io</a></p></div>
 </div>
 
 <button class="music-toggle" id="musicToggle" title="Music">🎵</button>
@@ -465,35 +504,111 @@
     <div class="music-controls"><button class="music-ctrl-btn" id="btnPrev" title="Previous">⏮</button><button class="music-ctrl-btn play-pause" id="btnPlayPause" title="Play / Pause">▶</button><button class="music-ctrl-btn" id="btnNext" title="Next">⏭</button></div>
     <div class="music-playlist-label">Playlist</div>
     <ul class="music-playlist" id="playlist"></ul>
-    <div class="music-vol-row><span class="music-vol-icon">🔈</span><input type="range" class="music-vol" id="volSlider" min="0" max="100" value="60"><span class="music-vol-icon">🔊</span></div>
+    <div class="music-vol-row"><span class="music-vol-icon">🔈</span><input type="range" class="music-vol" id="volSlider" min="0" max="100" value="60"><span class="music-vol-icon">🔊</span></div>
 </div>
 
 <script>
-/* Cursor */
-const dot=document.getElementById('cursorDot'),capsule=document.getElementById('cursorCapsule'),glow=document.getElementById('cursorGlow'),trail=document.getElementById('cursorTrail');
-let mx=-100,my=-100,cx=-100,cy=-100,gx=-100,gy=-100,px=-100,py=-100,angle=0,speed=0,lastTrailTime=0;
-const isTouchDevice='ontouchstart' in window||navigator.maxTouchPoints>0;
-if(!isTouchDevice){
-    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';const now=performance.now();if(now-lastTrailTime>35){spawnTrail(mx,my);lastTrailTime=now;}});
-    document.addEventListener('mouseover',e=>{if(e.target.closest('a,button,.jump-btn,.cert-card,.proj-card,.exp-block,input')){dot.classList.add('hovering');capsule.style.opacity='0.4';}});
-    document.addEventListener('mouseout',e=>{if(e.target.closest('a,button,.jump-btn,.cert-card,.proj-card,.exp-block,input')){dot.classList.remove('hovering');capsule.style.opacity='0.7';}});
-    const trailColors=['#00ccaa','#0099dd','#00b894','#7c5ce0','#a78bfa','#55efc4','#74b9ff'];
-    function spawnTrail(x,y){const t=Math.random();let cls,bg;if(t<.3){cls='trail-cross';bg=trailColors[Math.floor(Math.random()*3)];}else if(t<.6){cls='trail-dot';bg=trailColors[Math.floor(Math.random()*4)];}else if(t<.8){cls='trail-mini-cap';bg=`linear-gradient(90deg,${trailColors[Math.floor(Math.random()*3)]} 48%,rgba(255,255,255,.7) 48%)`;}else{cls='trail-plus';bg=trailColors[Math.floor(Math.random()*5)];}
-    const el=document.createElement('div');el.className='trail-p '+ cls;el.style.left=x+'px';el.style.top=y+'px';el.style.color=bg;if(cls==='trail-mini-cap')el.style.background=bg;else el.style.background='none';
-    el.style.setProperty('--tx',(Math.random()-.5)*30+'px');el.style.setProperty('--ty',(Math.random()-.5)*30-10+'px');el.style.setProperty('--r',(Math.random()-.5)*60+'deg');trail.appendChild(el);el.addEventListener('animationend',()=>el.remove());}
-    function animateCursor(){cx+=(mx-cx)*.1;cy+=(my-cy)*.1;gx+=(mx-gx)*.05;gy+=(my-gy)*.05;const dx=cx-px,dy=cy-py;speed=Math.sqrt(dx*dx+dy*dy);if(speed>.5){let a=Math.atan2(dy,dx)*180/Math.PI,diff=a-angle;if(diff>180)diff-=360;if(diff<-180)diff+=360;angle+=diff*.1;}px=cx;py=cy;capsule.style.left=cx+'px';capsule.style.top=cy+'px';capsule.style.transform=`translate(-50%,-50%) rotate(${angle}deg)`;glow.style.left=gx+'px';glow.style.top=gy+'px';glow.style.opacity=Math.min(.25+speed*.006,.45);requestAnimationFrame(animateCursor);}
+/* ══════════════════════════════════════
+   CURSOR: precise dot + decorative capsule
+   ══════════════════════════════════════ */
+const dot = document.getElementById('cursorDot');
+const capsule = document.getElementById('cursorCapsule');
+const glow = document.getElementById('cursorGlow');
+const trail = document.getElementById('cursorTrail');
+
+let mx = -100, my = -100;
+let cx = -100, cy = -100;
+let gx = -100, gy = -100;
+let px = -100, py = -100;
+let angle = 0, speed = 0, lastTrailTime = 0;
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+if (!isTouchDevice) {
+    document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        // Dot: instant, no lerp
+        dot.style.left = mx + 'px';
+        dot.style.top = my + 'px';
+        // Trail: throttled
+        const now = performance.now();
+        if (now - lastTrailTime > 35) { spawnTrail(mx, my); lastTrailTime = now; }
+    });
+
+    document.addEventListener('mouseover', e => {
+        if (e.target.closest('a, button, .jump-btn, .cert-card, .proj-card, .exp-block, input')) {
+            dot.classList.add('hovering');
+            capsule.style.opacity = '0.4';
+        }
+    });
+    document.addEventListener('mouseout', e => {
+        if (e.target.closest('a, button, .jump-btn, .cert-card, .proj-card, .exp-block, input')) {
+            dot.classList.remove('hovering');
+            capsule.style.opacity = '0.7';
+        }
+    });
+
+    const trailColors = ['#00ccaa','#0099dd','#00b894','#7c5ce0','#a78bfa','#55efc4','#74b9ff'];
+    function spawnTrail(x, y) {
+        const t = Math.random();
+        let cls, bg;
+        if (t < 0.3) { cls = 'trail-cross'; bg = trailColors[Math.floor(Math.random()*3)]; }
+        else if (t < 0.6) { cls = 'trail-dot'; bg = trailColors[Math.floor(Math.random()*4)]; }
+        else if (t < 0.8) { cls = 'trail-mini-cap'; bg = `linear-gradient(90deg,${trailColors[Math.floor(Math.random()*3)]} 48%, rgba(255,255,255,.7) 48%)`; }
+        else { cls = 'trail-plus'; bg = trailColors[Math.floor(Math.random()*5)]; }
+        const el = document.createElement('div');
+        el.className = 'trail-p ' + cls;
+        el.style.left = x + 'px'; el.style.top = y + 'px';
+        el.style.color = bg;
+        if (cls === 'trail-mini-cap') el.style.background = bg; else el.style.background = 'none';
+        el.style.setProperty('--tx', (Math.random()-.5)*30 + 'px');
+        el.style.setProperty('--ty', (Math.random()-.5)*30 - 10 + 'px');
+        el.style.setProperty('--r', (Math.random()-.5)*60 + 'deg');
+        trail.appendChild(el);
+        el.addEventListener('animationend', () => el.remove());
+    }
+
+    function animateCursor() {
+        cx += (mx - cx) * 0.1;
+        cy += (my - cy) * 0.1;
+        gx += (mx - gx) * 0.05;
+        gy += (my - gy) * 0.05;
+        const dx = cx - px, dy = cy - py;
+        speed = Math.sqrt(dx * dx + dy * dy);
+        if (speed > 0.5) {
+            let targetAngle = Math.atan2(dy, dx) * (180 / Math.PI);
+            let diff = targetAngle - angle;
+            if (diff > 180) diff -= 360;
+            if (diff < -180) diff += 360;
+            angle += diff * 0.1;
+        }
+        px = cx; py = cy;
+        capsule.style.left = cx + 'px'; capsule.style.top = cy + 'px';
+        capsule.style.transform = `translate(-50%,-50%) rotate(${angle}deg)`;
+        glow.style.left = gx + 'px'; glow.style.top = gy + 'px';
+        glow.style.opacity = Math.min(0.25 + speed * 0.006, 0.45);
+        requestAnimationFrame(animateCursor);
+    }
     animateCursor();
 }
-/* Scroll & Fade */
+
+/* ══════════════════════════════════════
+   SCROLL & FADE
+   ══════════════════════════════════════ */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)window.scrollTo({top:t.offsetTop-60,behavior:'smooth'});});});
 const fo=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible');});},{threshold:.08});
 document.querySelectorAll('.fade-section').forEach(el=>fo.observe(el));
-/* Music */
-const tracks=[{name:"Song Title 1",artist:"Artist Name",duration:"3:45"},{name:"Song Title 2",artist:"Artist Name",duration:"4:12"},{name:"Song Title 3",artist:"Artist Name",duration:"3:28"},{name:"Song Title 4",artist:"Artist Name",duration:"5:01"}];
+
+/* ── MUSIC ── */
+const tracks=[
+    {name:"Song Title 1",artist:"Artist Name",/*src:"https://raw.githubusercontent.com/SebaPharma/YOUR-REPO/main/music/song1.mp3",*/duration:"3:45"},
+    {name:"Song Title 2",artist:"Artist Name",/*src:"https://raw.githubusercontent.com/SebaPharma/YOUR-REPO/main/music/song2.mp3",*/duration:"4:12"},
+    {name:"Song Title 3",artist:"Artist Name",/*src:"https://raw.githubusercontent.com/SebaPharma/YOUR-REPO/main/music/song3.mp3",*/duration:"3:28"},
+    {name:"Song Title 4",artist:"Artist Name",/*src:"https://raw.githubusercontent.com/SebaPharma/YOUR-REPO/main/music/song4.mp3",*/duration:"5:01"}
+];
 const tog=document.getElementById('musicToggle'),pan=document.getElementById('musicPanel'),tn=document.getElementById('trackName'),ta=document.getElementById('trackArtist'),pb=document.getElementById('progressBar'),pf=document.getElementById('progressFill'),tc=document.getElementById('timeCurrent'),tt=document.getElementById('timeTotal'),bp=document.getElementById('btnPlayPause'),bpr=document.getElementById('btnPrev'),bn=document.getElementById('btnNext'),pl=document.getElementById('playlist'),vs=document.getElementById('volSlider');
 let ct=0,ip=false,po=false;const au=new Audio();au.volume=.6;
 tracks.forEach((t,i)=>{const li=document.createElement('li');li.innerHTML=`<span class="pl-num">${i+1}</span><span class="pl-name">${t.name}</span><span class="pl-dur">${t.duration}</span>`;li.addEventListener('click',()=>{lt(i);pl_();});pl.appendChild(li);});
-function lt(i){ct=i;const t=tracks[i];tn.textContent=t.name;ta.textContent=t.artist;tt.textContent=t.duration;pf.style.width='0%';tc.textContent='0:00';upl();}
+function lt(i){ct=i;const t=tracks[i];tn.textContent=t.name;ta.textContent=t.artist;tt.textContent=t.duration;pf.style.width='0%';tc.textContent='0:00';if(t.src)au.src=t.src;upl();}
 function upl(){pl.querySelectorAll('li').forEach((l,i)=>l.classList.toggle('active',i===ct));}
 function pl_(){if(!tracks[ct].src){tn.textContent='Upload MP3s to your repo first';ta.textContent='See JS comments for instructions';return;}au.play().then(()=>{ip=true;bp.textContent='⏸';tog.classList.add('playing');}).catch(()=>{});}
 function pa(){au.pause();ip=false;bp.textContent='▶';tog.classList.remove('playing');}
