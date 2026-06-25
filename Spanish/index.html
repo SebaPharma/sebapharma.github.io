@@ -1,284 +1,644 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.6">
-    <title>Sebastián Tapia - Químico Farmacéutico</title>
-    <link href="templatemo-nexus-style.css" rel="stylesheet">
-<!--
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebastián Tapia - Químico Farmacéutico & Constructor de Sistemas IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Nunito',sans-serif;background:linear-gradient(135deg,#a8edea 0%,#d4f5c9 25%,#b8deff 50%,#c5f0e8 75%,#a0e9d0 100%);min-height:100vh;color:#1a3a2a;overflow-x:hidden;cursor:none;}
 
-TemplateMo 594 nexus flow
+        .aero-bg{position:fixed;inset:0;z-index:0;background:linear-gradient(160deg,#7dd8f5 0%,#b5f0d8 30%,#c8ebff 55%,#aaf0c8 80%,#88d8f8 100%);overflow:hidden;pointer-events:none;}
+        .aero-orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;animation:orb-drift 20s ease-in-out infinite alternate;}
+        .orb1{width:420px;height:420px;background:radial-gradient(circle,#5de8f0,#3bb8e8);top:-90px;left:-70px;animation-duration:22s;}
+        .orb2{width:370px;height:370px;background:radial-gradient(circle,#7ff5c0,#30c890);top:28%;right:-60px;animation-duration:26s;animation-delay:-5s;}
+        .orb3{width:320px;height:320px;background:radial-gradient(circle,#aad4ff,#60aaff);bottom:12%;left:18%;animation-duration:24s;animation-delay:-10s;}
+        .orb4{width:270px;height:270px;background:radial-gradient(circle,#c0f8e0,#50e8b0);bottom:-70px;right:22%;animation-duration:28s;animation-delay:-15s;}
+        .orb5{width:200px;height:200px;background:radial-gradient(circle,#f0c8ff,#a070d0);top:55%;left:55%;animation-duration:30s;animation-delay:-8s;}
+        @keyframes orb-drift{0%{transform:translate(0,0) scale(1);}33%{transform:translate(30px,-20px) scale(1.05);}66%{transform:translate(-20px,30px) scale(.95);}100%{transform:translate(10px,-10px) scale(1.02);}}
 
-https://templatemo.com/tm-594-nexus-flow
+        .pharma-layer{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+        .pharma-float{position:absolute;opacity:.42;animation:pharma-bob 12s ease-in-out infinite alternate;}
+        .capsule-1{width:70px;height:28px;top:8%;left:5%;border-radius:14px;background:linear-gradient(90deg,#00ccaa 50%,#e8fffa 50%);box-shadow:inset 0 3px 6px rgba(255,255,255,.7),inset 0 -2px 4px rgba(0,120,100,.12),0 4px 16px rgba(0,180,160,.25);animation-duration:14s;--rot:-15deg;transform:rotate(-15deg);}
+        .capsule-2{width:84px;height:32px;top:20%;right:6%;border-radius:16px;background:linear-gradient(90deg,#e8f4ff 50%,#0099dd 50%);box-shadow:inset 0 3px 6px rgba(255,255,255,.7),inset 0 -2px 4px rgba(0,100,160,.12),0 4px 16px rgba(0,140,200,.25);animation-duration:18s;animation-delay:-3s;--rot:25deg;transform:rotate(25deg);}
+        .capsule-3{width:56px;height:24px;bottom:16%;left:3%;border-radius:12px;background:linear-gradient(90deg,#f5c8d8 50%,#fff4f8 50%);box-shadow:inset 0 3px 6px rgba(255,255,255,.7),inset 0 -2px 4px rgba(180,80,120,.1),0 4px 16px rgba(200,100,140,.2);animation-duration:16s;animation-delay:-7s;--rot:-30deg;transform:rotate(-30deg);}
+        .capsule-4{width:62px;height:26px;top:50%;right:25%;border-radius:13px;background:linear-gradient(90deg,#f0a050 50%,#fff5e8 50%);box-shadow:inset 0 3px 6px rgba(255,255,255,.7),inset 0 -2px 4px rgba(180,100,20,.12),0 4px 16px rgba(200,120,40,.22);animation-duration:19s;animation-delay:-14s;--rot:40deg;transform:rotate(40deg);}
+        .tablet-1{width:38px;height:38px;top:44%;left:2%;border-radius:50%;background:radial-gradient(circle at 32% 32%,#ffffff,#c8eef2);box-shadow:inset 0 -3px 6px rgba(0,0,0,.08),0 4px 16px rgba(0,180,180,.2);animation-duration:20s;animation-delay:-2s;--rot:0deg;position:relative;}
+        .tablet-1::after{content:'';position:absolute;top:50%;left:15%;right:15%;height:2px;background:rgba(0,140,140,.3);border-radius:1px;transform:translateY(-50%);}
+        .tablet-2{width:30px;height:30px;bottom:34%;right:4%;border-radius:50%;background:radial-gradient(circle at 32% 32%,#b8dcff,#5588bb);box-shadow:inset 0 -3px 6px rgba(0,0,0,.1),0 4px 16px rgba(60,120,200,.25);animation-duration:22s;animation-delay:-9s;--rot:0deg;position:relative;}
+        .tablet-2::before{content:'';position:absolute;top:50%;left:18%;right:18%;height:2px;background:rgba(255,255,255,.5);border-radius:1px;transform:translateY(-50%);}
+        .tablet-2::after{content:'';position:absolute;left:50%;top:18%;bottom:18%;width:2px;background:rgba(255,255,255,.5);border-radius:1px;transform:translateX(-50%);}
+        .tablet-3{width:28px;height:28px;bottom:50%;left:42%;border-radius:50%;background:radial-gradient(circle at 32% 32%,#a0e8b8,#40a870);box-shadow:inset 0 -3px 6px rgba(0,0,0,.1),0 4px 16px rgba(40,160,100,.25);animation-duration:24s;animation-delay:-8s;--rot:0deg;}
+        .syrup-bottle{top:63%;right:10%;animation-duration:17s;animation-delay:-5s;--rot:8deg;transform:rotate(8deg);}
+        .syrup-body{width:34px;height:48px;background:linear-gradient(135deg,rgba(255,200,80,.85),rgba(240,160,40,.7));border-radius:0 0 8px 8px;border:2px solid rgba(200,140,20,.35);position:relative;box-shadow:inset 0 -8px 16px rgba(180,100,0,.2),0 4px 16px rgba(200,140,20,.25);}
+        .syrup-body::before{content:'';position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:16px;height:12px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(200,230,240,.7));border-radius:3px 3px 0 0;border:2px solid rgba(200,140,20,.35);border-bottom:none;}
+        .syrup-body::after{content:'';position:absolute;top:4px;left:50%;transform:translateX(-50%);width:48px;height:16px;background:rgba(255,255,255,.7);border-radius:4px;border:1.5px solid rgba(200,140,20,.2);box-shadow:0 2px 6px rgba(200,140,20,.1);}
+        .syrup-liquid{position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(180deg,rgba(255,160,40,.4),rgba(220,120,20,.7));border-radius:0 0 6px 6px;}
+        .vial{top:14%;left:78%;animation-duration:19s;animation-delay:-11s;--rot:-10deg;transform:rotate(-10deg);}
+        .vial-body{width:22px;height:42px;background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(200,230,255,.7));border-radius:0 0 5px 5px;border:2px solid rgba(100,160,200,.35);position:relative;box-shadow:inset 0 -6px 12px rgba(0,100,180,.15),0 4px 14px rgba(0,140,200,.25);}
+        .vial-body::before{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:12px;height:10px;background:linear-gradient(135deg,#ddeeff,#aaccdd);border-radius:3px 3px 0 0;border:1.5px solid rgba(100,160,200,.4);border-bottom:none;}
+        .vial-stopper{position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:14px;height:6px;background:linear-gradient(180deg,#778899,#556677);border-radius:2px;}
+        .vial-liquid{position:absolute;bottom:0;left:0;right:0;height:70%;background:linear-gradient(180deg,rgba(100,180,255,.2),rgba(60,140,220,.5));border-radius:0 0 3px 3px;}
+        .syringe{bottom:8%;left:20%;animation-duration:21s;animation-delay:-4s;--rot:35deg;transform:rotate(35deg);}
+        .syringe-barrel{width:58px;height:14px;background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(200,225,240,.75));border-radius:1px 7px 7px 1px;border:1.5px solid rgba(100,160,200,.35);position:relative;box-shadow:0 4px 14px rgba(0,140,200,.2);}
+        .syringe-needle{position:absolute;right:-18px;top:50%;transform:translateY(-50%);width:20px;height:2.5px;background:linear-gradient(90deg,rgba(160,160,160,.7),rgba(200,200,200,.95));border-radius:0 1px 1px 0;}
+        .syringe-plunger{position:absolute;left:-12px;top:50%;transform:translateY(-50%);width:16px;height:10px;background:linear-gradient(180deg,rgba(180,200,220,.85),rgba(140,170,190,.7));border-radius:2px;border:1.5px solid rgba(100,160,200,.3);}
+        .syringe-flange{position:absolute;left:-14px;top:-4px;width:5px;height:22px;background:rgba(180,200,220,.75);border-radius:1px;border:1.5px solid rgba(100,160,200,.3);}
+        .syringe-markings{position:absolute;top:2px;left:12px;right:12px;height:10px;display:flex;justify-content:space-between;align-items:flex-end;}
+        .syringe-markings span{width:1.5px;height:100%;background:rgba(0,120,180,.2);}
+        .blister{top:76%;left:52%;animation-duration:23s;animation-delay:-13s;--rot:-5deg;transform:rotate(-5deg);}
+        .blister-card{width:66px;height:42px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(230,245,240,.75));border-radius:5px;border:1.5px solid rgba(0,180,160,.25);display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);padding:4px;gap:2.5px;box-shadow:0 4px 14px rgba(0,180,160,.18);}
+        .blister-pill{border-radius:50%;background:radial-gradient(circle at 32% 32%,rgba(255,255,255,.95),rgba(0,200,180,.4));border:1.5px solid rgba(0,180,160,.35);box-shadow:inset 0 -2px 3px rgba(0,0,0,.06);}
+        .dropper{top:36%;right:1%;animation-duration:15s;animation-delay:-6s;--rot:12deg;transform:rotate(12deg);}
+        .dropper-body{width:26px;height:38px;background:linear-gradient(135deg,rgba(160,120,200,.55),rgba(120,80,180,.45));border-radius:0 0 6px 6px;border:2px solid rgba(120,80,180,.35);position:relative;box-shadow:0 4px 14px rgba(120,80,180,.25);}
+        .dropper-body::before{content:'';position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:14px;height:9px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(200,190,220,.7));border-radius:3px 3px 0 0;border:1.5px solid rgba(120,80,180,.3);border-bottom:none;}
+        .dropper-body::after{content:'';position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:5px;height:14px;background:linear-gradient(180deg,rgba(200,200,200,.8),rgba(160,160,160,.6));border-radius:2px 2px 0 0;}
+        .dropper-bulb{position:absolute;top:-26px;left:50%;transform:translateX(-50%);width:14px;height:12px;background:radial-gradient(circle at 38% 38%,rgba(180,140,220,.65),rgba(140,100,180,.5));border-radius:50% 50% 30% 30%;}
+        .dropper-liquid{position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(180deg,rgba(140,80,200,.15),rgba(120,60,180,.45));border-radius:0 0 4px 4px;}
+        .pill-bottle{top:85%;right:40%;animation-duration:20s;animation-delay:-2s;--rot:-8deg;transform:rotate(-8deg);}
+        .pill-bottle-body{width:28px;height:38px;background:linear-gradient(135deg,rgba(255,140,140,.7),rgba(220,100,100,.55));border-radius:0 0 6px 6px;border:2px solid rgba(180,80,80,.3);position:relative;box-shadow:0 4px 14px rgba(200,100,100,.22);}
+        .pill-bottle-body::before{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:18px;height:10px;background:linear-gradient(135deg,rgba(255,255,255,.85),rgba(230,210,210,.7));border-radius:3px 3px 0 0;border:2px solid rgba(180,80,80,.3);border-bottom:none;}
+        .pill-bottle-label{position:absolute;top:8px;left:3px;right:3px;height:18px;background:rgba(255,255,255,.75);border-radius:2px;border:1px solid rgba(180,80,80,.15);}
+        @keyframes pharma-bob{0%{transform:translateY(0) rotate(var(--rot,0deg));}25%{transform:translateY(-14px) rotate(calc(var(--rot,0deg) + 4deg));}50%{transform:translateY(-5px) rotate(calc(var(--rot,0deg) - 3deg));}75%{transform:translateY(-18px) rotate(calc(var(--rot,0deg) + 2deg));}100%{transform:translateY(-10px) rotate(calc(var(--rot,0deg) + 5deg));}}
 
--->
+        /* ══════════════════════════════════════
+           CURSOR: precise dot + capsule trail
+           ══════════════════════════════════════ */
+        .cursor-dot{
+            position:fixed;width:8px;height:8px;border-radius:50%;pointer-events:none;z-index:10001;
+            background:#fff;
+            box-shadow:0 0 0 1.5px rgba(0,100,90,.5),0 0 8px rgba(0,204,170,.6),0 0 20px rgba(0,180,200,.25);
+            transform:translate(-50%,-50%);will-change:transform;
+            transition:width .15s,height .15s,box-shadow .15s,background .15s;
+        }
+        .cursor-dot.hovering{
+            width:12px;height:12px;
+            background:rgba(0,204,170,.9);
+            box-shadow:0 0 0 2px rgba(0,100,90,.6),0 0 14px rgba(0,204,170,.8),0 0 30px rgba(0,180,200,.35);
+        }
+
+        .cursor-glow{
+            position:fixed;width:90px;height:90px;border-radius:50%;pointer-events:none;z-index:9998;
+            background:radial-gradient(circle,rgba(0,204,170,.2) 0%,rgba(0,153,221,.08) 40%,transparent 70%);
+            transform:translate(-50%,-50%);will-change:transform;filter:blur(4px);
+        }
+
+        .cursor-capsule{
+            position:fixed;width:40px;height:18px;border-radius:9px;pointer-events:none;z-index:9999;
+            background:linear-gradient(90deg,#00ccaa 48%,#e8fffa 48%,#e8fffa 52%,#f0f8ff 52%);
+            box-shadow:0 0 10px rgba(0,204,170,.5),0 0 24px rgba(0,180,200,.3),0 0 44px rgba(0,153,221,.12),
+                inset 0 2px 3px rgba(255,255,255,.7),inset 0 -1px 2px rgba(0,100,80,.08);
+            transform:translate(-50%,-50%);will-change:transform;
+            opacity:.7;
+        }
+        .cursor-capsule .cap-line{
+            position:absolute;top:50%;left:47%;width:6%;height:55%;
+            background:rgba(0,160,140,.12);border-radius:1px;transform:translateY(-50%);
+        }
+
+        .cursor-trail{position:fixed;inset:0;pointer-events:none;z-index:9997;overflow:hidden;}
+        .trail-p{position:absolute;pointer-events:none;will-change:transform,opacity;}
+        .trail-cross{width:10px;height:10px;animation:trail-out .7s ease-out forwards;}
+        .trail-cross::before{content:'';position:absolute;top:50%;left:0;right:0;height:2.5px;background:currentColor;border-radius:1px;transform:translateY(-50%);}
+        .trail-cross::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:2.5px;background:currentColor;border-radius:1px;transform:translateX(-50%);}
+        .trail-dot{width:6px;height:6px;border-radius:50%;animation:trail-out .6s ease-out forwards;}
+        .trail-mini-cap{width:16px;height:7px;border-radius:3.5px;animation:trail-out .7s ease-out forwards;}
+        .trail-plus{width:8px;height:8px;animation:trail-out .55s ease-out forwards;}
+        .trail-plus::before{content:'';position:absolute;top:50%;left:15%;right:15%;height:1.5px;background:currentColor;border-radius:1px;transform:translateY(-50%);}
+        .trail-plus::after{content:'';position:absolute;left:50%;top:15%;bottom:15%;width:1.5px;background:currentColor;border-radius:1px;transform:translateX(-50%);}
+        @keyframes trail-out{0%{opacity:.7;transform:translate(0,0) scale(1) rotate(var(--r,0deg));}100%{opacity:0;transform:translate(var(--tx,0px),var(--ty,0px)) scale(.2) rotate(calc(var(--r,0deg) + 90deg));}}
+
+        @media(hover:none)and (pointer:coarse){
+            body{cursor:auto;}
+            .cursor-glow,.cursor-capsule,.cursor-trail,.cursor-dot{display:none!important;}
+        }
+        @media(hover:hover){
+            a,button,.jump-btn,.btn-aero,.top-bar-links a,.music-toggle,.music-ctrl-btn,.music-vol,.music-playlist li,.progress-bar{
+                cursor:none;
+            }
+        }
+
+        .glass{background:rgba(255,255,255,.38);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1.5px solid rgba(255,255,255,.6);border-radius:20px;box-shadow:0 8px 32px rgba(80,200,180,.15),inset 0 1px 0 rgba(255,255,255,.7);}
+        .glass-dark{background:rgba(255,255,255,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.45);border-radius:16px;box-shadow:0 4px 20px rgba(60,160,160,.12);}
+
+        .page{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:16px 16px 60px;}
+
+        .top-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;margin-bottom:8px;}
+        .logo-text{font-weight:800;font-size:15px;color:#0a5a4a;letter-spacing:-.3px;display:flex;align-items:center;gap:8px;}
+        .logo-text span{color:#0099bb;font-size:18px;}
+        .top-bar-links{display:flex;gap:8px;}
+        .top-bar-links a{font-size:11px;font-weight:700;padding:5px 12px;border-radius:50px;background:linear-gradient(135deg,#00ccaa,#0099dd);color:#fff;text-decoration:none;box-shadow:0 2px 8px rgba(0,180,160,.3);transition:all .2s;display:inline-flex;align-items:center;gap:5px;}
+        .top-bar-links a:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,180,160,.45);}
+        .top-bar-links a svg{width:13px;height:13px;}
+
+        .jump-nav{padding:10px 20px;margin-bottom:18px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;}
+        .jump-btn{font-size:12.5px;font-weight:700;padding:7px 18px;border-radius:50px;text-decoration:none;border:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#085050;border:1.5px solid rgba(0,180,200,.35);box-shadow:0 2px 10px rgba(0,160,180,.12);}
+        .jump-btn:hover{background:linear-gradient(135deg,#00ccaa,#0099dd);color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(0,180,200,.4);transform:translateY(-2px);}
+        .jump-btn:hover svg{stroke:#fff;}
+        .jump-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+
+        /* ── Hero ── */
+        .hero{padding:44px 36px 36px;margin-bottom:22px;text-align:center;}
+        .hero-tag{display:inline-block;font-size:11.5px;font-weight:700;color:#007799;background:rgba(0,200,220,.18);border:1px solid rgba(0,200,220,.35);border-radius:50px;padding:5px 16px;margin-bottom:16px;letter-spacing:.5px;text-transform:uppercase;}
+        .hero-logos{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:14px;flex-wrap:wrap;}
+        .hero-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:2px;}
+        .hero-logo-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#5a9080;}
+        .hero-x{font-size:20px;font-weight:300;color:#a0c8c0;line-height:1;}
+        .hero h1{font-size:32px;font-weight:800;color:#0a4a3a;line-height:1.15;margin-bottom:10px;}
+        .hero h1 em{font-style:normal;color:#0088bb;}
+        .hero-subtitle{font-size:14.5px;color:#2a5a4a;line-height:1.7;max-width:680px;margin:0 auto 18px;font-weight:400;}
+
+        /* Investment callout in hero */
+        .hero-invest{
+            display:inline-flex;align-items:center;gap:10px;
+            background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(239,68,68,.08));
+            border:1.5px solid rgba(245,158,11,.3);border-radius:14px;
+            padding:10px 20px;margin-bottom:24px;
+        }
+        .hero-invest-icon{
+            width:36px;height:36px;border-radius:10px;flex-shrink:0;
+            background:linear-gradient(135deg,#f59e0b,#ef4444);
+            display:flex;align-items:center;justify-content:center;
+            box-shadow:0 2px 8px rgba(245,158,11,.3);
+        }
+        .hero-invest-icon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+        .hero-invest-text{text-align:left;}
+        .hero-invest-text strong{font-size:13.5px;color:#92400e;display:block;line-height:1.35;}
+        .hero-invest-text span{font-size:11.5px;color:#b45309;font-weight:600;}
+
+        .hero-btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+
+        .btn-aero{font-size:13px;font-weight:700;padding:10px 20px;border-radius:50px;text-decoration:none;border:none;transition:all .2s;display:inline-block;}
+        .btn-primary-aero{background:linear-gradient(135deg,#00ccaa 0%,#0099dd 100%);color:#fff;box-shadow:0 3px 12px rgba(0,180,200,.4);}
+        .btn-primary-aero:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,180,200,.5);}
+        .btn-secondary-aero{background:rgba(255,255,255,.55);color:#006688;border:1.5px solid rgba(0,180,200,.4);}
+        .btn-secondary-aero:hover{background:rgba(255,255,255,.85);transform:translateY(-1px);}
+
+        .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px;}
+        .stat-bubble{padding:18px 12px;text-align:center;display:flex;flex-direction:column;align-items:center;}
+        .stat-icon{margin-bottom:8px;color:#0088aa;opacity:.7;}
+        .stat-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+        .stat-num{font-size:28px;font-weight:800;color:#0077aa;display:block;line-height:1;}
+        .stat-lbl{font-size:11.5px;color:#2a6a5a;font-weight:600;margin-top:6px;display:block;line-height:1.4;}
+
+        .section-title{font-size:22px;font-weight:800;color:#083a2a;margin-bottom:6px;}
+        .section-sub{font-size:13.5px;color:#2a6050;line-height:1.6;margin-bottom:18px;}
+        .section-wrap{margin-bottom:22px;}
+
+        .exp-block{padding:22px 24px;margin-bottom:14px;position:relative;overflow:hidden;}
+        .exp-block::after{content:'';position:absolute;top:0;right:0;width:80px;height:80px;background:radial-gradient(circle at 100% 0%,rgba(0,200,180,.18),transparent);border-radius:0 20px 0 0;pointer-events:none;}
+        .exp-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap;}
+        .exp-title{font-size:16px;font-weight:700;color:#084a38;}
+        .exp-company{font-size:13px;color:#0099bb;font-weight:600;}
+        .exp-date{font-size:12px;font-weight:600;padding:4px 12px;border-radius:50px;background:rgba(0,200,200,.15);color:#006680;white-space:nowrap;}
+        .exp-bullets{list-style:none;padding:0;}
+        .exp-bullets li{font-size:13px;color:#2a5a4a;padding:4px 0 4px 18px;position:relative;line-height:1.55;}
+        .exp-bullets li::before{content:"◆";position:absolute;left:0;font-size:8px;color:#00bbaa;top:7px;}
+
+        .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:22px;}
+        .proj-card{padding:18px 16px;position:relative;overflow:hidden;display:flex;gap:14px;align-items:flex-start;}
+        .proj-card::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,#00ccaa,#0099dd,#60aaff);border-radius:0 0 16px 16px;}
+        .proj-icon-wrap{flex-shrink:0;width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;}
+        .proj-icon-wrap svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+        .proj-icon-wrap.teal{background:linear-gradient(135deg,#00ccaa,#0099dd);}
+        .proj-icon-wrap.purple{background:linear-gradient(135deg,#7c5ce0,#a78bfa);}
+        .proj-icon-wrap.blue{background:linear-gradient(135deg,#0099dd,#60aaff);}
+        .proj-icon-wrap.green{background:linear-gradient(135deg,#40a870,#00ccaa);}
+        .proj-text h4{font-size:14px;font-weight:700;color:#084a38;margin-bottom:5px;}
+        .proj-text p{font-size:12.5px;color:#2a5a4a;line-height:1.55;}
+
+        .skills-section{padding:22px 24px;margin-bottom:22px;}
+        .skills-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+        .skill-cat h4{font-size:11.5px;font-weight:700;color:#006688;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;}
+        .skill-pills{display:flex;flex-wrap:wrap;gap:5px;}
+        .pill{font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:50px;background:rgba(255,255,255,.6);border:1px solid rgba(0,180,180,.3);color:#085050;}
+        .pill.new{background:rgba(0,220,190,.2);border-color:rgba(0,200,180,.5);color:#005a50;}
+        .pill-note{font-size:11px;color:#3a8070;margin-top:12px;}
+
+        .certs-section{margin-bottom:22px;}
+        .certs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+        .cert-card{padding:0;position:relative;overflow:hidden;background:rgba(255,255,255,.45);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1.5px solid rgba(255,255,255,.65);border-radius:18px;box-shadow:0 6px 24px rgba(60,160,160,.15),inset 0 1px 0 rgba(255,255,255,.8);transition:transform .25s ease,box-shadow .25s ease;}
+        .cert-card:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(60,160,160,.25),inset 0 1px 0 rgba(255,255,255,.8);}
+        .cert-accent{height:5px;width:100%;}
+        .cert-accent.ai{background:linear-gradient(90deg,#7c5ce0,#a78bfa,#00ccaa);}
+        .cert-accent.pharma{background:linear-gradient(90deg,#00ccaa,#0099dd);}
+        .cert-accent.finance{background:linear-gradient(90deg,#f59e0b,#ef4444,#f59e0b);}
+        .cert-accent.data{background:linear-gradient(90deg,#0099dd,#60aaff,#00ccaa);}
+        .cert-body{padding:18px 20px 16px;}
+        .cert-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px;}
+        .cert-badge{min-width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(0,0,0,.12);}
+        .cert-badge svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+        .cert-badge.ai{background:linear-gradient(135deg,#7c5ce0,#a78bfa);}
+        .cert-badge.pharma{background:linear-gradient(135deg,#00ccaa,#0099dd);}
+        .cert-badge.finance{background:linear-gradient(135deg,#f59e0b,#ef4444);}
+        .cert-badge.data{background:linear-gradient(135deg,#0099dd,#60aaff);}
+        .cert-info{flex:1;min-width:0;}
+        .cert-name{font-size:14.5px;font-weight:700;color:#084a38;line-height:1.3;margin-bottom:3px;}
+        .cert-issuer{font-size:12px;color:#0088aa;font-weight:600;}
+        .cert-date{font-size:11px;color:#5a9080;font-weight:600;}
+        .cert-tags{display:flex;flex-wrap:wrap;gap:5px;}
+        .cert-tag{font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:50px;color:#085050;}
+        .cert-tag.ai{background:rgba(124,92,224,.12);border:1px solid rgba(124,92,224,.25);}
+        .cert-tag.pharma{background:rgba(0,200,180,.12);border:1px solid rgba(0,180,180,.25);}
+        .cert-tag.finance{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);}
+        .cert-tag.data{background:rgba(0,153,221,.12);border:1px solid rgba(0,153,221,.25);}
+
+        .edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:22px;}
+        .edu-card{padding:18px 20px;position:relative;overflow:hidden;display:flex;gap:14px;align-items:flex-start;}
+        .edu-card::after{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#00ccaa,#0099dd);border-radius:16px 0 0 16px;}
+        .edu-icon-wrap{flex-shrink:0;width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#00ccaa,#0099dd);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,180,200,.25);}
+        .edu-icon-wrap svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+        .edu-text h4{font-size:14px;font-weight:700;color:#084a38;margin-bottom:4px;}
+        .edu-text .edu-inst{font-size:13px;color:#0099bb;font-weight:600;margin-bottom:2px;}
+        .edu-text .edu-year{font-size:12px;color:#2a6a5a;}
+
+        .contact-block{padding:28px 36px;text-align:center;margin-bottom:22px;}
+        .contact-block p{font-size:14px;color:#2a6050;margin-bottom:6px;}
+        .contact-info{margin-top:16px;font-size:12.5px;color:#4a8070;line-height:1.8;}
+        .contact-info strong{color:#2a5a4a;}
+
+        .lang-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px;}
+        .lang-pill{font-size:12px;font-weight:700;padding:6px 16px;border-radius:50px;}
+        .lang-native{background:linear-gradient(135deg,#00ccaa,#00a888);color:#fff;}
+        .lang-prof{background:linear-gradient(135deg,#0099dd,#0077bb);color:#fff;}
+        .lang-begin{background:linear-gradient(135deg,#a070d0,#8050b0);color:#fff;}
+
+        .footer{text-align:center;padding:16px;font-size:12px;color:#3a7060;}
+        .footer a{color:#0099bb;text-decoration:none;}
+        .footer a:hover{text-decoration:underline;}
+
+        .fade-section{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
+        .fade-section.visible{opacity:1;transform:translateY(0);}
+
+        .music-toggle{position:fixed;bottom:24px;right:24px;z-index:200;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#00ccaa,#0099dd);border:none;box-shadow:0 4px 16px rgba(0,180,200,.45);display:flex;align-items:center;justify-content:center;transition:all .3s ease;color:#fff;font-size:20px;}
+        .music-toggle:hover{transform:scale(1.08);box-shadow:0 6px 22px rgba(0,180,200,.55);}
+        .music-toggle.playing{animation:pulse-glow 2s ease-in-out infinite;}
+        @keyframes pulse-glow{0%,100%{box-shadow:0 4px 16px rgba(0,180,200,.45);}50%{box-shadow:0 4px 28px rgba(0,200,180,.7),0 0 40px rgba(0,180,200,.2);}}
+        .music-panel{position:fixed;bottom:82px;right:24px;z-index:199;width:280px;background:rgba(255,255,255,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1.5px solid rgba(255,255,255,.7);border-radius:18px;box-shadow:0 8px 32px rgba(0,160,180,.2),inset 0 1px 0 rgba(255,255,255,.8);padding:18px 20px;opacity:0;transform:translateY(10px) scale(.96);pointer-events:none;transition:all .3s ease;}
+        .music-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all;}
+        .music-now{font-size:11px;font-weight:700;color:#0088aa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}
+        .music-track-name{font-size:14px;font-weight:700;color:#084a38;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+        .music-artist{font-size:12px;color:#2a6a5a;margin-bottom:14px;}
+        .music-progress{width:100%;height:4px;background:rgba(0,180,180,.15);border-radius:2px;margin-bottom:6px;cursor:pointer;position:relative;}
+        .music-progress-fill{height:100%;background:linear-gradient(90deg,#00ccaa,#0099dd);border-radius:2px;width:0%;transition:width .3s linear;}
+        .music-time{display:flex;justify-content:space-between;font-size:10px;color:#5a9080;margin-bottom:12px;}
+        .music-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:14px;}
+        .music-ctrl-btn{background:none;border:none;cursor:pointer;font-size:18px;color:#085050;transition:all .15s;padding:4px;}
+        .music-ctrl-btn:hover{color:#0088bb;transform:scale(1.15);}
+        .music-ctrl-btn.play-pause{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#00ccaa,#0099dd);color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,180,200,.35);}
+        .music-ctrl-btn.play-pause:hover{transform:scale(1.08);box-shadow:0 4px 14px rgba(0,180,200,.5);color:#fff;}
+        .music-playlist-label{font-size:10px;font-weight:700;color:#0088aa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}
+        .music-playlist{list-style:none;max-height:120px;overflow-y:auto;}
+        .music-playlist li{padding:6px 8px;border-radius:8px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s;color:#2a5a4a;}
+        .music-playlist li:hover{background:rgba(0,200,180,.12);}
+        .music-playlist li.active{background:rgba(0,200,180,.18);color:#005a50;font-weight:700;}
+        .music-playlist li .pl-num{font-size:10px;color:#80b0a0;width:16px;text-align:center;}
+        .music-playlist li.active .pl-num{color:#0088aa;}
+        .music-playlist li .pl-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+        .music-playlist li .pl-dur{font-size:10px;color:#80b0a0;}
+        .music-vol-row{display:flex;align-items:center;gap:8px;margin-top:12px;}
+        .music-vol-icon{font-size:13px;color:#5a9080;}
+        .music-vol{flex:1;-webkit-appearance:none;appearance:none;height:3px;background:rgba(0,180,180,.2);border-radius:2px;outline:none;cursor:pointer;}
+        .music-vol::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#00ccaa,#0099dd);cursor:pointer;box-shadow:0 1px 4px rgba(0,180,200,.3);}
+        .music-playlist::-webkit-scrollbar{width:4px;}
+        .music-playlist::-webkit-scrollbar-track{background:transparent;}
+        .music-playlist::-webkit-scrollbar-thumb{background:rgba(0,180,180,.2);border-radius:2px;}
+
+        @media(max-width:768px){
+            .hero{padding:28px 20px;}.hero h1{font-size:24px;}.hero-logos svg{width:44px!important;height:44px!important;}
+            .stats-row{grid-template-columns:repeat(2,1fr);}
+            .projects-grid,.edu-grid,.certs-grid{grid-template-columns:1fr;}
+            .skills-cats{grid-template-columns:repeat(2,1fr);}
+            .top-bar{flex-direction:column;gap:8px;align-items:flex-start;}
+            .jump-nav{gap:5px;}.jump-btn{font-size:11.5px;padding:6px 14px;}
+            .contact-block{padding:24px 20px;}
+            .music-panel{right:12px;bottom:76px;width:260px;}
+            .music-toggle{bottom:16px;right:16px;width:44px;height:44px;font-size:18px;}
+            .syringe,.dropper,.pill-bottle{display:none;}.pharma-float{opacity:.35;}
+            .hero-invest{padding:8px 16px;}
+        }
+        @media(max-width:480px){
+            .stats-row{grid-template-columns:1fr 1fr;}.skills-cats{grid-template-columns:1fr;}
+            .jump-btn{font-size:11px;padding:5px 11px;}
+            .capsule-1,.capsule-3,.vial,.blister,.capsule-4,.tablet-3{display:none;}.pharma-float{opacity:.32;}
+            .hero-logos svg{width:38px!important;height:38px!important;}
+            .hero-invest{flex-direction:column;text-align:center;}
+        }
+    </style>
 </head>
-<body id="top">
-    <!-- Enhanced Background Elements -->
-    <div class="cyber-bg">
-        <div class="cyber-gradient"></div>
-        <div class="matrix-rain" id="matrixRain"></div>
-    </div>
-    
-    <div class="particles" id="particlesContainer"></div>
-    
-    <div class="data-streams" id="dataStreams"></div>
-    
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-    <div class="orb orb3"></div>
-    
-    <div class="grid-overlay">
-        <div class="grid-lines"></div>
-        <div class="grid-glow"></div>
-    </div>
-    
-    <div class="scanlines"></div>
-    <div class="noise-overlay"></div>
-    
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#top" class="logo">Sebastián Tapia - Químico Farmacéutico - 薬 </a>
-            <ul class="nav-links">
-                <li><a href="#features">Experiencia Laboral</a></li>
-              <!--  <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#stats">Stats</a></li> -->
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-            <div class="nav-bottom">
-                <a href="https://sebapharma.github.io/" class="cyber-button">Selección de idiomas</a>
-            </div>
-            <button class="mobile-menu-button" id="mobileMenuBtn">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
+<body>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="cursor-capsule" id="cursorCapsule"><div class="cap-line"></div></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<div class="aero-bg">
+    <div class="aero-orb orb1"></div><div class="aero-orb orb2"></div><div class="aero-orb orb3"></div><div class="aero-orb orb4"></div><div class="aero-orb orb5"></div>
+</div>
+
+<div class="pharma-layer">
+    <div class="pharma-float capsule-1"></div><div class="pharma-float capsule-2"></div><div class="pharma-float capsule-3"></div><div class="pharma-float capsule-4"></div>
+    <div class="pharma-float tablet-1"></div><div class="pharma-float tablet-2"></div><div class="pharma-float tablet-3"></div>
+    <div class="pharma-float syrup-bottle"><div class="syrup-body"><div class="syrup-liquid"></div></div></div>
+    <div class="pharma-float vial"><div class="vial-body"><div class="vial-stopper"></div><div class="vial-liquid"></div></div></div>
+    <div class="pharma-float syringe"><div class="syringe-barrel"><div class="syringe-needle"></div><div class="syringe-plunger"></div><div class="syringe-flange"></div><div class="syringe-markings"><span></span><span></span><span></span><span></span><span></span></div></div></div>
+    <div class="pharma-float blister"><div class="blister-card"><div class="blister-pill"></div><div class="blister-pill"></div><div class="blister-pill"></div><div class="blister-pill"></div><div class="blister-pill"></div><div class="blister-pill"></div><div class="blister-pill"></div><div class="blister-pill"></div></div></div>
+    <div class="pharma-float dropper"><div class="dropper-body"><div class="dropper-bulb"></div><div class="dropper-liquid"></div></div></div>
+    <div class="pharma-float pill-bottle"><div class="pill-bottle-body"><div class="pill-bottle-label"></div></div></div>
+</div>
+
+<div class="page">
+
+    <div class="top-bar">
+        <div class="logo-text">Sebastián Tapia <span>药</span></div>
+        <div class="top-bar-links">
+            <a href="https://sebapharma.github.io/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Portafolio</a>
+            <a href="https://www.linkedin.com/in/sebasti%C3%A1n-tapia-maturana-50503b144/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
         </div>
+    </div>
+
+    <nav class="jump-nav glass">
+        <a href="#experience" class="jump-btn"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Experiencia</a>
+        <a href="#projects" class="jump-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><circle cx="12" cy="11" r="1.5"/><path d="M8 16l-2 2"/><path d="M16 16l2 2"/></svg>Proyectos</a>
+        <a href="#skills" class="jump-btn"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Habilidades</a>
+        <a href="#certifications" class="jump-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>Certificaciones</a>
+        <a href="#education" class="jump-btn"><svg viewBox="0 0 24 24"><path d="M12 3L2 9l10 6 10-6-10-6z"/><path d="M6 11v5c0 2 3 3 6 3s6-1 6-3v-5"/></svg>Educación</a>
+        <a href="#contact" class="jump-btn"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>Contacto</a>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-header">
-            <a href="#top" class="mobile-menu-logo">NexusFlow</a>
-            <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
-        </div>
-        <div class="mobile-menu-cta">
-            <a href="#" class="cyber-button">Access Terminal</a>
-        </div>
-        <nav class="mobile-menu-nav">
-            <ul>
-                <li><a href="#features">Experiencia Laboral</a></li>
-              <!--  <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#stats">Stats</a></li> -->
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <h1 class="hero-title">
-                <span class="hero-nexus">SEBASTIÁN TAPIA</span><span class="hero-flow">QUÍMICO FARMACÉUTICO</span>
-            </h1>
-            <p class="hero-subtitle">Desde el 2022, me desempeño como Jefe de Validaciones con enfoque en Sistemas Computarizados y con experiencia como Jefe de ASCAL. Uso activo la Inteligencia Artificial.</p>
-            <div class="hero-buttons">
-                <a href="#features" class="btn-primary">Visualizar CV en Sitio Web</a>
-                <a href="./archivos/CV 2025.pdf" class="btn-primary">Descargar CV en PDF</a>
+    <section class="hero glass fade-section">
+        <div class="hero-tag">Químico Farmacéutico · Constructor de Sistemas IA · Inversionista · QF</div>
+        <div class="hero-logos">
+            <div class="hero-logo-wrap">
+                <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="2" y="2" width="48" height="48" rx="12" fill="#00b894" opacity=".15"/><rect x="6" y="6" width="40" height="40" rx="10" fill="#00b894"/><rect x="20" y="12" width="12" height="28" rx="2.5" fill="#fff"/><rect x="12" y="20" width="28" height="12" rx="2.5" fill="#fff"/></svg>
+                <span class="hero-logo-label">Farma</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats fade-up" id="stats">
-        <div class="stats-container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number">14</span>
-                    <span class="stat-label">Participaciones en Auditorías Externas, algunas con foco internacional</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number"> 7+🧪 </span>
-                    <span class="stat-label">4 Años de Experiencia en Farmacia | 3 en Industria Farmacéutica</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">12+ 🤖</span>
-                    <span class="stat-label">6 Softwares Implementados | 7+ Mejorados</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">8+</span>
-                    <span class="stat-label">KPIs con seguimiento mensual</span>
-                </div>
+            <span class="hero-x">×</span>
+            <div class="hero-logo-wrap">
+                <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="2" y="2" width="48" height="48" rx="12" fill="#7c5ce0" opacity=".12"/><line x1="18" y1="12" x2="18" y2="4" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="34" y1="12" x2="34" y2="4" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="18" y1="40" x2="18" y2="48" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="34" y1="40" x2="34" y2="48" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="12" y1="18" x2="4" y2="18" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="12" y1="34" x2="4" y2="34" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="40" y1="18" x2="48" y2="18" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><line x1="40" y1="34" x2="48" y2="34" stroke="#7c5ce0" stroke-width="3" stroke-linecap="round"/><rect x="10" y="10" width="32" height="32" rx="5" fill="#7c5ce0"/><circle cx="26" cy="26" r="6" fill="#a78bfa"/><circle cx="26" cy="26" r="2.5" fill="#7c5ce0"/><circle cx="16" cy="16" r="2" fill="#a78bfa" opacity=".6"/><circle cx="36" cy="16" r="2" fill="#a78bfa" opacity=".6"/><circle cx="16" cy="36" r="2" fill="#a78bfa" opacity=".6"/><circle cx="36" cy="36" r="2" fill="#a78bfa" opacity=".6"/></svg>
+                <span class="hero-logo-label">IA</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features fade-up" id="features">
-        <div class="features-container">
-            <div class="section-header">
-                <h2 class="section-title">Jefe de Validaciones </h2>
-                 <h2 class="section-title">Jefe de Aseguramiento de Calidad (Suplente)</h2>
-                 <h2 class="section-title">2022 hasta la fecha</h2>
-                <p class="section-subtitle">Como Jefe de Validaciones en Knop Laboratorios, 
-                    me centro en la validación de: Sistemas Computarizados, Procesos y Limpieza para productos sólidos, semisólidos y líquidos. También superviso la calificación de: Equipos, Instalaciones, 
-                    Sistemas de apoyo críticos (Agua purificada, Aire con su sistema HVAC y Aire comprimido libre de aceite Oil Free).
+            <span class="hero-x">×</span>
             
-                </p>
-
-                 <p class="section-subtitle">
-                
-                Dentro de mi rol, soy suplente constantemente del Jefe de Aseguramiento de Calidad, debido a que se me delegan constanemente actividades relativas a nuestro Sistema de Calidad.
-                
-                </p>
-            </div>
+            <div class="hero-logo-wrap">
+    <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+        <rect x="2" y="2" width="48" height="48" rx="12" fill="#00b894" opacity=".15"/>
+        <rect x="6" y="6" width="40" height="40" rx="10" fill="#00b894"/>
+        <!-- Barras ascendentes -->
+        <rect x="12" y="28" width="6" height="12" rx="1.5" fill="#fff" opacity=".9"/>
+        <rect x="21" y="22" width="6" height="18" rx="1.5" fill="#fff" opacity=".9"/>
+        <rect x="30" y="16" width="6" height="24" rx="1.5" fill="#fff" opacity=".9"/>
+        <!-- Flecha ascendente -->
+        <path d="M14 20 L20 14 L38 32" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".95"/>
+        <polyline points="20,14 28,14 28,22" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".95"/>
+    </svg>
+    <span class="hero-logo-label">Inversión</span>
+</div>
             
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Sistema de Gestión de Calidad (SGC | QMS)</h3>
-                    <p>He gestionado el Sistema de Gestión de Calidad (SGC) de la empresa y participado activamente en 
-actividades como el seguimiento de KPIs, el manejo de quejas y reclamos de calidad, liberación de lotes, auditorías de proveedores, 
-acciones correctivas y preventivas (CAPA), gestión de no conformidades, gestión de riesgos, gestión de cambios y control de documentos.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🔮</div>
-                    <h3>GMP | GLP | GDP</h3>
-                    <p>Amplio conocimiento de GMP (Buenas Prácticas de Manufactura), GLP (Buenas Prácticas de Laboratorio),
-                        control de documentos, almacenamiento y distribución, el cual he adquirido a través de constantes
-                        auditorías por parte de ISPs y autoridades reguladoras (INVIMA/ANVISA).</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3>ISO 9001 | 13485</h3>
-                    <p>He participado activamente en auditorías ISO (Sistemas de Gestión de Calidad 9001 y Dispositivos Médicos 13485), en las cuales he
-                        hecho una contribución significativa para lograr la certificación de estas normas ISO en 2023.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Implementación, mejora y validación de Softwares: LIMS, WMS, Aplicaciones de desarrollo propio, entre otros</h3>
-                    <p>He participado en la implementación, mejora y validación de sistemas informáticos de Administración de Datos de Laboratorio (LIMS: Laboratory Information Management System), Administración de Logística de Bodegas de Materias Primas y Productos Terminados (WMS:Warehouse Management System), Aplicaciones de Lotus Notes utilizadas en el Sistema de Gestión de Calidad y Softwares de HPLCs.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Programación y análisis de datos (OpenAI, HTML, Qwen, Python, Excel)</h3>
-                    <p>Con un gran interés y conocimientos básicos en inteligencia artificial, 
-                    proceso texto e imágenes en mi trabajo diario, creando presentaciones, automatizando tablas de logotipos de Excel y mejorando la eficiencia y la automatización del trabajo interno.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Director Técnico Farmacia - 2019 hasta 2022</h3>
-                    <p>A cargo de farmacia, supervisando a auxiliares de farmacia, auditado en cumplimiento normativo por el Ministerio de Salud, encargado del control de stock de psicotrópicos y estupefacientes, revisión de recetas físicas y digitales y control de inventarios.</p>
-                </div>
+        <!--  icono anterior.  <div class="hero-logo-wrap">
+                <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><rect x="2" y="2" width="48" height="48" rx="12" fill="#f59e0b" opacity=".12"/><rect x="6" y="6" width="40" height="40" rx="10" fill="linear-gradient(135deg,#f59e0b,#ef4444)"/><polyline points="14 36 22 26 30 20 38 14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><polyline points="30 16 38 16 38 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".8"/></svg>
+                <span class="hero-logo-label">Inversión</span>
             </div>
-        </div>
-    </section>
+        </div> -->
 
-    <!-- Pricing Section: No lo uso por ahora 
-    <section class="pricing fade-up" id="pricing">
-        <div class="pricing-container">
-            <div class="section-header">
-                <h2 class="section-title">Access Levels</h2>
-                <p class="section-subtitle">Choose your gateway to the future of collaboration</p>
-            </div>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="plan-name">Initiate</div>
-                    <div class="plan-price">$49</div>
-                    <div class="plan-period">per neural link</div>
-                    <ul class="plan-features">
-                        <li>Basic quantum processing</li>
-                        <li>5 holographic workspaces</li>
-                        <li>Standard encryption</li>
-                        <li>Community support matrix</li>
-                        <li>Reality sync enabled</li>
-                    </ul>
-                    <a href="#" class="btn-secondary">Enter System</a>
-                </div>
-                
-                <div class="pricing-card featured">
-                    <div class="plan-name">Nexus</div>
-                    <div class="plan-price">$149</div>
-                    <div class="plan-period">per neural link</div>
-                    <ul class="plan-features">
-                        <li>Advanced quantum algorithms</li>
-                        <li>Unlimited holo-workspaces</li>
-                        <li>Quantum encryption fortress</li>
-                        <li>Priority neural support</li>
-                        <li>Mind-reading analytics</li>
-                        <li>Hyperdrive sync protocol</li>
-                    </ul>
-                    <a href="#" class="btn-primary">Jack In</a>
-                </div>
-                
-                <div class="pricing-card">
-                    <div class="plan-name">Transcend</div>
-                    <div class="plan-price">$399</div>
-                    <div class="plan-period">per neural link</div>
-                    <ul class="plan-features">
-                        <li>Infinite processing power</li>
-                        <li>Custom reality matrices</li>
-                        <li>Temporal encryption layers</li>
-                        <li>Direct neural interface</li>
-                        <li>Predictive consciousness</li>
-                        <li>Quantum entanglement sync</li>
-                    </ul>
-                    <a href="#" class="btn-secondary">Ascend</a>
-                </div>
-            </div>
-        </div>
-    </section>
--->
-    <!-- Contact Section -->
-      <!-- Contact Section Test -->
-            <section class="contact fade-up" id="contact">
-    <div class="contact-container">
-        <div class="section-header">
-            <h2 class="section-title">Iniciar Contacto</h2>
-            <p class="section-subtitle">Envianos tus consultas y datos de contacto!</p>
-        </div>
         
-        <!-- Contenedor centrado para el botón -->
-        <div class="contact-buttons">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBYeRSxnQI3p1v1y92ezSnEiPjd7jteQEeDmfaiBQLBW_Keg/viewform?usp=sharing&ouid=117893374139927738018" class="btn-primary">Formulario</a>
+        <h1>Sebastián Tapia</h1>
+        <p class="hero-subtitle">Químico Farmacéutico con más de seis años de experiencia en Aseguramiento de Calidad y Validación de Sistemas Computarizados (VSC) en entornos regulados bajo normas GxP. En paralelo, diseño e implemento sistemas basados en Inteligencia Artificial — desde inferencia de LLM locales en infraestructura autoalojada hasta automatización de flujos de trabajo multi-agente y aplicaciones full-stack que integran las APIs de OpenAI, Gemini y Claude. Ofrezco una intersección distintiva entre profundo conocimiento del dominio farmacéutico e ingeniería aplicada de IA.</p>
+
+        <div class="hero-invest">
+            <div class="hero-invest-icon">
+                <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            </div>
+            <div class="hero-invest-text">
+                <strong>Retorno anual promedio consistente superior al 13% (ROI) mediante selección estratégica de acciones.</strong>
+                <span>Análisis técnico · Gestión de riesgo · Optimización de portafolio</span>
+            </div>
+        </div>
+
+        <div class="hero-btn-row">
+            <a href="#experience" class="btn-aero btn-primary-aero">Ver mi experiencia</a>
+            <a href="https://sebapharma.github.io/Spanish/archives/CVweb.html" class="btn-aero btn-secondary-aero">CV Web</a>
+            <a href="https://sebapharma.github.io/Spanish/archives/CV2025esp.pdf" class="btn-aero btn-secondary-aero">Descargar PDF</a>
+        </div>
+    </section>
+
+    <div class="stats-row fade-section">
+        <div class="stat-bubble glass-dark"><div class="stat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><span class="stat-num">6+</span><span class="stat-lbl">Años en la industria farmacéutica</span></div>
+        <div class="stat-bubble glass-dark"><div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg></div><span class="stat-num">14</span><span class="stat-lbl">Participaciones en auditorías regulatorias</span></div>
+        <div class="stat-bubble glass-dark"><div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/></svg></div><span class="stat-num">3×</span><span class="stat-lbl">Certificaciones ISO obtenidas</span></div>
+        <div class="stat-bubble glass-dark"><div class="stat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="2" width="18" height="6" rx="2"/><rect x="3" y="11" width="18" height="6" rx="2"/><rect x="3" y="20" width="18" height="2" rx="1"/><circle cx="7" cy="5" r="1" fill="currentColor"/><circle cx="7" cy="14" r="1" fill="currentColor"/></svg></div><span class="stat-num">12+</span><span class="stat-lbl">Implementaciones de sistemas</span></div>
+    </div>
+
+    <div class="section-wrap fade-section" id="experience">
+        <p class="section-title">Experiencia Profesional</p>
+        <p class="section-sub">Liderazgo en sistemas de calidad farmacéutica integrado con implementación práctica de IA</p>
+        <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Jefe de Validaciones</div><div class="exp-company">Knop Laboratorios S.A.</div></div><span class="exp-date">Abr 2022 – Presente</span></div><ul class="exp-bullets"><li>Lidero la Validación de Sistemas Computarizados (VSC) como área principal de responsabilidad, con supervisión concurrente de calificación de equipos, sistemas de apoyo críticos (agua purificada, HVAC, aire comprimido) y validación de procesos y limpieza para formas farmacéuticas sólidas, semisólidas y líquidas.</li><li>Impulsé el ciclo completo de implementación y validación de un WMS, un LIMS, sistemas de firma electrónica y aplicaciones personalizadas en Lotus Notes integradas al Sistema de Gestión de Calidad.</li><li>Aprovecho herramientas de IA (Claude, Gemini, ChatGPT) para acelerar la documentación GxP — automatizando redacción de protocolos, matrices de análisis de riesgo, evaluaciones de desviaciones y generación de POE, logrando reducciones medibles en los tiempos de ejecución.</li><li>Arquitecté y desplegué dashboards internos conectados a datos de fabricación en Google Drive, proporcionando visibilidad en tiempo real de KPIs de fabricación y trazabilidad completa de procesos.</li></ul></div>
+        <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Jefe de Aseguramiento de Calidad (Suplente)</div><div class="exp-company">Knop Laboratorios S.A.</div></div><span class="exp-date">Abr 2022 – Presente</span></div><ul class="exp-bullets"><li>Gestiono operaciones centrales del SGC: seguimiento de KPIs, ciclo de vida de CAPA, reclamos de calidad, auditorías a proveedores, disposición de productos no conformes, gestión de riesgos, control de cambios y control de documentos.</li><li>Represento la función de Aseguramiento de Calidad en inspecciones regulatorias bajo normas GMP, GLP, GDP y marcos GxP más amplios, incluyendo auditorías del ISP (Chile), INVIMA (Colombia) y ANVISA (Brasil).</li><li>Fui contribuyente clave en la obtención exitosa de las certificaciones ISO 9001, ISO 13485 e ISO 14001 en 2023.</li></ul></div>
+        <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Químico Farmacéutico / Director Técnico</div><div class="exp-company">Farmacia Independiente</div></div><span class="exp-date">2019 – 2022</span></div><ul class="exp-bullets"><li>Dirigí todas las operaciones farmacéuticas incluyendo supervisión de personal, cumplimiento normativo bajo estándares del Ministerio de Salud, control de inventario de sustancias controladas (psicotrópicos y estupefacientes), verificación de recetas y gestión de inventarios.</li></ul></div>
+        <div class="exp-block glass"><div class="exp-header"><div><div class="exp-title">Asistente de Laboratorio de Investigación</div><div class="exp-company">Laboratorio de Neurobiología — Universidad de Valparaíso</div></div><span class="exp-date">2015 – 2017</span></div><ul class="exp-bullets"><li>Brindé apoyo en investigación en un laboratorio universitario de neurobiología enfocado en los mecanismos de comportamientos sociales y adictivos.</li></ul></div>
+    </div>
+
+    <div class="section-wrap fade-section" id="projects">
+        <p class="section-title">Proyectos Personales y Desarrollo con IA</p>
+        <p class="section-sub">Infraestructura autoalojada, flujos de trabajo multi-agente y desarrollo de aplicaciones asistidas por IA</p>
+        <div class="projects-grid">
+            <div class="proj-card glass-dark"><div class="proj-icon-wrap teal"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="7 12 10 9 13 11 17 7"/></svg></div><div class="proj-text"><h4>Dashboard de Fabricación GxP</h4><p>Dashboards web conectados a hojas de datos de fabricación en Google Drive, entregando visibilidad en tiempo real de registros de fabricación y KPIs de proceso.</p></div></div>
+            <div class="proj-card glass-dark"><div class="proj-icon-wrap purple"><svg viewBox="0 0 24 24"><rect x="3" y="2" width="18" height="8" rx="2"/><rect x="3" y="12" width="18" height="8" rx="2"/><circle cx="7" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="7" cy="16" r="1" fill="currentColor" stroke="none"/></svg></div><div class="proj-text"><h4>Servidor de Inferencia LLM Autoalojado</h4><p>Despliegue de inferencia LLM local vía Ollama en Oracle Cloud Free Tier, habilitando ejecución de modelos de IA privada y sin costo. Ejecutando variantes de LLaMA y Mistral.</p></div></div>
+            <div class="proj-card glass-dark"><div class="proj-icon-wrap blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><line x1="12" y1="7.5" x2="5" y2="16.5"/><line x1="12" y1="7.5" x2="19" y2="16.5"/><line x1="5" y1="19" x2="19" y2="19"/></svg></div><div class="proj-text"><h4>Infraestructura de Flujos Multi-Agente</h4><p>Pipelines de automatización multi-agente usando PocketFlow/OpenFlow, orquestados a través de n8n con integraciones REST API. Desplegados en Oracle Cloud y Raspberry Pi.</p></div></div>
+            <div class="proj-card glass-dark"><div class="proj-icon-wrap green"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg></div><div class="proj-text"><h4>Aplicaciones Full-Stack Asistidas por IA</h4><_Aplicaciones web de extremo a extremo construidas con herramientas de desarrollo asistidas por IA (Claude, Gemini, Antigravity), abarcando tanto backend como frontend. Todo en GitHub.</p></div></div>
         </div>
     </div>
-</section>
-            
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <span class="footer-separator">•</span>
-                <a href="#">Terms of Service</a>
-                <span class="footer-separator">•</span>
-                <a href="#">Documentation</a>
-                <span class="footer-separator">•</span>
-                <a href="#">Contact Support</a>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 NexusFlow Systems. All realities reserved.</p>
-                <p class="footer-credit">Brought to you by <a href="https://templatemo.com" target="_blank" rel="noopener nofollow">TemplateMo</a></p>
-            </div>
+    <div class="skills-section glass fade-section" id="skills">
+        <p class="section-title" style="margin-bottom:16px;">Habilidades Técnicas</p>
+        <div class="skills-cats">
+            <div class="skill-cat"><h4>IA y LLM</h4><div class="skill-pills"><span class="pill">Ollama</span><span class="pill new">LangChain ★</span><span class="pill new">RAG ★</span><span class="pill">OpenAI API</span><span class="pill">Gemini API</span><span class="pill">Claude API</span><span class="pill">Prompt Engineering</span><span class="pill">PocketFlow</span></div></div>
+            <div class="skill-cat"><h4>Infraestructura</h4><div class="skill-pills"><span class="pill">Oracle Cloud</span><span class="pill">Raspberry Pi</span><span class="pill">n8n</span><span class="pill">Servidores autoalojados</span><span class="pill">Docker (básico)</span></div></div>
+            <div class="skill-cat"><h4>Desarrollo</h4><div class="skill-pills"><span class="pill">Python</span><span class="pill">Node.js</span><span class="pill">REST APIs</span><span class="pill">Git / GitHub</span><span class="pill">Jupyter</span><span class="pill">Anaconda</span><span class="pill new">SQL ★</span></div></div>
+            <div class="skill-cat"><h4>Herramientas Dev IA</h4><div class="skill-pills"><span class="pill">Claude</span><span class="pill">Antigravity</span><span class="pill">Gemini</span><span class="pill">GitHub Copilot</span></div></div>
+            <div class="skill-cat"><h4>Farma / GxP</h4><div class="skill-pills"><span class="pill">VSC / GxP</span><span class="pill">GMP · GLP · GDP</span><span class="pill">ISO 9001</span><span class="pill">ISO 13485</span><span class="pill">ISO 14001</span><span class="pill">ISP · INVIMA · ANVISA</span><span class="pill">LIMS</span><span class="pill">WMS</span><span class="pill">CAPA</span><span class="pill">Gestión de Riesgos</span><span class="pill">Control de Cambios</span></div></div>
+            <div class="skill-cat"><h4>Datos y Análisis</h4><div class="skill-pills"><span class="pill">Minitab</span><span class="pill">Excel (avanzado)</span><span class="pill">Analítica de Datos</span></div></div>
         </div>
-    </footer>
+        <p class="pill-note">★ = aprendiendo activamente — construyendo hacia competencia a nivel de producción</p>
+    </div>
 
-    <script src="templatemo-nexus-scripts.js"></script>
+    <div class="certs-section fade-section" id="certifications">
+        <p class="section-title">Certificaciones</p>
+        <p class="section-sub">Credenciales profesionales en IA, calidad farmacéutica y análisis financiero</p>
+        <div class="certs-grid">
+            <div class="cert-card"><div class="cert-accent ai"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge ai"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2.5"/><circle cx="12" cy="12" r="2.5"/><line x1="8" y1="5" x2="8" y2="2"/><line x1="16" y1="5" x2="16" y2="2"/><line x1="8" y1="19" x2="8" y2="22"/><line x1="16" y1="19" x2="16" y2="22"/><line x1="5" y1="9" x2="2" y2="9"/><line x1="5" y1="15" x2="2" y2="15"/><line x1="19" y1="9" x2="22" y2="9"/><line x1="19" y1="15" x2="22" y2="15"/></svg></div><div class="cert-info"><div class="cert-name">Claude Code in Action</div><div class="cert-issuer">Anthropic</div><div class="cert-date">Emitido Mar 2026</div></div></div><div class="cert-tags"><span class="cert-tag ai">Ingeniería de IA</span><span class="cert-tag ai">Generación de Código</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent ai"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge ai"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg></div><div class="cert-info"><div class="cert-name">Certificado de Finalización: Claude 101</div><div class="cert-issuer">Anthropic</div><div class="cert-date">Emitido Mar 2026</div></div></div><div class="cert-tags"><span class="cert-tag ai">Fundamentos de IA</span><span class="cert-tag ai">Prompting</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent finance"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge finance"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><div class="cert-info"><div class="cert-name">Análisis Técnico y Trading</div><div class="cert-issuer">Desarrollo Profesional Online</div><div class="cert-date">Emitido Feb 2024</div></div></div><div class="cert-tags"><span class="cert-tag finance">Valores</span><span class="cert-tag finance">Análisis de Inversiones</span><span class="cert-tag finance">Indicadores Técnicos</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent pharma"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge pharma"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/><polyline points="9 12 11 14 15 10"/></svg></div><div class="cert-info"><div class="cert-name">Validación de Sistemas Computarizados con Impacto GxP</div><div class="cert-issuer">Formar Chile</div><div class="cert-date">16 horas — presencial</div></div></div><div class="cert-tags"><span class="cert-tag pharma">VSC</span><span class="cert-tag pharma">Cumplimiento GxP</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent pharma"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge pharma"><svg viewBox="0 0 24 24"><path d="M9 3h6"/><path d="M10 3v4l-5 11a2 2 0 0 0 1.8 2.8h10.4a2 2 0 0 0 1.8-2.8L14 7V3"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div><div class="cert-info"><div class="cert-name">Validación de Limpieza en Fabricación Farmacéutica</div><div class="cert-issuer">Wackerling S.A.</div><div class="cert-date">8 horas — e-learning</div></div></div><div class="cert-tags"><span class="cert-tag pharma">Validación de Limpieza</span><span class="cert-tag pharma">GMP</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent pharma"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge pharma"><svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg></div><div class="cert-info"><div class="cert-name">Auditoría GMP y Gestión de Riesgos</div><div class="cert-issuer">Programa Industria Farmacéutica</div><div class="cert-date">Desarrollo profesional</div></div></div><div class="cert-tags"><span class="cert-tag pharma">Auditoría GMP</span><span class="cert-tag pharma">Gestión de Riesgos</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent data"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge data"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg></div><div class="cert-info"><div class="cert-name">Introducción a Analítica de Datos y Python</div><div class="cert-issuer">Formación Complementaria</div><div class="cert-date">En curso</div></div></div><div class="cert-tags"><span class="cert-tag data">Python</span><span class="cert-tag data">Analítica de Datos</span></div></div></div>
+            <div class="cert-card"><div class="cert-accent data"></div><div class="cert-body"><div class="cert-top"><div class="cert-badge data"><svg viewBox="0 0 24 24"><path d="M4 20L14 12L4 4"/><line x1="14" y1="20" x2="22" y2="20"/></svg></div><div class="cert-info"><div class="cert-name">Análisis Estadístico — Minitab</div><div class="cert-issuer">Aplicado a Revisión Anual de Producto</div><div class="cert-date">Desarrollo profesional</div></div></div><div class="cert-tags"><span class="cert-tag data">Minitab</span><span class="cert-tag data">Análisis Estadístico</span></div></div></div>
+        </div>
+    </div>
+
+    <div class="section-wrap fade-section" id="education">
+        <p class="section-title">Educación</p>
+        <p class="section-sub">Formación académica en ciencias farmacéuticas</p>
+        <div class="edu-grid">
+            <div class="edu-card glass-dark"><div class="edu-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 3L2 9l10 6 10-6-10-6z"/><path d="M6 11v5c0 2 3 3 6 3s6-1 6-3v-5"/><line x1="22" y1="9" x2="22" y2="17"/></svg></div><div class="edu-text"><h4>Química Farmacéutica (Químico Farmacéutico)</h4><p class="edu-inst">Universidad de Valparaíso</p><p class="edu-year">2012 – 2019</p></div></div>
+            <div class="edu-card glass-dark"><div class="edu-icon-wrap" style="background:linear-gradient(135deg,#7c5ce0,#a78bfa);"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3.36-7"/><polyline points="21 3 21 9 15 9"/></svg></div><div class="edu-text"><h4>Desarrollo Profesional Continuo</h4><p class="edu-inst">Múltiples instituciones — ver Certificaciones</p><p class="edu-year">2019 – Presente</p></div></div>
+        </div>
+    </div>
+
+    <div class="contact-block glass fade-section" id="contact">
+        <p class="section-title">Contacto</p>
+        <p>Abierto a oportunidades en ingeniería de IA, sistemas de calidad farmacéutica y roles que integren ambos dominios.</p>
+        <div class="hero-btn-row" style="margin-top:16px;">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSefqPufiHx0d59BY_Afxhqmh0oMYxqLL6bICJUkCPyJZN_Byw/viewform?usp=sharing&ouid=117893374139927738018" class="btn-aero btn-primary-aero">Formulario de contacto</a>
+            <a href="mailto:sebastiantm.qf@gmail.com" class="btn-aero btn-secondary-aero">Correo</a>
+            <a href="https://github.com/SebaPharma" class="btn-aero btn-secondary-aero">GitHub</a>
+            <a href="https://www.linkedin.com/in/sebasti%C3%A1n-tapia-maturana-50503b144/" class="btn-aero btn-secondary-aero">LinkedIn</a>
+        </div>
+        <div class="contact-info">
+            <p><strong>Correo:</strong> sebastiantm.qf@gmail.com</p>
+            <p><strong>Teléfono:</strong> +56 9 7703 4352</p>
+            <p><strong>Ubicación:</strong> Viña del Mar, Chile</p>
+        </div>
+        <div class="lang-row">
+            <span class="lang-pill lang-native">Español — Nativo</span>
+            <span class="lang-pill lang-prof">Inglés — Dominio Profesional</span>
+            <span class="lang-pill lang-begin">Japonés — Principiante (objetivo JLPT N4)</span>
+        </div>
+    </div>
+
+    <div class="footer"><p>&copy; 2026 Sebastián Tapia · Químico Farmacéutico & Constructor de Sistemas IA · <a href="https://sebapharma.github.io/">sebapharma.github.io</a></p></div>
+</div>
+
+<button class="music-toggle" id="musicToggle" title="Música">🎵</button>
+<div class="music-panel" id="musicPanel">
+    <div class="music-now">Reproduciendo</div>
+    <div class="music-track-name" id="trackName">—</div>
+    <div class="music-artist" id="trackArtist">—</div>
+    <div class="music-progress" id="progressBar"><div class="music-progress-fill" id="progressFill"></div></div>
+    <div class="music-time"><span id="timeCurrent">0:00</span><span id="timeTotal">0:00</span></div>
+    <div class="music-controls"><button class="music-ctrl-btn" id="btnPrev" title="Anterior">⏮</button><button class="music-ctrl-btn play-pause" id="btnPlayPause" title="Reproducir / Pausar">▶</button><button class="music-ctrl-btn" id="btnNext" title="Siguiente">⏭</button></div>
+    <div class="music-playlist-label">Lista de reproducción</div>
+    <ul class="music-playlist" id="playlist"></ul>
+    <div class="music-vol-row"><span class="music-vol-icon">🔈</span><input type="range" class="music-vol" id="volSlider" min="0" max="100" value="60"><span class="music-vol-icon">🔊</span></div>
+</div>
+
+<script>
+/* ══════════════════════════════════════
+   CURSOR: precise dot + decorative capsule
+   ══════════════════════════════════════ */
+const dot = document.getElementById('cursorDot');
+const capsule = document.getElementById('cursorCapsule');
+const glow = document.getElementById('cursorGlow');
+const trail = document.getElementById('cursorTrail');
+
+let mx = -100, my = -100;
+let cx = -100, cy = -100;
+let gx = -100, gy = -100;
+let px = -100, py = -100;
+let angle = 0, speed = 0, lastTrailTime = 0;
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+if (!isTouchDevice) {
+    document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        // Dot: instant, no lerp
+        dot.style.left = mx + 'px';
+        dot.style.top = my + 'px';
+        // Trail: throttled
+        const now = performance.now();
+        if (now - lastTrailTime > 35) { spawnTrail(mx, my); lastTrailTime = now; }
+    });
+
+    document.addEventListener('mouseover', e => {
+        if (e.target.closest('a, button, .jump-btn, .cert-card, .proj-card, .exp-block, input')) {
+            dot.classList.add('hovering');
+            capsule.style.opacity = '0.4';
+        }
+    });
+    document.addEventListener('mouseout', e => {
+        if (e.target.closest('a, button, .jump-btn, .cert-card, .proj-card, .exp-block, input')) {
+            dot.classList.remove('hovering');
+            capsule.style.opacity = '0.7';
+        }
+    });
+
+    const trailColors = ['#00ccaa','#0099dd','#00b894','#7c5ce0','#a78bfa','#55efc4','#74b9ff'];
+    function spawnTrail(x, y) {
+        const t = Math.random();
+        let cls, bg;
+        if (t < 0.3) { cls = 'trail-cross'; bg = trailColors[Math.floor(Math.random()*3)]; }
+        else if (t < 0.6) { cls = 'trail-dot'; bg = trailColors[Math.floor(Math.random()*4)]; }
+        else if (t < 0.8) { cls = 'trail-mini-cap'; bg = `linear-gradient(90deg,${trailColors[Math.floor(Math.random()*3)]} 48%, rgba(255,255,255,.7) 48%)`; }
+        else { cls = 'trail-plus'; bg = trailColors[Math.floor(Math.random()*5)]; }
+        const el = document.createElement('div');
+        el.className = 'trail-p ' + cls;
+        el.style.left = x + 'px'; el.style.top = y + 'px';
+        el.style.color = bg;
+        if (cls === 'trail-mini-cap') el.style.background = bg; else el.style.background = 'none';
+        el.style.setProperty('--tx', (Math.random()-.5)*30 + 'px');
+        el.style.setProperty('--ty', (Math.random()-.5)*30 - 10 + 'px');
+        el.style.setProperty('--r', (Math.random()-.5)*60 + 'deg');
+        trail.appendChild(el);
+        el.addEventListener('animationend', () => el.remove());
+    }
+
+    function animateCursor() {
+        cx += (mx - cx) * 0.1;
+        cy += (my - cy) * 0.1;
+        gx += (mx - gx) * 0.05;
+        gy += (my - gy) * 0.05;
+        const dx = cx - px, dy = cy - py;
+        speed = Math.sqrt(dx * dx + dy * dy);
+        if (speed > 0.5) {
+            let targetAngle = Math.atan2(dy, dx) * (180 / Math.PI);
+            let diff = targetAngle - angle;
+            if (diff > 180) diff -= 360;
+            if (diff < -180) diff += 360;
+            angle += diff * 0.1;
+        }
+        px = cx; py = cy;
+        capsule.style.left = cx + 'px'; capsule.style.top = cy + 'px';
+        capsule.style.transform = `translate(-50%,-50%) rotate(${angle}deg)`;
+        glow.style.left = gx + 'px'; glow.style.top = gy + 'px';
+        glow.style.opacity = Math.min(0.25 + speed * 0.006, 0.45);
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+}
+
+/* ══════════════════════════════════════
+   SCROLL & FADE
+   ══════════════════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)window.scrollTo({top:t.offsetTop-60,behavior:'smooth'});});});
+const fo=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible');});},{threshold:.08});
+document.querySelectorAll('.fade-section').forEach(el=>fo.observe(el));
+
+/* ── MÚSICA ── */
+const tracks=[
+    {name:"Título Canción 1",artist:"Nombre Artista",/*src:"https://raw.githubusercontent.com/SebaPharma/TU-REPO/main/music/song1.mp3",*/duration:"3:45"},
+    {name:"Título Canción 2",artist:"Nombre Artista",/*src:"https://raw.githubusercontent.com/SebaPharma/TU-REPO/main/music/song2.mp3",*/duration:"4:12"},
+    {name:"Título Canción 3",artist:"Nombre Artista",/*src:"https://raw.githubusercontent.com/SebaPharma/TU-REPO/main/music/song3.mp3",*/duration:"3:28"},
+    {name:"Título Canción 4",artist:"Nombre Artista",/*src:"https://raw.githubusercontent.com/SebaPharma/TU-REPO/main/music/song4.mp3",*/duration:"5:01"}
+];
+const tog=document.getElementById('musicToggle'),pan=document.getElementById('musicPanel'),tn=document.getElementById('trackName'),ta=document.getElementById('trackArtist'),pb=document.getElementById('progressBar'),pf=document.getElementById('progressFill'),tc=document.getElementById('timeCurrent'),tt=document.getElementById('timeTotal'),bp=document.getElementById('btnPlayPause'),bpr=document.getElementById('btnPrev'),bn=document.getElementById('btnNext'),pl=document.getElementById('playlist'),vs=document.getElementById('volSlider');
+let ct=0,ip=false,po=false;const au=new Audio();au.volume=.6;
+tracks.forEach((t,i)=>{const li=document.createElement('li');li.innerHTML=`<span class="pl-num">${i+1}</span><span class="pl-name">${t.name}</span><span class="pl-dur">${t.duration}</span>`;li.addEventListener('click',()=>{lt(i);pl_();});pl.appendChild(li);});
+function lt(i){ct=i;const t=tracks[i];tn.textContent=t.name;ta.textContent=t.artist;tt.textContent=t.duration;pf.style.width='0%';tc.textContent='0:00';if(t.src)au.src=t.src;upl();}
+function upl(){pl.querySelectorAll('li').forEach((l,i)=>l.classList.toggle('active',i===ct));}
+function pl_(){if(!tracks[ct].src){tn.textContent='Sube MP3s a tu repo primero';ta.textContent='Ver comentarios JS para instrucciones';return;}au.play().then(()=>{ip=true;bp.textContent='⏸';tog.classList.add('playing');}).catch(()=>{});}
+function pa(){au.pause();ip=false;bp.textContent='▶';tog.classList.remove('playing');}
+tog.addEventListener('click',()=>{po=!po;pan.classList.toggle('open',po);});
+bp.addEventListener('click',()=>{ip?pa():pl_();});
+bpr.addEventListener('click',()=>{lt((ct-1+tracks.length)%tracks.length);if(ip)pl_();});
+bn.addEventListener('click',()=>{lt((ct+1)%tracks.length);if(ip)pl_();});
+vs.addEventListener('input',()=>{au.volume=vs.value/100;});
+pb.addEventListener('click',e=>{if(!au.duration)return;const r=pb.getBoundingClientRect();au.currentTime=((e.clientX-r.left)/r.width)*au.duration;});
+au.addEventListener('timeupdate',()=>{if(!au.duration)return;pf.style.width=((au.currentTime/au.duration)*100)+'%';const m=Math.floor(au.currentTime/60),s=Math.floor(au.currentTime%60).toString().padStart(2,'0');tc.textContent=m+':'+s;});
+au.addEventListener('ended',()=>{lt((ct+1)%tracks.length);pl_();});
+lt(0);
+</script>
 </body>
-
 </html>
-
-
-
