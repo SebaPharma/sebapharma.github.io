@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CV - Sebastián Tapia Maturana</title>
+<style>
+  @page { size: A4; margin: 12mm 13mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color: #22303c; font-size: 10.1pt; line-height: 1.45; }
+  a { color: inherit; text-decoration: none; }
+  p, li, .proj, .footer-line { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+
+  header { display: flex; align-items: flex-start; border-bottom: 3px solid #00897b; padding-bottom: 8px; margin-bottom: 12px; }
+  .photo { width: 85px; height: 105px; object-fit: cover; border-radius: 4px; border: 2.5px solid #00897b; margin-right: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+  .header-text { flex: 1; }
+  h1 { font-size: 23pt; letter-spacing: .5px; color: #10343f; line-height: 1.1; }
+  .role { font-size: 10.8pt; font-weight: 600; color: #00796b; margin-top: 4px; }
+  .contact { text-align: left; font-size: 8.8pt; color: #4a5a66; line-height: 1.55; margin-top: 6px; }
+  .contact b { color: #10343f; }
+
+  h2 { font-size: 10.6pt; text-transform: uppercase; letter-spacing: 1.4px; color: #00796b; border-bottom: 1.4px solid #b2dfdb; padding-bottom: 3px; margin: 13px 0 8px; }
+  p { margin-bottom: 6px; }
+
+  .job { margin-bottom: 9px; page-break-inside: avoid; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-title { font-size: 10.6pt; font-weight: 700; color: #10343f; }
+  .job-co { font-size: 9.6pt; font-weight: 600; color: #00897b; }
+  .job-date { font-size: 9pt; color: #5a6a76; white-space: nowrap; }
+  ul { padding-left: 14px; margin-top: 3px; }
+  li { margin-bottom: 2.5px; }
+  li::marker { color: #00897b; }
+
+  .proj { margin-bottom: 6px; page-break-inside: avoid; }
+  .proj b { color: #10343f; }
+  .proj .tech { color: #00796b; font-weight: 600; }
+
+  .pill-group { margin-bottom: 6px; page-break-inside: avoid; }
+  .pill-group h3 { font-size: 9.4pt; color: #10343f; margin-bottom: 3px; }
+  .pills span { display: inline-block; background: #e0f2f1; border: 1px solid #80cbc4; color: #004d40; border-radius: 999px; padding: 1px 8px; font-size: 8.4pt; margin: 0 3px 3px 0; }
+  .note { font-size: 8.4pt; color: #5a6a76; font-style: italic; }
+
+  .certs { columns: 2; column-gap: 8mm; font-size: 9.1pt; }
+  .certs h3 { font-size: 9.4pt; color: #10343f; margin: 4px 0 3px; break-after: avoid; }
+  .certs ul { list-style: none; padding-left: 0; }
+  .certs li { margin-bottom: 3px; padding-left: 10px; text-indent: -10px; break-inside: avoid; }
+  .certs li::before { content: "▪"; color: #00897b; margin-right: 5px; }
+  .certs .y { color: #5a6a76; }
+
+  .edu { page-break-inside: avoid; }
+  .footer-line { margin-top: 10px; font-size: 9.2pt; color: #4a5a66; border-top: 1.4px solid #b2dfdb; padding-top: 6px; }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="foto_sebastian.jpg" alt="Sebastián Tapia Maturana" class="photo">
+  <div class="header-text">
+    <h1>SEBASTIÁN TAPIA MATURANA</h1>
+    <div class="role">Químico Farmacéutico · Jefe de Validaciones y QA · Ingeniero de Automatización e IA</div>
+    <div class="contact">
+      Viña del Mar, Chile · +56 9 7703 4352 · sebastiantm.qf@gmail.com<br>
+      <b>sebapharma.github.io</b> · <b>github.com/SebaPharma</b> · linkedin.com/in/sebastián-tapia-maturana-50503b144
+    </div>
+  </div>
+</header>
+
+<h2>Perfil Profesional</h2>
+<p>Químico Farmacéutico con más de 6 años de experiencia en Aseguramiento de Calidad y Validaciones en entornos regulados GxP, especializado en Validación de Sistemas Computarizados (VSC/CSV). Combino el rigor regulatorio (GMP, GLP, GDP, ISO 9001/13485) con la implementación práctica de automatización e Inteligencia Artificial: desarrollo flujos de trabajo con n8n y Docker, integro LLMs locales (Ollama) y APIs en la nube (Gemini, OpenAI, Claude), y despliego dashboards de datos en tiempo real. He liderado auditorías ante entidades regulatorias (ISP, INVIMA, ANVISA) y fui contribuyente clave en las certificaciones ISO 9001 e ISO 13485. Abierto a oportunidades remotas en ingeniería de automatización, IA aplicada y sistemas de calidad.</p>
+
+<h2>Experiencia Profesional</h2>
+
+<div class="job">
+  <div class="job-head"><div><span class="job-title">Jefe de Validaciones</span> · <span class="job-co">Knop Laboratorios S.A.</span></div><span class="job-date">Abr 2022 – Presente</span></div>
+  <ul>
+    <li>Lidero la Validación de Sistemas Computarizados: WMS, LIMS, firma electrónica y aplicaciones personalizadas Lotus Notes integradas al SGC (generación y revisión de protocolos, supervisión de ejecución).</li>
+    <li>Superviso calificación de equipos, sistemas de apoyo críticos (agua purificada, HVAC, aire comprimido) y validación de procesos y limpieza para formas sólidas, semisólidas y líquidas.</li>
+    <li>Integro herramientas de IA (Claude, Gemini, ChatGPT) a los flujos de calidad: automatización de redacción de protocolos, matrices de riesgo, evaluaciones de desviaciones y POEs, con reducciones medibles en tiempos de ejecución.</li>
+    <li>Arquitecté y desplegué dashboards internos conectados a datos de fabricación (Google Drive), con KPIs en tiempo real y trazabilidad completa de procesos.</li>
+    <li>Desarrollo pipelines de automatización autoalojados (n8n, Docker, Ollama, Edge-TTS) para generación de contenido y documentación.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head"><div><span class="job-title">Jefe de Aseguramiento de Calidad (Suplente)</span> · <span class="job-co">Knop Laboratorios S.A.</span></div><span class="job-date">Abr 2022 – Presente</span></div>
+  <ul>
+    <li>Gestiono operaciones centrales del SGC: KPIs, ciclo de vida de CAPA, quejas y reclamos, auditorías a proveedores, productos no conformes, gestión de riesgos, control de cambios y control documental.</li>
+    <li>Represento QA y Validaciones en inspecciones regulatorias bajo GMP, GLP y GDP (ISP Chile, INVIMA Colombia, ANVISA Brasil).</li>
+    <li>Contribuyente clave en la obtención de las certificaciones ISO 9001 e ISO 13485 (2023).</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head"><div><span class="job-title">Director Técnico (Químico Farmacéutico)</span> · <span class="job-co">Ecofarmacias</span></div><span class="job-date">2019 – 2022</span></div>
+  <ul>
+    <li>Atención farmacéutica, administración de personal y representante sanitario ante SEREMI de Salud. Cumplimiento normativo y control de sustancias controladas.</li>
+  </ul>
+</div>
+
+<div class="job">
+  <div class="job-head"><div><span class="job-title">Asistente de Investigación, Lab. de Neurobiología</span> · <span class="job-co">Universidad de Valparaíso</span></div><span class="job-date">2015 – 2017</span></div>
+  <ul>
+    <li>Apoyo en investigación sobre mecanismos de comportamientos sociales y adictivos.</li>
+  </ul>
+</div>
+
+<h2>Proyectos de Automatización e IA</h2>
+<div class="proj"><b>Pipeline de Contenido con IA (Multi-Agente):</b> orquestación <span class="tech">n8n + Docker</span> en Oracle Cloud; Ollama (guiones), Gemini API (imágenes), Edge-TTS (voz), FFmpeg (video) y entrega vía Telegram Bot. Reducción del 90% del tiempo manual. → github.com/SebaPharma/automatic-content-text-voice-telegrambot-n8n</div>
+<div class="proj"><b>Servidor de Inferencia LLM Autoalojado:</b> Ollama en Oracle Cloud Free Tier (LLaMA, Mistral); IA privada sin costo de API.</div>
+<div class="proj"><b>Dashboard de Fabricación GxP:</b> visualización web de KPIs de fabricación en tiempo real, conectada a hojas de datos en Google Drive.</div>
+<div class="proj"><b>Flujos Multi-Agente PocketFlow/OpenFlow:</b> pipelines de automatización orquestados en n8n, desplegados en Oracle Cloud y Raspberry Pi.</div>
+
+<h2>Habilidades Técnicas</h2>
+<div class="pill-group"><h3>Automatización y APIs</h3><div class="pills"><span>n8n</span><span>REST APIs</span><span>Webhooks</span><span>JSON / YAML</span><span>Manejo de datos binarios</span></div></div>
+<div class="pill-group"><h3>IA y LLMs</h3><div class="pills"><span>Ollama</span><span>OpenAI API</span><span>Gemini API</span><span>Claude API</span><span>Prompt Engineering</span><span>PocketFlow</span><span>LangChain / RAG ★</span></div></div>
+<div class="pill-group"><h3>Infraestructura</h3><div class="pills"><span>Docker y Docker Compose</span><span>Linux / Ubuntu (SSH, Bash)</span><span>Oracle Cloud</span><span>Raspberry Pi</span><span>Servidores autoalojados</span></div></div>
+<div class="pill-group"><h3>Desarrollo y Datos</h3><div class="pills"><span>Python</span><span>Node.js</span><span>Git / GitHub</span><span>FFmpeg</span><span>Jupyter / Anaconda</span><span>SQL ★</span><span>Minitab</span><span>Excel avanzado</span></div></div>
+<div class="pill-group"><h3>Farma / GxP</h3><div class="pills"><span>VSC / CSV</span><span>GMP · GLP · GDP</span><span>ISO 9001 / 13485 / 14001</span><span>EudraLex Anexo 22 (IA)</span><span>21 CFR Part 11</span><span>LIMS / WMS</span><span>CAPA</span><span>Gestión de riesgos</span><span>Control de cambios</span></div></div>
+<div class="note">★ = en formación activa, camino a competencia de producción.</div>
+
+<h2>Certificaciones (16)</h2>
+<div class="note" style="margin-bottom:5px;">Distribución: 11 en calidad farmacéutica y GxP · 3 en Inteligencia Artificial · 1 en programación · 1 en finanzas.</div>
+<div class="certs">
+  <h3>Inteligencia Artificial (3)</h3>
+  <ul>
+    <li>Claude Code in Action — Anthropic <span class="y">(mar. 2026)</span></li>
+    <li>Certificate of Completion: Claude 101 — Anthropic <span class="y">(mar. 2026)</span></li>
+    <li>IA para la Industria Farmacéutica — USECAP <span class="y">(sept. 2026)</span></li>
+  </ul>
+  <h3>Calidad Farmacéutica y GxP (11)</h3>
+  <ul>
+    <li>Validación de Sistemas Computarizados con Impacto GxP — Formar Chile <span class="y">(abr. 2018)</span></li>
+    <li>Validación de Hojas de Cálculo — Grupo Terra Farma <span class="y">(jul. 2022)</span></li>
+    <li>Validación de Limpieza en la Industria Farmacéutica — Wackerling <span class="y">(oct. 2022)</span></li>
+    <li>Gestión del Riesgo — Grupo Terra Farma <span class="y">(sept. 2022)</span></li>
+    <li>Gestión de Calidad y Mantención del Estado Validado — Grupo Terra Farma <span class="y">(nov. 2022)</span></li>
+    <li>Auditor GMP — Wackerling <span class="y">(jun. 2023)</span></li>
+    <li>Softwares HPLC: OpenLab CDS y EZChrome Elite — ChromSupport <span class="y">(jun. 2023)</span></li>
+    <li>Auditor ISO 9001 – 13485 — M&amp;R Asociados <span class="y">(may. 2024)</span></li>
+    <li>Análisis Estadístico para Revisión Anual de Producto — Korval Capacitaciones <span class="y">(jun. 2024)</span></li>
+    <li>Anexo 7 ISP en Sistemas de Agua de Calidad Farmacéutica — Daslabor <span class="y">(may. 2026)</span></li>
+    <li>Presión Diferencial en Cuartos Limpios — Vaisala <span class="y">(jul. 2026)</span></li>
+  </ul>
+  <h3>Programación y Datos (1)</h3>
+  <ul>
+    <li>Introducción a Python — BiblioRedes <span class="y">(sept. 2023)</span></li>
+  </ul>
+  <h3>Finanzas (1)</h3>
+  <ul>
+    <li>Análisis Técnico Bursátil y Trading — XTB Online Investing <span class="y">(feb. 2024)</span></li>
+  </ul>
+</div>
+
+<h2>Educación</h2>
+<div class="edu">
+  <div class="job-head"><div><span class="job-title">Químico Farmacéutico (Química y Farmacia)</span> · <span class="job-co">Universidad de Valparaíso</span></div><span class="job-date">2012 – 2019</span></div>
+  <p style="margin-top:3px;">Formación continua: 16 certificaciones profesionales (2018–2026), mayoritariamente en calidad farmacéutica y GxP (11), complementadas con IA (3), programación y finanzas.</p>
+</div>
+
+<div class="footer-line">
+  <b>Idiomas:</b> Español nativo · Inglés dominio profesional · Japonés principiante (objetivo JLPT N4) &nbsp;|&nbsp; <b>Adicional:</b> Licencia de conducir Clase B · Trabajo remoto: infraestructura autoalojada, colaboración asíncrona y documentación técnica en inglés.
+</div>
+
+</body>
+</html>
